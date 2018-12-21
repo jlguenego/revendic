@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/revendic",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

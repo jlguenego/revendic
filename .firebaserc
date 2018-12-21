@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "preprod": "revendic-530b8",
+    "default": "revendic-530b8"
+  }
+}
