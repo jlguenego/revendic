@@ -1,8 +1,13 @@
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
     background: #eee;
 }
 
 .logo {
+    padding: 0 3rem;
     font-weight: bold;
     .name {
         color: red;
@@ -12,5 +17,18 @@ header {
     }
     .com {
         color: blue;
+    }
+}
+
+.utilities {
+    padding: 0 3rem;
+}
+
+.primary-menu {
+    display: flex;
+    a {
+        padding: 0 0.5rem;
+        color: black;
+        text-decoration: none;
     }
 }
