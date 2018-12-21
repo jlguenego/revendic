@@ -1,4 +1,13 @@
+@import 'variables';
+:host {
+    display: block;
+}
+
 main {
+    margin: 0px auto;
+    width: 100%;
+    max-width: $maxWidth;
+
     .jumbo {
         padding: 3rem;
         font-size: 3rem;
