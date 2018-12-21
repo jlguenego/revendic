@@ -1,34 +1,58 @@
+@import 'variables';
+:host {
+    display: block;
+    background: $bgcolor;
+}
+
 header {
     display: flex;
+    margin: 0px auto;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: $maxWidth;
     height: 3rem;
-    background: #eee;
 }
 
 .logo {
     padding: 0 3rem;
     font-weight: bold;
+    font-size: 1.5rem;
     .name {
-        color: red;
+        color: $color;
     }
     .dot {
         color: gray;
     }
     .com {
-        color: blue;
+        color: red;
     }
 }
 
 .utilities {
     padding: 0 3rem;
+    white-space: nowrap;
 }
 
 .primary-menu {
     display: flex;
     a {
+        font-size: 1rem;
         padding: 0 0.5rem;
-        color: black;
+        color: $color;
         text-decoration: none;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+}
+
+.button {
+    color: $color;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid $color;
+    border-radius: 6px;
+    &:hover {
+        background: lighten($bgcolor, 10);
     }
 }
