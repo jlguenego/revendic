@@ -1,9 +1,21 @@
+@import 'variables';
+:host {
+    display: block;
+    background: #eee;
+}
+
+
 footer {
     display: flex;
+    margin: 0px auto;
     justify-content: center;
     align-items: center;
-    background: #eee;
+    width: 100%;
+    max-width: $maxWidth;
     height: 3rem;
+
+
+    
     a {
         text-decoration: none;
         color: black;
