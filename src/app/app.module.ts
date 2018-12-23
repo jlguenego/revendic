@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     BodyComponent,
     FooterComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    // AppRoutingModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
