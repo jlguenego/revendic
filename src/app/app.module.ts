@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { CreateRevendicationComponent } from './create-revendication/create-revendication.component';
+import { PresentationComponent } from './presentation/presentation.component';
+import { ObservatoireComponent } from './observatoire/observatoire.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { HomeComponent } from './home/home.component';
     BodyComponent,
     FooterComponent,
     HomeComponent,
+    CreateRevendicationComponent,
+    PresentationComponent,
+    ObservatoireComponent,
   ],
   imports: [
     BrowserModule,

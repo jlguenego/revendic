@@ -18,6 +18,9 @@ header {
     padding: 0 1rem;
     font-weight: 900;
     font-size: 2rem;
+    a {
+        text-decoration: none;
+    }
     .name {
         color: $color;
     }
