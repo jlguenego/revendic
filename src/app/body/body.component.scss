@@ -7,11 +7,25 @@ main {
     margin: 0px auto;
     width: 100%;
     max-width: $maxWidth;
-
     .jumbo {
         padding: 3rem;
         font-size: 3rem;
         text-align: center;
         font-weight: bolder;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    /* For mobile phones: */
+    .logo {
+        font-size: 1.5rem;
+    }
+    main {
+        .jumbo {
+            padding: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            font-weight: bolder;
+        }
     }
 }

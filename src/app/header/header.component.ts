@@ -10,10 +10,23 @@ import { ResponsiveService } from '../responsive.service';
 export class HeaderComponent implements OnInit {
 
   faBars = faBars;
+  isMenuOpen = false;
   
   constructor(public resp: ResponsiveService) { }
 
   ngOnInit() {
+  }
+
+  openMenu() {
+    this.isMenuOpen = true;
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 
 }
