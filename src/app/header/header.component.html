@@ -1,6 +1,5 @@
 <header *ngIf="resp.desktop">
   <div class="logo"><span class="name">Revendique</span><span class="dot">.</span><span class="com">com</span></div>
-  <fa-icon class="mobile" [icon]="faBars"></fa-icon>
   <nav class="primary-menu">
     <a href="#creer" class="href">Créer une revendication</a>
     <a href="#observatoire" class="href">Observatoire</a>
@@ -10,4 +9,15 @@
     <a href="#my-account" class="button">Mon compte</a>
   </nav>
 </header>
-isMobile ? {{resp.mobile}} {{resp.counter}}
+<header class="mobile" *ngIf="resp.mobile">
+  <div class="logo"><span class="name">Revendique</span><span class="dot">.</span><span class="com">com</span></div>
+  <fa-icon class="mobile" [icon]="faBars"></fa-icon>
+  <!-- <nav class="primary-menu">
+    <a href="#creer" class="href">Créer une revendication</a>
+    <a href="#observatoire" class="href">Observatoire</a>
+    <a href="#presentation" class="href">Presentation</a>
+  </nav>
+  <nav class="utilities">
+    <a href="#my-account" class="button">Mon compte</a>
+  </nav> -->
+</header>

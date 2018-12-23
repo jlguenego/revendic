@@ -15,7 +15,7 @@ header {
 }
 
 .logo {
-    padding: 0 3rem;
+    padding: 0 1rem;
     font-weight: 900;
     font-size: 2rem;
     .name {
@@ -49,11 +49,9 @@ header {
 
 
 .utilities {
-    padding: 0 3rem;
+    padding: 0 1rem;
     white-space: nowrap;
 }
-
-
 
 .button {
     color: $color;
@@ -66,13 +64,15 @@ header {
     }
 }
 
-.mobile {
-    display: none;
+fa-icon {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    color: $color;
 }
 
 @media only screen and (max-width: 960px) {
     /* For mobile phones: */
-    .mobile {
-        display: block;
+    .logo {
+        font-size: 1.5rem;
     }
 }

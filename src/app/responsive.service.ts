@@ -11,20 +11,17 @@ function mobilecheck() {
 })
 export class ResponsiveService {
 
-  counter = 0;
   mobile: boolean;
   desktop: boolean;
   constructor() {
     this.update();
     window.onresize = event => {
-      console.log('event', event);
       this.update();
     }
   }
 
   update() {
-    this.mobile = mobilecheck();
+    this.mobile = mobilecheck() || window.innerWidth < 768;
     this.desktop = !this.mobile;
-    this.counter++;
   }
 }
