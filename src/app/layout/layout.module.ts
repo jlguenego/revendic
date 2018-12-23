@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
-import { AppRoutingModule } from '../routing/app-routing.module';
+import { AppRoutingModule } from '../app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
