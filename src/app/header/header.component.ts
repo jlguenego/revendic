@@ -10,6 +10,7 @@ import { ResponsiveService } from '../responsive.service';
 export class HeaderComponent implements OnInit {
 
   faBars = faBars;
+  
   constructor(public resp: ResponsiveService) { }
 
   ngOnInit() {
