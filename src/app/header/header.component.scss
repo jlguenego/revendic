@@ -15,10 +15,9 @@ header {
 }
 
 .logo {
-    font-family: 'Bangers', cursive;
     padding: 0 3rem;
-    font-weight: bold;
-    font-size: 2.5rem;
+    font-weight: 900;
+    font-size: 2rem;
     .name {
         color: $color;
     }
@@ -43,10 +42,13 @@ header {
         color: $color;
         text-decoration: none;
         white-space: nowrap;
-        font-weight: bold;
         &:hover {
             color: transparentize($color, 0.3);
         }
+    }
+    fa-icon {
+        color: white;
+        font-size: 1.5rem;
     }
 }
 
@@ -58,5 +60,16 @@ header {
     border-radius: 6px;
     &:hover {
         background: lighten($bgcolor, 10);
+    }
+}
+
+.mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .mobile {
+        display: block;
     }
 }
