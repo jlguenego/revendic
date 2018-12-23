@@ -29,11 +29,6 @@ header {
     }
 }
 
-.utilities {
-    padding: 0 3rem;
-    white-space: nowrap;
-}
-
 .primary-menu {
     display: flex;
     a {
@@ -52,6 +47,14 @@ header {
     }
 }
 
+
+.utilities {
+    padding: 0 3rem;
+    white-space: nowrap;
+}
+
+
+
 .button {
     color: $color;
     text-decoration: none;
@@ -67,7 +70,7 @@ header {
     display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 960px) {
     /* For mobile phones: */
     .mobile {
         display: block;
