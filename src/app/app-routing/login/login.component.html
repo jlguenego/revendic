@@ -1,7 +1,7 @@
 <div class="center">
   <div class="frame">
     <h1>Connexion</h1>
-    <div class="center"><button class="shadow">Créer un compte</button></div>
+    <div class="center"><a routerLink="/nouveau-compte" class="button shadow">Créer un compte</a></div>
     <app-divider>ou</app-divider>
     <button class="social-login google">
      <span><fa-icon [icon]="faGoogle"></fa-icon> Connexion avec Google</span> 
@@ -11,7 +11,7 @@
     </button>
     <app-divider>ou</app-divider>
     Connexion avec un compte existant :
-    
+
     <app-login-form></app-login-form>
     
   </div>
