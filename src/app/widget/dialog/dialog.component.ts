@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dialog',
@@ -7,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class DialogComponent implements OnInit {
 
+  faTimes = faTimes;
   constructor() { }
 
   ngOnInit() {
@@ -16,8 +18,8 @@ export class DialogComponent implements OnInit {
 
   @Output() close = new EventEmitter<undefined>();
 
-  onClose($event) {
-    if ($event.currentTarget !== $event.target) {
+  onClose($event, check = true) {
+    if (check && $event.currentTarget !== $event.target) {
       return;
     }
     console.log('onClose');

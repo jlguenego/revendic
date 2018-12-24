@@ -1,7 +1,10 @@
 <div class="overlay" (click)="onClose($event)">
   <div class="panel">
     <div class="header">
-      <div class="title">{{title}}</div><div class="close" (click)="onClose($event)">X</div>
+      <div class="title">{{title}}</div>
+      <div class="close" (click)="onClose($event, false)">
+          <fa-icon [icon]="faTimes"></fa-icon>
+      </div>
     </div>
     <div class="content">
       <ng-content></ng-content>
