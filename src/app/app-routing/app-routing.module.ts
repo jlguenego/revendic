@@ -6,8 +6,9 @@ import { ObservatoireComponent } from './observatoire/observatoire.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { LegalComponent } from './legal/legal.component';
 import { LoginComponent } from './login/login.component';
-import { WidgetModule } from '../widget/widget.module';
+import { FormModule } from '../form/form.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WidgetModule } from '../widget/widget.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), WidgetModule, FontAwesomeModule],
+  imports: [RouterModule.forRoot(routes), FormModule, FontAwesomeModule, WidgetModule],
   declarations: [
     HomeComponent,
     CreateRevendicationComponent,
