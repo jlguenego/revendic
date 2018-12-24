@@ -16,6 +16,11 @@ button.social-login {
     &.facebook {
         background-color: #3C5A99;
     }
+    >span {
+        display: inline-block;
+        text-align: left;
+        width: 18rem;
+    }
 }
 
 label {
