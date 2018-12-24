@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { DialogComponent } from './dialog/dialog.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DividerComponent } from './divider/divider.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
     DialogComponent,
-    DividerComponent
+    DividerComponent,
+    PasswordComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { DividerComponent } from './divider/divider.component';
   ],
   exports: [
     DialogComponent,
-    DividerComponent
+    DividerComponent,
+    PasswordComponent,
   ]
 })
 export class WidgetModule { }
