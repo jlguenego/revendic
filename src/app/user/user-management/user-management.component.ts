@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { ResponsiveService } from 'src/app/layout/responsive.service';
+import { UserService } from '../user.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-user-management',
@@ -18,9 +21,10 @@ export class UserManagementComponent implements OnInit {
   firstname = '';
   lastname = '';
 
-  constructor() { }
+  constructor(public resp: ResponsiveService, public user: UserService) { }
 
   ngOnInit() {
+    this.user.component = this;
   }
 
   openSigninDialog() {

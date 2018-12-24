@@ -1,5 +1,3 @@
-<button *ngIf="!isLogged" (click)="openSigninDialog()">Mon compte</button>
-<div *ngIf="isLogged" class="user">{{firstname}} - {{lastname}}</div>
 <app-dialog title="Se connecter" *ngIf="isSigninDialogOpen" (close)="closeSigninDialog()">
   <div class="center"><button class="shadow">Créer un compte</button></div>
   <app-divider>ou</app-divider>

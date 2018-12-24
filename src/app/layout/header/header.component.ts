@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { ResponsiveService } from '../responsive.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   faBars = faBars;
   isMenuOpen = false;
   
-  constructor(public resp: ResponsiveService) { }
+  constructor(public resp: ResponsiveService, public user: UserService) { }
 
   ngOnInit() {
   }

@@ -12,17 +12,25 @@
     <a routerLink="presentation" class="href">Presentation</a>
   </nav>
   <nav class="utilities">
-    <app-user-management></app-user-management>
+    <a class="button" routerLink="login" *ngIf="!user.isLogged">Mon compte</a>
+    <div *ngIf="user.isLogged" class="user">{{user.firstname}} - {{user.lastname}}</div>
   </nav>
 </header>
 <header class="mobile" *ngIf="resp.mobile">
-  <div class="logo"><span class="name">Revendique</span><span class="dot">.</span><span class="com">com</span></div>
+  <div class="logo">
+    <a routerLink="">
+      <span class="name">Revendique</span>
+      <span class="dot">.</span>
+      <span class="com">com</span>
+    </a>
+  </div>
   <fa-icon (click)="toggleMenu()" class="mobile" [icon]="faBars"></fa-icon>
-  <nav [class.open]="isMenuOpen" class="primary-mobile-menu">
-    <a (click)="closeMenu()" href="#my-account" class="button">Mon compte</a>
+  <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
+    <a routerLink="login">Mon compte</a>
     <div class="separator"></div>
-    <a (click)="closeMenu()" routerLink="creer-revendication">Créer une revendication</a>
-    <a (click)="closeMenu()" routerLink="observatoire">Observatoire</a>
-    <a (click)="closeMenu()" routerLink="presentation">Presentation</a>
+    <a routerLink="creer-revendication">Créer une revendication</a>
+    <a routerLink="observatoire">Observatoire</a>
+    <a routerLink="presentation">Presentation</a>
   </nav>
 </header>
+<app-user-management></app-user-management>
