@@ -1,17 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import url("normalize.css");
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,900,900i');
+@import 'reset';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+@import 'variables';
+@import 'button';
+
+.center {
+    text-align: center;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden; // avoid horizontal scrolling on mobile.
-}
 

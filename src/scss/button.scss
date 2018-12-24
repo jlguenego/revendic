@@ -1,0 +1,21 @@
+button {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid $color;
+    color: $color;
+    border: 1px solid $color;
+    background: $bgcolor;
+    &:hover {
+        background: lighten($bgcolor, 30%);
+    }
+    &.shadow {
+        background: transparent;
+        color: $bgcolor;
+        font-weight: bold;
+        &:hover {
+            background: hsl(0, 0%, 98%);
+            color: lighten($bgcolor, 30%);
+        }
+    }
+}

@@ -13,6 +13,6 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
