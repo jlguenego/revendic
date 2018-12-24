@@ -1,13 +1,14 @@
-<form>
+<form [formGroup]="f">
   <label>
     <div>Email :</div>
-    <input type="email" name="email">
+    <input type="email" name="email" formControlName="email">
   </label>
   <label>
     <div>Mot de passe :</div>
-    <app-password></app-password>
+    <app-password formControlName="password"></app-password>
   </label>
   <div class="submit">
     <button class="submit">Connexion</button>
   </div>
 </form>
+{{f.value | json}}
