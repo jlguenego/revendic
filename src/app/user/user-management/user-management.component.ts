@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-user-management',
@@ -11,6 +12,8 @@ export class UserManagementComponent implements OnInit {
 
   isSigninDialogOpen = false;
 
+  faFacebook = faFacebook;
+  faGoogle = faGoogle;
 
   firstname = '';
   lastname = '';

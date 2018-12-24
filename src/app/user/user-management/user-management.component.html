@@ -1,13 +1,16 @@
 <button *ngIf="!isLogged" (click)="openSigninDialog()">Mon compte</button>
 <div *ngIf="isLogged" class="user">{{firstname}} - {{lastname}}</div>
 <app-dialog title="Se connecter" *ngIf="isSigninDialogOpen" (close)="closeSigninDialog()">
+  <div class="center"><button class="shadow">Créer un compte</button></div>
+  <app-divider>ou</app-divider>
+  <button class="social-login google">
+    <fa-icon [icon]="faGoogle"></fa-icon> avec Google
+  </button>
+  <button class="social-login facebook">
+    <fa-icon [icon]="faFacebook"></fa-icon> avec Facebook
+  </button>
+  <app-divider>ou</app-divider>
   <form>
-    <div class="center"><button class="shadow">Créer un compte</button></div>
-    
-    <app-divider>ou</app-divider>
-    <a href="#">Connect with Google</a>
-    <a href="#">Connect with Facebook</a>
-    <app-divider>ou</app-divider>
     <input type="email" name="email">
     <input type="password" name="password">
     <button>Connexion</button>
