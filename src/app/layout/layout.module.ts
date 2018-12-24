@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from '../app-routing/app-routing.module';
     CommonModule,
     FontAwesomeModule,
     AppRoutingModule,
+    UserModule,
   ],
   exports: [
     HeaderComponent, 

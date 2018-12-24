@@ -1,0 +1,8 @@
+<div class="overlay" (click)="onClose($event)">
+  <div class="title">
+    <span>{{title}}</span><span (click)="onClose($event)">Close</span>
+  </div>
+  <div class="dialog">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -51,17 +51,6 @@ header {
     white-space: nowrap;
 }
 
-.button {
-    color: $color;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid $color;
-    border-radius: 6px;
-    &:hover {
-        background: lighten($bgcolor, 10);
-    }
-}
-
 @media only screen and (max-width: 960px) {
     /* For mobile phones: */
     .logo {
