@@ -1,5 +1,5 @@
 <button *ngIf="!isLogged" (click)="openSigninDialog()">Mon compte</button>
 <div *ngIf="isLogged" class="user">{{firstname}} - {{lastname}}</div>
-<app-dialog *ngIf="isSigninDialogOpen" (close)="closeSigninDialog()">
+<app-dialog title="Connexion" *ngIf="!isSigninDialogOpen" (close)="closeSigninDialog()">
   Coucou
 </app-dialog>

@@ -1,0 +1,52 @@
+@import 'variables';
+
+$radius: 1rem;
+
+.overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: hsla(0, 0%, 50%, 0.5);
+}
+
+.panel {
+    display: block;
+    width: 30rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: $radius;
+}
+
+.header {
+    display: block;
+    height: 3rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    color: $color;
+    border-radius: $radius $radius 0 0;
+    background: $bgcolor;
+}
+
+.title {
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+}
+
+.close {
+    width: 10%;
+    float: right;
+    text-align: right;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.content {
+    padding: 2rem 1rem;
+}
