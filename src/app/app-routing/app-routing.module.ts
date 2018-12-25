@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WidgetModule } from '../widget/widget.module';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { PasswordForgottenComponent } from './password-forgotten/password-forgotten.component';
+import { AccountCreatedComponent } from './account-created/account-created.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'nouveau-compte', component: CreateAccountComponent },
   { path: 'oubli-mot-de-passe', component: PasswordForgottenComponent },
+  { path: 'compte-cree', component: AccountCreatedComponent },
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const routes: Routes = [
     LegalComponent,
     LoginComponent,
     CreateAccountComponent,
-    PasswordForgottenComponent
+    PasswordForgottenComponent,
+    AccountCreatedComponent
   ],
   exports: [RouterModule]
 })

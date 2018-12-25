@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,9 +26,10 @@ export class UserService {
         this.lastname = "";
         this.email = "";
       }
+
     });
   }
-  
+
   loginWithGoogle() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
@@ -37,5 +40,11 @@ export class UserService {
 
   logout() {
     this.afAuth.auth.signOut();
+  }
+
+  createAccount(obj) {
+    this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
+      .then(userCredential => console.log('userCredential', userCredential))
+      .catch(error => console.error('error', error));
   }
 }

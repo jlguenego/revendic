@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-create-account-form',
@@ -15,9 +16,15 @@ export class CreateAccountFormComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private user: UserService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    console.log('account creation');
+    this.user.createAccount(this.f.value);
+    
   }
 
 }
