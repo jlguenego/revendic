@@ -2,12 +2,25 @@
     display: inline-block;
     width: 100%;
     max-width: 30rem;
-    padding: 3rem 0.5rem;
+    padding: 0 0.5rem 3rem;
     text-align: left;
+    border: 1px solid hsl(0, 0%, 90%);
+    border-radius: $border-radius;
+    margin: 1rem;
 }
+
+
 
 .center {
     display: block;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .frame {
+        border: none;
+        margin: 0;
+    }
 }
 

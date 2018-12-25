@@ -3,16 +3,20 @@
     <h1>Connexion</h1>
     <div class="center"><a routerLink="/nouveau-compte" class="button shadow">Créer un compte</a></div>
     <app-divider>ou</app-divider>
-    <button class="social-login google">
-     <span><fa-icon [icon]="faGoogle"></fa-icon> Connexion avec Google</span> 
-    </button>
-    <button class="social-login facebook">
-      <span><fa-icon [icon]="faFacebook"></fa-icon> Connexion avec Facebook</span>
-    </button>
+    <div class="social-login">
+      <button class="social-login google">
+        <fa-icon [icon]="faGoogle"></fa-icon> <span>Google</span>
+      </button>
+      <button class="social-login facebook">
+        <fa-icon [icon]="faFacebook"></fa-icon> <span>Facebook</span>
+      </button>
+    </div>
+
     <app-divider>ou</app-divider>
-    Connexion avec un compte existant :
+    <div class="center">Connexion avec un compte existant</div>
+    
 
     <app-login-form></app-login-form>
-    
+
   </div>
 </div>
