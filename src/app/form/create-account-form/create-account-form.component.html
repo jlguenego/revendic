@@ -1,3 +1,22 @@
-<p>
-  create-account-form works!
-</p>
+<form autocomplete [formGroup]="f">
+  <label>
+    <div>Nom*</div>
+    <input type="text" name="lastname" formControlName="lastname" autocomplete="username lastname">
+  </label>
+  <label>
+      <div>Prénom*</div>
+      <input type="text" name="firstname" formControlName="firstname" autocomplete="username firstname">
+    </label>
+  <label>
+    <div>Email*</div>
+    <input type="email" name="email" formControlName="email" autocomplete="username email">
+  </label>
+  <label>
+    <div>Mot de passe*</div>
+    <app-password formControlName="password" appPasswordNew></app-password>
+  </label>
+  <div class="submit">
+    <button class="submit">Créer le compte</button>
+  </div>
+</form>
+{{f.value | json}}
