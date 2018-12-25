@@ -1,7 +1,7 @@
 <form autocomplete [formGroup]="f">
   <label>
     <div>Email*</div>
-    <input type="email" name="email" formControlName="email" autocomplete="username email">
+    <input type="email" name="email" formControlName="email" autocomplete="email">
   </label>
   <label>
     <div>Mot de passe*</div>
@@ -11,4 +11,4 @@
     <button class="submit">Connexion</button>
   </div>
 </form>
-<!-- {{f.value | json}} -->
+{{f.value | json}}
