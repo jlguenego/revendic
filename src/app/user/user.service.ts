@@ -31,6 +31,10 @@ export class UserService {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
+  loginWithFacebook() {
+    window.alert('not yet implemented');
+  }
+
   logout() {
     this.afAuth.auth.signOut();
   }

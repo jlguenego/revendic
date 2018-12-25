@@ -22,6 +22,8 @@ export class SocialLoginComponent implements OnInit {
   loginWithGoogle() {
     this.user.loginWithGoogle();
   }
-  loginWithFacebook() {}
+  loginWithFacebook() {
+    this.user.loginWithFacebook();
+  }
 
 }
