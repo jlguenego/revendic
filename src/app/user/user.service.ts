@@ -10,10 +10,20 @@ export class UserService {
   isLogged = false;
   firstname = "";
   lastname = "";
+  email = "";
   constructor(public afAuth: AngularFireAuth) {
     afAuth.user.subscribe(user => {
       console.log('user', user);
       this.isLogged = user ? true : false;
+      if (user) {
+        this.firstname = user.displayName;
+        this.lastname = user.displayName;
+        this.email = user.email;
+      } else {
+        this.firstname = "";
+        this.lastname = "";
+        this.email = "";
+      }
     });
   }
   

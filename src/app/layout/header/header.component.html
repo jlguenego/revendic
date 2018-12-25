@@ -13,7 +13,7 @@
   </nav>
   <nav class="utilities">
     <a class="button" routerLink="login" *ngIf="!user.isLogged">Mon compte</a>
-    <div *ngIf="user.isLogged" class="user">{{user.firstname}} - {{user.lastname}}</div>
+    <div *ngIf="user.isLogged" class="user">{{user.email}} <button (click)="user.logout()">Signout</button></div>
   </nav>
 </header>
 <header class="mobile" *ngIf="resp.mobile">

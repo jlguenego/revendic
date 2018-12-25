@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { UserService } from 'src/app/user/user.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-social-login',
@@ -12,11 +14,14 @@ export class SocialLoginComponent implements OnInit {
   faFacebook = faFacebook;
   faGoogle = faGoogle;
   
-  constructor() { }
+  constructor(private user: UserService) { }
 
   ngOnInit() {
   }
 
-  alert = window.alert;
+  loginWithGoogle() {
+    this.user.loginWithGoogle();
+  }
+  loginWithFacebook() {}
 
 }
