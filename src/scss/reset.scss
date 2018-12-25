@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; // avoid horizontal scrolling on mobile.
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     width: 100%;
