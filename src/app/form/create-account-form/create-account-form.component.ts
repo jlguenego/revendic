@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-account-form',
@@ -16,15 +17,18 @@ export class CreateAccountFormComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
     console.log('account creation');
-    this.user.createAccount(this.f.value);
-    
+    this.user.createAccount(this.f.value)
+      .then(x => {
+        this.router.navigate(['/compte-cree'])
+      })
+      .catch(error => console.error('error', error));
   }
 
 }
