@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AbstractValueAccessor, MakeProvider } from '../AbstractValueAccessor';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,9 +14,24 @@ export class PasswordComponent extends AbstractValueAccessor {
   faEyeSlash = faEyeSlash;
 
   isVisible = false;
+  isNewPassword = false;
+  havingFocus = false;
+
+  @Input('appPasswordNew') set appPasswordNew(val: any) {
+    this.isNewPassword = true;
+  }
 
   toggle() {
     this.isVisible = !this.isVisible;
+  }
+
+  onFocus() {
+    console.log('focus');
+    this.havingFocus = true;
+  }
+  onBlur() {
+    console.log('blur');
+    this.havingFocus = false;
   }
 
 }
