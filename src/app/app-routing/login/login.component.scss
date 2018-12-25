@@ -1,28 +1,2 @@
-@import 'variables';
-
-div.social-login {
-    display: flex;
-    justify-content: space-around;
-}
-
-button.social-login {
-    display: flex;
-    align-items: center;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    width: 45%;
-    background-color: hsl(0, 0%, 40%);
-    font-size: 1.1rem;
-    fa-icon {
-        font-size: 2rem;
-        padding: 0.2rem;
-    }
-    &.google {
-        background-color: #dd4b39;
-    }
-    &.facebook {
-        background-color: #3C5A99;
-    }
-}
 
 

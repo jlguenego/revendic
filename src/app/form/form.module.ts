@@ -4,16 +4,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginFormComponent } from './login-form/login-form.component';
 import { WidgetModule } from '../widget/widget.module';
+import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
 
 @NgModule({
-  declarations: [LoginFormComponent],
+  declarations: [LoginFormComponent, CreateAccountFormComponent],
   imports: [
     CommonModule,
     WidgetModule,
     ReactiveFormsModule,
   ],
   exports: [
-    LoginFormComponent
+    LoginFormComponent,
+    CreateAccountFormComponent
   ]
 })
 export class FormModule { }
