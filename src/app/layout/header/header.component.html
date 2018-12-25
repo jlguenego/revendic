@@ -26,7 +26,11 @@
   </div>
   <fa-icon (click)="toggleMenu()" class="mobile" [icon]="faBars"></fa-icon>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
-    <a routerLink="login">Mon compte</a>
+    <a *ngIf="!user.isLogged" routerLink="login">Mon compte</a>
+    
+    <div class="center" *ngIf="user.isLogged">
+        <a class="user">{{user.email}} </a>
+      <button (click)="user.logout()">Signout</button></div> 
     <div class="separator"></div>
     <a routerLink="creer-revendication">Créer une revendication</a>
     <a routerLink="observatoire">Observatoire</a>
