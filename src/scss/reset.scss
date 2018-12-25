@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
+    -webkit-appearance: none; // fix the problem of input with shadow on Safari.
 }
 
 // disable the chrome blue line when focus
