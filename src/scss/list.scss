@@ -1,0 +1,21 @@
+ul, ol {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+ol:first-child {
+    counter-reset: password-list-counter;
+}
+
+li {
+    counter-increment: password-list-counter;
+    margin-bottom: 1.2em;
+}
+
+li::before {
+    content: counter(password-list-counter) " ";
+    font-weight: 700;
+    color: $bgcolor;
+    float: left;
+    width: 1em;
+}

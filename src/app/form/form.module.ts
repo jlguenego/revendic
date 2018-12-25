@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { WidgetModule } from '../widget/widget.module';
 import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
+import { PasswordForgottenFormComponent } from './password-forgotten-form/password-forgotten-form.component';
 
 
 @NgModule({
-  declarations: [LoginFormComponent, CreateAccountFormComponent],
+  declarations: [LoginFormComponent, CreateAccountFormComponent, PasswordForgottenFormComponent],
   imports: [
     CommonModule,
     WidgetModule,
@@ -18,7 +19,8 @@ import { CreateAccountFormComponent } from './create-account-form/create-account
   ],
   exports: [
     LoginFormComponent,
-    CreateAccountFormComponent
+    CreateAccountFormComponent,
+    PasswordForgottenFormComponent
   ]
 })
 export class FormModule { }
