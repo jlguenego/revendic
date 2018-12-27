@@ -6,9 +6,12 @@
   <label>
     <div>Mot de passe*</div>
     <app-password formControlName="password"></app-password>
+    <div class="error-incorrect" *ngIf="isIncorrectPassword">
+      Identifiant ou mot de passe incorrect.
+    </div>
   </label>
   <div class="reset-submit">
-    <a routerLink="/oubli-mot-de-passe" >Mot de passe oublié ?</a>
+    <a routerLink="/oubli-mot-de-passe">Mot de passe oublié ?</a>
     <button class="submit">Connexion</button>
   </div>
 </form>

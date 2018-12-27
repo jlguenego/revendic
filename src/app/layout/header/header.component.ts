@@ -30,4 +30,8 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
+  openUserAction() {
+    
+  }
+
 }

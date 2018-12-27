@@ -9,6 +9,8 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class LoginFormComponent implements OnInit {
 
+  isIncorrectPassword = false;
+
   f = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -20,7 +22,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.user.login(this.f.value.email, this.f.value.password);
+    this.user.login(this.f.value.email, this.f.value.password).catch(() => this.isIncorrectPassword = true);
   }
 
 }

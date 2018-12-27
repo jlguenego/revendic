@@ -16,6 +16,11 @@
     text-align: center;
 }
 
+.right {
+    display: block;
+    text-align: right;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .frame {

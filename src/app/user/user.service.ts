@@ -32,7 +32,12 @@ export class UserService {
   }
 
   login(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => this.router.navigate(['/home']));
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    .then(() => this.router.navigate(['']))
+    .catch(error => {
+      console.error('error', error);
+      return Promise.reject();
+    });
   }
 
   loginWithGoogle() {
@@ -56,4 +61,5 @@ export class UserService {
       .then(() => this.router.navigate(['/email-mot-de-passe-envoye', { email }]))
       .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..'}]));
   }
+
 }

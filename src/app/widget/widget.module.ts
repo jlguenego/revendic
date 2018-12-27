@@ -6,6 +6,7 @@ import { DividerComponent } from './divider/divider.component';
 import { PasswordComponent } from './password/password.component';
 import { SocialLoginComponent } from './social-login/social-login.component';
 import { PasswordCheckComponent } from './password-check/password-check.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { PasswordCheckComponent } from './password-check/password-check.componen
     DividerComponent,
     PasswordComponent,
     SocialLoginComponent,
-    PasswordCheckComponent
+    PasswordCheckComponent,
+    PopupComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { PasswordCheckComponent } from './password-check/password-check.componen
     PasswordComponent,
     SocialLoginComponent,
     PasswordCheckComponent,
+    PopupComponent,
   ]
 })
 export class WidgetModule { }
