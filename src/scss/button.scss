@@ -5,6 +5,7 @@ button, .button {
     color: $color;
     border: 1px solid $bgcolor;
     background: $bgcolor;
+    cursor: pointer;
     &:hover {
         background: lighten($bgcolor, 30%);
     }
@@ -27,6 +28,14 @@ button, .button {
             color: lighten($bgcolor, 30%);
         }
     }
+    &.danger {
+        border: 1px solid red;
+        background: red;
+    }
+}
+
+[routerlink] {
+    cursor: pointer;
 }
 
 
