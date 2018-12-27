@@ -3,7 +3,7 @@ button, .button {
     padding: 0.5rem 1rem;
     border-radius: $border-radius;
     color: $color;
-    border: 1px solid $color;
+    border: 1px solid $bgcolor;
     background: $bgcolor;
     &:hover {
         background: lighten($bgcolor, 30%);
@@ -12,6 +12,16 @@ button, .button {
         background: transparent;
         color: $bgcolor;
         font-weight: bold;
+        border: none;
+        &:hover {
+            background: hsl(0, 0%, 98%);
+            color: lighten($bgcolor, 30%);
+        }
+    }
+    &.secondary {
+        background: transparent;
+        color: $bgcolor;
+        border: 1px solid $bgcolor;
         &:hover {
             background: hsl(0, 0%, 98%);
             color: lighten($bgcolor, 30%);

@@ -52,6 +52,14 @@ header {
     color: white;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    button {
+        margin: 1rem;
+    }
+}
+
 @media only screen and (max-width: 960px) {
     /* For mobile phones: */
     .logo {
@@ -98,5 +106,10 @@ header {
                 background-color: black;
             }
         }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-evenly;
     }
 }
