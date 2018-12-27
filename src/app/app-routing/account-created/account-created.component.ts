@@ -10,6 +10,9 @@ export class AccountCreatedComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+
 
 }

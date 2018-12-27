@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -8,12 +9,13 @@ import { auth } from 'firebase/app';
 })
 export class UserService {
 
+
   isLogged = false;
   firstname = "";
   lastname = "";
   email = "";
-  constructor(public afAuth: AngularFireAuth) {
-    afAuth.user.subscribe(user => {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
+    this.afAuth.user.subscribe(user => {
       console.log('user', user);
       this.isLogged = user ? true : false;
       if (user) {
@@ -27,6 +29,10 @@ export class UserService {
       }
 
     });
+  }
+
+  login(email, password) {
+    this.afAuth.auth.signInWithEmailAndPassword(email, password).then(() => this.router.navigate(['/home']));
   }
 
   loginWithGoogle() {
@@ -43,5 +49,11 @@ export class UserService {
 
   createAccount(obj) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
+  }
+
+  sendForgottenPasswordEmail(email: string): any {
+    this.afAuth.auth.sendPasswordResetEmail(email)
+      .then(() => this.router.navigate(['/email-mot-de-passe-envoye', { email }]))
+      .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..'}]));
   }
 }
