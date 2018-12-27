@@ -78,4 +78,8 @@ export class UserService {
       .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..' }]));
   }
 
+  delete() {
+    this.afAuth.auth.currentUser.delete().then(() => this.router.navigate(['compte-efface']));
+  }
+
 }
