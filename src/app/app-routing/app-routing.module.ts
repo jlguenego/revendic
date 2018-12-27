@@ -16,6 +16,7 @@ import { ResetMailSentComponent } from './reset-mail-sent/reset-mail-sent.compon
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { DeletedAccountComponent } from './deleted-account/deleted-account.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'email-mot-de-passe-envoye', component: ResetMailSentComponent },
   { path: 'mon-compte', component: ManageAccountComponent },
   { path: 'compte-efface', component: DeletedAccountComponent },
+  { path: 'erreur', component: ErrorComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -48,7 +50,8 @@ const routes: Routes = [
     ResetMailSentComponent,
     PageNotFoundComponent,
     ManageAccountComponent,
-    DeletedAccountComponent
+    DeletedAccountComponent,
+    ErrorComponent
   ],
   exports: [RouterModule]
 })

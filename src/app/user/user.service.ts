@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 
+import { FirebaseUtils } from '../FirebaseUtils';
+
 
 @Injectable({
   providedIn: 'root',
@@ -79,7 +81,13 @@ export class UserService {
   }
 
   delete() {
-    this.afAuth.auth.currentUser.delete().then(() => this.router.navigate(['compte-efface']));
+    this.afAuth.auth.currentUser.delete()
+      .then(() => this.router.navigate(['compte-efface']))
+      .catch(error => {
+        console.log('error', error);
+        const message = FirebaseUtils.getLocaleMessage(error);
+        this.router.navigate(['erreur', { message }])
+      });
   }
 
 }
