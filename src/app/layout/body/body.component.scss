@@ -1,11 +1,9 @@
 @import 'variables';
-:host {
-    display: block;
-}
+
 
 main {
     margin: 0px auto;
     width: 100%;
     max-width: $maxWidth;
-    
+    min-height: calc(100% - 6rem);
 }
