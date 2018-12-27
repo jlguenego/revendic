@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { PasswordForgottenComponent } from './password-forgotten/password-forgotten.component';
 import { AccountCreatedComponent } from './account-created/account-created.component';
 import { ResetMailSentComponent } from './reset-mail-sent/reset-mail-sent.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'oubli-mot-de-passe', component: PasswordForgottenComponent },
   { path: 'compte-cree', component: AccountCreatedComponent },
   { path: 'email-mot-de-passe-envoye', component: ResetMailSentComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const routes: Routes = [
     CreateAccountComponent,
     PasswordForgottenComponent,
     AccountCreatedComponent,
-    ResetMailSentComponent
+    ResetMailSentComponent,
+    PageNotFoundComponent
   ],
   exports: [RouterModule]
 })

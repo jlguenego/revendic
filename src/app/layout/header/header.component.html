@@ -15,7 +15,7 @@
     <a class="button" routerLink="login" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email">
       <div class="buttons">
-        <button (click)="user.logout()">Information</button>
+        <button routerLink="/mon-compte">Information</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
       </div>
     </app-popup>
