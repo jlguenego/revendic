@@ -33,19 +33,35 @@ export class UserService {
 
   login(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .then(() => this.router.navigate(['']))
-    .catch(error => {
-      console.error('error', error);
-      return Promise.reject();
-    });
+      .then(() => this.router.navigate(['']))
+      .catch(error => {
+        console.error('error', error);
+        return Promise.reject();
+      });
   }
 
   loginWithGoogle() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
+      .then(() => this.router.navigate(['/']));
   }
 
   loginWithFacebook() {
-    window.alert('not yet implemented');
+    return this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+      .then(() => this.router.navigate(['/']))
+      .catch(error => {
+        console.log('error', error);
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          return this.afAuth.auth.fetchProvidersForEmail(error.email).then(providers => {
+            console.log('providers', providers);
+            const provider = new auth.GoogleAuthProvider();
+            provider.setCustomParameters({ login_hint: error.email });
+            return this.afAuth.auth.signInWithPopup(provider)
+              .then(() => this.router.navigate(['/']));
+          });
+        }
+        return Promise.reject();
+      });
+
   }
 
   logout() {
@@ -59,7 +75,7 @@ export class UserService {
   sendForgottenPasswordEmail(email: string): any {
     this.afAuth.auth.sendPasswordResetEmail(email)
       .then(() => this.router.navigate(['/email-mot-de-passe-envoye', { email }]))
-      .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..'}]));
+      .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..' }]));
   }
 
 }
