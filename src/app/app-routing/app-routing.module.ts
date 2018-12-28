@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ManageAccountComponent } from './manage-account/manage-account.component';
 import { DeletedAccountComponent } from './deleted-account/deleted-account.component';
 import { ErrorComponent } from './error/error.component';
+import { VerifyAccountComponent } from './verify-account/verify-account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'mon-compte', component: ManageAccountComponent },
   { path: 'compte-efface', component: DeletedAccountComponent },
   { path: 'erreur', component: ErrorComponent },
+  { path: 'verifie-compte', component: VerifyAccountComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -51,7 +53,8 @@ const routes: Routes = [
     PageNotFoundComponent,
     ManageAccountComponent,
     DeletedAccountComponent,
-    ErrorComponent
+    ErrorComponent,
+    VerifyAccountComponent
   ],
   exports: [RouterModule]
 })

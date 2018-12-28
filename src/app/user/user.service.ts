@@ -40,10 +40,14 @@ export class UserService {
     });
   }
 
-  navigateTo(path) {
+  navigateTo(path: string, data?: any) {
     return () => {
       return this.zone.run(() => {
-        this.router.navigate([path]);
+        if (data) {
+          this.router.navigate([path, data]);
+        } else {
+          this.router.navigate([path]);
+        }
       });
     }
   };
@@ -93,7 +97,7 @@ export class UserService {
 
   createAccount(obj) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
-      .then(this.navigateTo('/compte-cree'))
+      .then(this.navigateTo('/verifie-compte', { email: obj.email }))
       .catch(error => {
         return this.zone.run(() => {
           console.error('error', error);
