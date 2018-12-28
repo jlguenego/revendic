@@ -100,10 +100,7 @@ export class UserService {
 
   createAccount(obj) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
-      .then(() => {
-        return this.afAuth.auth.currentUser.sendEmailVerification();
-      })
-      .then(this.navigateTo('/verifie-compte', { email: obj.email }))
+      .then(() => this.activate())
       .catch(error => {
         return this.zone.run(() => {
           console.error('error', error);
@@ -132,6 +129,12 @@ export class UserService {
         const message = FirebaseUtils.getLocaleMessage(error);
         this.router.navigate(['erreur', { message }])
       });
+  }
+
+  activate() {
+    const user = this.afAuth.auth.currentUser;
+    user.sendEmailVerification();
+    return this.navigateTo('/verifie-compte', { email: user.email })();
   }
 
 }
