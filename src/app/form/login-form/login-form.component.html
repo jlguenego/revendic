@@ -6,9 +6,6 @@
   <label>
     <div>Mot de passe*</div>
     <app-password formControlName="password"></app-password>
-    <div class="error-incorrect" *ngIf="isIncorrectPassword">
-      
-    </div>
   </label>
   <div class="error-block">
       <div class="error-incorrect" *ngIf="errorCode !== undefined">
