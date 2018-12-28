@@ -1,5 +1,5 @@
 <div class="main">
-  <span (click)="open()">{{label}} <fa-icon [icon]="faCaretDown"></fa-icon></span>
+  <span (click)="open()">{{label}} <fa-icon [icon]="faCaret"></fa-icon></span>
   <div class="overlay" *ngIf="isOpen" (click)="close()"></div>
   <div class="popup" [class.visible]="isOpen">
     <ng-content *ngIf="isOpen"></ng-content>
