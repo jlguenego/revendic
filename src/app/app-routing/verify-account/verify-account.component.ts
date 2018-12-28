@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-verify-account',
@@ -10,7 +11,7 @@ export class VerifyAccountComponent implements OnInit {
 
   email: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private user: UserService) {
     this.route.params.subscribe(data => this.email = data.email);
   }
 

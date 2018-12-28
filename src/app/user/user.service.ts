@@ -97,6 +97,9 @@ export class UserService {
 
   createAccount(obj) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
+      .then(() => {
+        return this.afAuth.auth.currentUser.sendEmailVerification();
+      })
       .then(this.navigateTo('/verifie-compte', { email: obj.email }))
       .catch(error => {
         return this.zone.run(() => {
