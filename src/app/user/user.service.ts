@@ -58,6 +58,9 @@ export class UserService {
         if (error.code === 'auth/wrong-password') {
           return Promise.reject(UserService.ERROR.BAD_PASSWORD);
         }
+        if (error.code === 'auth/user-not-found') {
+          return Promise.reject(UserService.ERROR.BAD_PASSWORD);
+        }
         return Promise.reject(UserService.ERROR.UNKNOWN);
       });
   }
