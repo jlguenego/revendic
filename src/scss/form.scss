@@ -38,3 +38,15 @@ label .ng-invalid.ng-touched {
 label .ng-valid.ng-touched {
     background-color: hsl(120, 100%, 90%)
 }
+
+app-password.ng-invalid.ng-touched {
+    input {
+        background-color: hsl(0, 100%, 90%);
+    }
+}
+
+app-password.ng-valid.ng-touched {
+    input {
+        background-color: hsl(120, 100%, 90%);
+    }
+}
