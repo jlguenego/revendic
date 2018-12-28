@@ -17,7 +17,7 @@ export class CreateAccountFormComponent implements OnInit {
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, this.passwordCheck.validate]),
+    password: new FormControl('', [Validators.required, this.passwordCheck.validate()]),
   });
 
   constructor(private user: UserService, private router: Router, private passwordCheck: PasswordCheckService) { }
