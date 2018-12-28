@@ -30,3 +30,11 @@ label {
     justify-content: space-between;
     align-items: center;
 }
+
+label .ng-invalid.ng-touched {
+    background-color: hsl(0, 100%, 90%)
+}
+
+label .ng-valid.ng-touched {
+    background-color: hsl(120, 100%, 90%)
+}
