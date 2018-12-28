@@ -18,8 +18,8 @@ export class PasswordCheckService {
 
     const lengthRule: PasswordRule = {
       verified: false,
-      label: 'length must be at least 8 characters',
-      check: password => password.length >= 8,
+      label: 'length must be at least 6 characters',
+      check: password => password.length >= 6,
     };
 
     const atLeastOneUpperRule: PasswordRule = {
@@ -42,9 +42,9 @@ export class PasswordCheckService {
 
     return [
       lengthRule,
-      atLeastOneUpperRule,
-      atLeastOneLowerRule,
-      atLeastOneDigitRule,
+      // atLeastOneUpperRule,
+      // atLeastOneLowerRule,
+      // atLeastOneDigitRule,
     ];
   }
 

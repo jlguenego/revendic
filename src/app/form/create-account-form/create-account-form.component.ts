@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class CreateAccountFormComponent implements OnInit {
 
+  isPasswordTooWeak = false;
+
   f = new FormGroup({
     firstname: new FormControl(''),
     lastname: new FormControl(''),
@@ -24,11 +26,14 @@ export class CreateAccountFormComponent implements OnInit {
 
   onSubmit() {
     console.log('account creation');
-    this.user.createAccount(this.f.value)
-      .then(x => {
-        this.router.navigate(['/compte-cree'])
-      })
-      .catch(error => console.error('error', error));
+    this.user.createAccount(this.f.value).catch(
+      error => {
+        console.error('error2', error);
+        if (error.code === 'weak-password') {
+          console.log('hello')
+          this.isPasswordTooWeak = true;
+        }
+      });
   }
 
 }

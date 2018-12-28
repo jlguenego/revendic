@@ -15,6 +15,9 @@
     <div>Mot de passe*</div>
     <app-password formControlName="password" appPasswordNew></app-password>
   </label>
+  <div class="error-incorrect" *ngIf="isPasswordTooWeak">
+      Le mot de passe doit contenir plus de 6 caractères.
+    </div>
   <div class="submit">
     <button type="submit" class="submit">Créer le compte</button>
   </div>

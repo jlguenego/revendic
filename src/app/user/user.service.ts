@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class UserService {
   firstname = "";
   lastname = "";
   email = "";
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
     this.afAuth.user.subscribe(user => {
       console.log('user', user);
       this.isLogged = user ? true : false;
@@ -33,9 +33,17 @@ export class UserService {
     });
   }
 
+  navigateTo(path) {
+    return () => {
+      return this.zone.run(() => {
+        this.router.navigate([path]);
+      });
+    }
+  };
+
   login(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(() => this.router.navigate(['']))
+      .then(this.navigateTo('/'))
       .catch(error => {
         console.error('error', error);
         return Promise.reject();
@@ -44,34 +52,47 @@ export class UserService {
 
   loginWithGoogle() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-      .then(() => this.router.navigate(['/']));
+      .then(this.navigateTo('/'));
   }
 
   loginWithFacebook() {
     return this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
-      .then(() => this.router.navigate(['/']))
+      .then(this.navigateTo('/'))
       .catch(error => {
-        console.log('error', error);
-        if (error.code === 'auth/account-exists-with-different-credential') {
-          return this.afAuth.auth.fetchProvidersForEmail(error.email).then(providers => {
-            console.log('providers', providers);
-            const provider = new auth.GoogleAuthProvider();
-            provider.setCustomParameters({ login_hint: error.email });
-            return this.afAuth.auth.signInWithPopup(provider)
-              .then(() => this.router.navigate(['/']));
-          });
-        }
-        return Promise.reject();
+        return this.zone.run(() => {
+          if (error.code === 'auth/account-exists-with-different-credential') {
+            return this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
+              return this.zone.run(() => {
+                console.log('providers', providers);
+                const provider = new auth.GoogleAuthProvider();
+                provider.setCustomParameters({ login_hint: error.email });
+                return this.afAuth.auth.signInWithPopup(provider)
+                  .then(this.navigateTo('/'));
+              });
+            });
+          }
+          return Promise.reject();
+        });
       });
 
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    return this.afAuth.auth.signOut();
   }
 
   createAccount(obj) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
+      .then(this.navigateTo('/compte-cree'))
+      .catch(error => {
+        return this.zone.run(() => {
+          console.error('error', error);
+          if (error.code === 'auth/weak-password') {
+            return Promise.reject({code: 'weak-password'});
+          }
+          return Promise.reject(error);
+        });
+      });
   }
 
   sendForgottenPasswordEmail(email: string): any {
