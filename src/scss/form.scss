@@ -34,12 +34,14 @@ label {
 
 .submit {
     text-align: right;
+    margin-top: 1rem;
 }
 
 .reset-submit {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
 }
 
 label .ng-invalid.ng-touched {

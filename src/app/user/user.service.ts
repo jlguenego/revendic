@@ -14,6 +14,8 @@ export class UserService {
   public static ERROR = {
     MAIL_ALREADY_IN_USE: 'mail-already-in-use',
     WEAK_PASSWORD: 'weak-password',
+    UNKNOWN: 'unknown',
+    BAD_PASSWORD: 'bad password',
   };
 
 
@@ -51,7 +53,10 @@ export class UserService {
       .then(this.navigateTo('/'))
       .catch(error => {
         console.error('error', error);
-        return Promise.reject();
+        if (error.code === 'auth/wrong-password') {
+          return Promise.reject(UserService.ERROR.BAD_PASSWORD);
+        }
+        return Promise.reject(UserService.ERROR.UNKNOWN);
       });
   }
 

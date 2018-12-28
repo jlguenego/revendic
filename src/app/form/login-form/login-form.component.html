@@ -7,9 +7,15 @@
     <div>Mot de passe*</div>
     <app-password formControlName="password"></app-password>
     <div class="error-incorrect" *ngIf="isIncorrectPassword">
-      Identifiant ou mot de passe incorrect.
+      
     </div>
   </label>
+  <div class="error-block">
+      <div class="error-incorrect" *ngIf="errorCode !== undefined">
+        <span *ngIf="errorCode === ERROR.BAD_PASSWORD">Identifiant ou mot de passe incorrect.</span>
+        <span *ngIf="errorCode === ERROR.UNKNOWN">Oups. Erreur technique.</span>
+      </div>
+    </div>
   <div class="reset-submit">
     <a routerLink="/oubli-mot-de-passe">Mot de passe oublié ?</a>
     <button class="submit">Connexion</button>

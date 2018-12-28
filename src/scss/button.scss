@@ -32,6 +32,10 @@ button, .button {
         border: 1px solid red;
         background: red;
     }
+    &[disabled] {
+        background-color: #eee;
+        border: 1px solid #eee;
+    }
 }
 
 [routerlink] {

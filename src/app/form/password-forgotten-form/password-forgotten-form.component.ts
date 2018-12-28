@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from 'src/app/user/user.service';
 export class PasswordForgottenFormComponent implements OnInit {
 
   f = new FormGroup({
-    email: new FormControl(''),
+    email: new FormControl('', [Validators.required]),
   });
 
   constructor(private user: UserService) { }
