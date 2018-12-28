@@ -18,7 +18,6 @@ export class UserService {
     BAD_PASSWORD: 'bad password',
   };
 
-
   isLogged = false;
   firstname = "";
   lastname = "";
@@ -36,7 +35,6 @@ export class UserService {
         this.lastname = "";
         this.email = "";
       }
-
     });
   }
 
