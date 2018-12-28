@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
+import { PasswordCheckService } from 'src/app/widget/password-check.service';
 
 @Component({
   selector: 'app-create-account-form',
@@ -13,13 +14,13 @@ export class CreateAccountFormComponent implements OnInit {
   isPasswordTooWeak = false;
 
   f = new FormGroup({
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
+    firstname: new FormControl('', [Validators.required]),
+    lastname: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, this.passwordCheck.validate]),
   });
 
-  constructor(private user: UserService, private router: Router) { }
+  constructor(private user: UserService, private router: Router, private passwordCheck: PasswordCheckService) { }
 
   ngOnInit() {
   }
