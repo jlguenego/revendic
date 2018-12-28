@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { AbstractValueAccessor, MakeProvider } from '../AbstractValueAccessor';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -32,6 +32,8 @@ export class PasswordComponent extends AbstractValueAccessor {
   onBlur() {
     console.log('blur');
     this.havingFocus = false;
+    this.onTouched();
+    console.log('touched');
   }
 
 }
