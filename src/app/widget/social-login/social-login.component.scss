@@ -2,15 +2,16 @@
 
 div.social-login {
     display: flex;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: space-between;
 }
 
 button.social-login {
     display: flex;
     align-items: center;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
-    width: 45%;
+    justify-content: space-around;
+    width: 48%;
     background-color: hsl(0, 0%, 40%);
     font-size: 1.1rem;
     border: none;

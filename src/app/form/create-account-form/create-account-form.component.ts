@@ -11,7 +11,9 @@ import { PasswordCheckService } from 'src/app/widget/password-check.service';
 })
 export class CreateAccountFormComponent implements OnInit {
 
-  isPasswordTooWeak = false;
+  ERROR = UserService.ERROR;
+
+  errorCode: string;
 
   f = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
@@ -27,13 +29,11 @@ export class CreateAccountFormComponent implements OnInit {
 
   onSubmit() {
     console.log('account creation');
+    this.errorCode = undefined;
     this.user.createAccount(this.f.value).catch(
-      error => {
-        console.error('error2', error);
-        if (error.code === 'weak-password') {
-          console.log('hello')
-          this.isPasswordTooWeak = true;
-        }
+      errorCode => {
+        console.log('error2', errorCode);
+        this.errorCode = errorCode;
       });
   }
 

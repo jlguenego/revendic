@@ -11,6 +11,11 @@ import { FirebaseUtils } from '../FirebaseUtils';
 })
 export class UserService {
 
+  public static ERROR = {
+    MAIL_ALREADY_IN_USE: 'mail-already-in-use',
+    WEAK_PASSWORD: 'weak-password',
+  };
+
 
   isLogged = false;
   firstname = "";
@@ -88,9 +93,12 @@ export class UserService {
         return this.zone.run(() => {
           console.error('error', error);
           if (error.code === 'auth/weak-password') {
-            return Promise.reject({code: 'weak-password'});
+            return Promise.reject(UserService.ERROR.WEAK_PASSWORD);
           }
-          return Promise.reject(error);
+          if (error.code === 'auth/email-already-in-use') {
+            return Promise.reject(UserService.ERROR.MAIL_ALREADY_IN_USE);
+          }
+          return Promise.reject(error.code);
         });
       });
   }
