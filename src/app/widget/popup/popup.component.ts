@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -7,6 +7,8 @@ import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./popup.component.scss'],
 })
 export class PopupComponent implements OnInit {
+
+  @Output() open = new EventEmitter();
 
   @Input() label: string;
   isOpen = false;
@@ -17,12 +19,13 @@ export class PopupComponent implements OnInit {
   ngOnInit() {
   }
 
-  open() {
+  openPopup() {
     this.isOpen = true;
     this.faCaret = faCaretUp;
+    this.open.emit();
   }
 
-  close() {
+  closePopup() {
     this.isOpen = false;
     this.faCaret = faCaretDown;
   }

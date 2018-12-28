@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { ResponsiveService } from '../responsive.service';
 import { UserService } from 'src/app/user/user.service';
@@ -13,7 +13,9 @@ export class HeaderComponent implements OnInit {
   faBars = faBars;
   isMenuOpen = false;
   
-  constructor(public resp: ResponsiveService, public user: UserService) { }
+  constructor(public resp: ResponsiveService, public user: UserService, private cd: ChangeDetectorRef) { 
+    window.addEventListener("focus", event => this.refresh(), false);
+  }
 
   ngOnInit() {
   }
@@ -30,8 +32,11 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
-  openUserAction() {
-    
+  refresh() {
+    console.log('refresh');
+    this.user.refresh();
   }
+
+
 
 }

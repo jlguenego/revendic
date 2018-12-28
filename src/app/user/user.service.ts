@@ -26,19 +26,33 @@ export class UserService {
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
     this.afAuth.user.subscribe(user => {
       console.log('user', user);
-      this.isLogged = user ? true : false;
-      if (user) {
-        this.isVerified = user.emailVerified;
-        this.firstname = user.displayName;
-        this.lastname = user.displayName;
-        this.email = user.email;
-      } else {
-        this.isVerified = false;
-        this.firstname = "";
-        this.lastname = "";
-        this.email = "";
-      }
+      this.sync(user);
     });
+  }
+
+  sync(user) {
+    if (user) {
+      this.isLogged = true;
+      this.isVerified = user.emailVerified;
+      this.firstname = user.displayName;
+      this.lastname = user.displayName;
+      this.email = user.email;
+    } else {
+      this.isLogged = false;
+      this.isVerified = false;
+      this.firstname = "";
+      this.lastname = "";
+      this.email = "";
+    }
+  }
+
+  refresh() {
+    const user = this.afAuth.auth.currentUser;
+    if (user) {
+      user.reload().then(() => {
+        this.sync(user);
+      });
+    }
   }
 
   navigateTo(path: string, data?: any) {
