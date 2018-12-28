@@ -18,6 +18,7 @@ export class UserService {
     BAD_PASSWORD: 'bad password',
   };
 
+  isVerified = false;
   isLogged = false;
   firstname = "";
   lastname = "";
@@ -27,10 +28,12 @@ export class UserService {
       console.log('user', user);
       this.isLogged = user ? true : false;
       if (user) {
+        this.isVerified = user.emailVerified;
         this.firstname = user.displayName;
         this.lastname = user.displayName;
         this.email = user.email;
       } else {
+        this.isVerified = false;
         this.firstname = "";
         this.lastname = "";
         this.email = "";
@@ -47,7 +50,7 @@ export class UserService {
           this.router.navigate([path]);
         }
       });
-    }
+    };
   };
 
   login(email, password) {
@@ -89,7 +92,6 @@ export class UserService {
           return Promise.reject();
         });
       });
-
   }
 
   logout() {

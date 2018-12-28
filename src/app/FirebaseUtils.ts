@@ -1,6 +1,6 @@
 
 const config = {
-    "auth/requires-recent-login": "Pour faire cette opération. Vous avez besoin d'être recemment loggué.",
+    "auth/requires-recent-login": "Pour faire cette opération. Vous avez besoin d'être récemment connecté.",
     "auth/user-token-expired": "Votre session a expiré.",
 }
 

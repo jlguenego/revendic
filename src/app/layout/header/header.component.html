@@ -14,6 +14,9 @@
   <nav class="utilities">
     <a class="button" routerLink="login" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email">
+      <div *ngIf="!user.isVerified">
+          <button (click)="user.activate()">Activer</button>
+      </div>
       <div class="buttons">
         <button routerLink="/mon-compte">Information</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
