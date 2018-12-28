@@ -32,13 +32,15 @@
       <span class="com">com</span>
     </a>
   </div>
-  <fa-icon (click)="toggleMenu()" class="mobile" [icon]="faBars"></fa-icon>
+  <fa-icon (click)="toggleMenu(); refresh();" class="mobile" [icon]="faBars"></fa-icon>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
     <a *ngIf="!user.isLogged" routerLink="login">Mon compte</a>
-
+    
     <div class="center" *ngIf="user.isLogged">
       <a class="user">{{user.email}} </a>
-
+      <div *ngIf="!user.isVerified" class="center">
+          <button class="important" (click)="user.activate()">Activer le compte</button>
+      </div>
       <div class="buttons">
         <button routerLink="/mon-compte">Manage</button>
         <button class="secondary" (click)="user.logout()">Signout</button>
