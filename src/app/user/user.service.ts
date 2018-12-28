@@ -109,7 +109,7 @@ export class UserService {
   }
 
   logout() {
-    return this.afAuth.auth.signOut();
+    return this.afAuth.auth.signOut().then(this.navigateTo('/'));
   }
 
   createAccount(obj) {
