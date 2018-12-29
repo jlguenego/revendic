@@ -169,4 +169,13 @@ export class UserService {
     return this.navigateTo('/verifie-compte', { email: user.email })();
   }
 
+  testURL(url: string) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
 }

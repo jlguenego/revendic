@@ -16,10 +16,10 @@ export class UpdateAccountFormComponent implements OnInit {
 
   errorCode: string;
 
-  f: FormGroup= new FormGroup({
+  f: FormGroup = new FormGroup({
     displayName: new FormControl(this.user.displayName, [Validators.required]),
     email: new FormControl(this.user.email, [Validators.required, Validators.email]),
-    photoURL: new FormControl(this.user.photoURL, [Validators.required, this.passwordCheck.validate()]),
+    photoURL: new FormControl(this.user.photoURL),
   });;
 
   constructor(private user: UserService, private router: Router, private passwordCheck: PasswordCheckService) { }
@@ -31,11 +31,15 @@ export class UpdateAccountFormComponent implements OnInit {
     console.log('account update');
     this.errorCode = undefined;
 
-    this.user.updateAccount(this.f.value).catch(
-      errorCode => {
-        console.log('error2', errorCode);
-        this.errorCode = errorCode;
-      });
+    this.user.testURL(this.f.value.photoURL).catch(error => {
+      console.log('set to default');
+      this.f.controls['photoURL'].setValue('/assets/user.svg');
+      console.log('new photo: ', this.f.value.photoURL);
+    }).then(() => this.user.updateAccount(this.f.value)
+    ).catch(errorCode => {
+      console.log('error2', errorCode);
+      this.errorCode = errorCode;
+    });
   }
 
 }
