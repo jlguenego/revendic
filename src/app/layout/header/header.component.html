@@ -39,7 +39,11 @@
     <div class="center" *ngIf="user.isLogged">
       <div class="user">
         <img *ngIf="user.photoURL !== null" class="photo-id" [src]="user.photoURL">
-        <span class="user">{{user.email}} </span>
+        <div class="user-info">
+            <div class="display-name">{{user.displayName}} </div>
+            <div class="mail">{{user.email}} </div>
+        </div>
+        
       </div>
 
       <div *ngIf="!user.isVerified" class="center">
