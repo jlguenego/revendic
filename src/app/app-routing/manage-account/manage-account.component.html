@@ -2,7 +2,8 @@
   <div class="frame">
     <h1>Mon compte</h1>
     <h2>Mise à jour des données personnelles</h2>
-    <app-update-account-form></app-update-account-form>
+    <p *ngIf="user.fromSocialLogin">Vous êtes connecté depuis Google ou Facebook, du coup, pas besoin de mettre à jour votre compte. </p>
+    <app-update-account-form *ngIf="!user.fromSocialLogin"></app-update-account-form>
     <h2>Zone de danger</h2>
     <div>
       <p>Revendique.com respecte vos données personnelles et vous permet de retirer toutes informations vous concernant

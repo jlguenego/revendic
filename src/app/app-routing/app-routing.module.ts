@@ -19,6 +19,7 @@ import { DeletedAccountComponent } from './deleted-account/deleted-account.compo
 import { ErrorComponent } from './error/error.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { UpdatedAccountComponent } from './updated-account/updated-account.component';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -40,7 +41,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormModule, FontAwesomeModule, WidgetModule],
+  imports: [RouterModule.forRoot(routes), CommonModule, FormModule, FontAwesomeModule, WidgetModule],
   declarations: [
     HomeComponent,
     CreateRevendicationComponent,
