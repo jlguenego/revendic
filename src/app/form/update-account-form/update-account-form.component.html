@@ -1,19 +1,15 @@
 <form [formGroup]="f" (ngSubmit)="onSubmit()">
   <label>
-    <div>Email*</div>
-    <input type="email" name="email" formControlName="email">
-  </label>
-  <label>
     <div>Prénom et Nom*</div>
     <input type="text" name="displayname" formControlName="displayName">
   </label>
 
-  <label>
+  <label *ngIf="!user.fromSocialLogin">
     <p>Optionnellement, vous pouvez ajouter un lien sur une photo reflétant votre personne.</p>
     <div>Photo URL</div>
     <input type="text" name="photoURL" formControlName="photoURL">
     <div class="center">
-      <img [src]="this.f.value.photoURL">
+      <img *ngIf="this.f.value.photoURL" [src]="this.f.value.photoURL">
     </div>
   </label>
 

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseUtils } from '../FirebaseUtils';
 import { UserData } from './user.module';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,9 @@ export class UserService {
   displayName = "";
   photoURL = null;
   email = "";
+  providerId: string;
+  fromSocialLogin = false;
+
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
     this.afAuth.user.subscribe(user => {
       console.log('user', user);
@@ -37,12 +41,16 @@ export class UserService {
       this.displayName = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL;
+      this.providerId = user.providerData[0].providerId;
+      this.fromSocialLogin = this.providerId === 'google.com' || this.providerId === 'facebook.com';
     } else {
       this.isLogged = false;
       this.isVerified = false;
       this.displayName = "";
       this.email = "";
       this.photoURL = null;
+      this.providerId = undefined;
+      this.fromSocialLogin = false;
     }
   }
 
