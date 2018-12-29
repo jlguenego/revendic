@@ -16,12 +16,11 @@ export class UpdateAccountFormComponent implements OnInit {
 
   errorCode: string;
 
-  f = new FormGroup({
-    firstname: new FormControl('', [Validators.required]),
-    lastname: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, this.passwordCheck.validate()]),
-  });
+  f: FormGroup= new FormGroup({
+    displayName: new FormControl(this.user.displayName, [Validators.required]),
+    email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+    photoURL: new FormControl(this.user.photoURL, [Validators.required, this.passwordCheck.validate()]),
+  });;
 
   constructor(private user: UserService, private router: Router, private passwordCheck: PasswordCheckService) { }
 
