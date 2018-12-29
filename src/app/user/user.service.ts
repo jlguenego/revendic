@@ -117,7 +117,7 @@ export class UserService {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
       .then(() => {
         const user = this.afAuth.auth.currentUser;
-        user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL});
+        return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL});
       })
       .then(() => this.activate())
       .catch(error => {
@@ -129,6 +129,18 @@ export class UserService {
           if (error.code === 'auth/email-already-in-use') {
             return Promise.reject(UserService.ERROR.MAIL_ALREADY_IN_USE);
           }
+          return Promise.reject(error.code);
+        });
+      });
+  }
+
+  updateAccount(obj: UserData) {
+    const user = this.afAuth.auth.currentUser;
+    return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL})
+      .then(() => this.navigateTo('/updated-with-success'))
+      .catch(error => {
+        return this.zone.run(() => {
+          console.error('error', error);
           return Promise.reject(error.code);
         });
       });
