@@ -56,6 +56,7 @@ export class UserService {
   }
 
   navigateTo(path: string, data?: any) {
+    console.log('navigate to', path);
     return () => {
       return this.zone.run(() => {
         if (data) {
@@ -137,7 +138,7 @@ export class UserService {
   updateAccount(obj: UserData) {
     const user = this.afAuth.auth.currentUser;
     return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL})
-      .then(() => this.navigateTo('/updated-with-success'))
+      .then(this.navigateTo('/compte-mis-a-jour'))
       .catch(error => {
         return this.zone.run(() => {
           console.error('error', error);

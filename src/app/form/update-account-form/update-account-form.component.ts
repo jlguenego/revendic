@@ -30,14 +30,8 @@ export class UpdateAccountFormComponent implements OnInit {
   onSubmit() {
     console.log('account update');
     this.errorCode = undefined;
-    const userData: UserData = {
-      displayName: this.f.value.displayName,
-      photoURL: this.f.value.photoURL,
-      email: this.f.value.email,
-      password: this.f.value.password
-    };
 
-    this.user.updateAccount(userData).catch(
+    this.user.updateAccount(this.f.value).catch(
       errorCode => {
         console.log('error2', errorCode);
         this.errorCode = errorCode;
