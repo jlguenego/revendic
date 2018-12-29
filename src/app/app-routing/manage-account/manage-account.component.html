@@ -1,6 +1,16 @@
 <div class="center">
   <div class="frame">
     <h1>Mon compte</h1>
-    <div><button class="danger" (click)="delete()">Effacer le compte</button></div>
+    <h2>Mise à jour des données personnelles</h2>
+    <app-update-account-form></app-update-account-form>
+    <h2>Zone de danger</h2>
+    <div>
+      <p>Revendique.com respecte vos données personnelles et vous permet de retirer toutes informations vous concernant
+        sur notre site. Il vous suffit pour cela d'effacer simplement votre compte à l'aide du bouton ci-dessous.
+      </p>
+      <p><b>Attention ceci est une action critique.</b></p>
+
+      <button class="danger" (click)="delete()">Effacer le compte</button>
+    </div>
   </div>
 </div>

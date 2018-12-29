@@ -7,10 +7,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { WidgetModule } from '../widget/widget.module';
 import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
 import { PasswordForgottenFormComponent } from './password-forgotten-form/password-forgotten-form.component';
+import { UpdateAccountFormComponent } from './update-account-form/update-account-form.component';
 
 
 @NgModule({
-  declarations: [LoginFormComponent, CreateAccountFormComponent, PasswordForgottenFormComponent],
+  declarations: [LoginFormComponent, CreateAccountFormComponent, PasswordForgottenFormComponent, UpdateAccountFormComponent],
   imports: [
     CommonModule,
     WidgetModule,
@@ -20,7 +21,8 @@ import { PasswordForgottenFormComponent } from './password-forgotten-form/passwo
   exports: [
     LoginFormComponent,
     CreateAccountFormComponent,
-    PasswordForgottenFormComponent
+    PasswordForgottenFormComponent,
+    UpdateAccountFormComponent
   ]
 })
 export class FormModule { }
