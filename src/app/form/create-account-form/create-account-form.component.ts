@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
 import { PasswordCheckService } from 'src/app/widget/password-check.service';
+import { UserData } from 'src/app/user/user.module';
 
 @Component({
   selector: 'app-create-account-form',
@@ -30,7 +31,14 @@ export class CreateAccountFormComponent implements OnInit {
   onSubmit() {
     console.log('account creation');
     this.errorCode = undefined;
-    this.user.createAccount(this.f.value).catch(
+    const userData: UserData = {
+      displayName: this.f.value.firstname + ' ' + this.f.value.lastname,
+      photoURL: "/assets/user.svg",
+      email: this.f.value.email,
+      password: this.f.value.password
+    };
+
+    this.user.createAccount(userData).catch(
       errorCode => {
         console.log('error2', errorCode);
         this.errorCode = errorCode;

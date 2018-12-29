@@ -8,3 +8,11 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class UserModule { }
+
+export interface UserData {
+  displayName: string;
+  photoURL: string;
+  email: string;
+  password: string;
+}
+

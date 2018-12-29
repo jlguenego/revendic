@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 
 import { FirebaseUtils } from '../FirebaseUtils';
-
+import { UserData } from './user.module';
 
 @Injectable({
   providedIn: 'root',
@@ -113,8 +113,12 @@ export class UserService {
     return this.afAuth.auth.signOut().then(this.navigateTo('/'));
   }
 
-  createAccount(obj) {
+  createAccount(obj: UserData) {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
+      .then(() => {
+        const user = this.afAuth.auth.currentUser;
+        user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL});
+      })
       .then(() => this.activate())
       .catch(error => {
         return this.zone.run(() => {
