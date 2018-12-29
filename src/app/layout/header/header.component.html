@@ -15,7 +15,7 @@
     <a class="button" routerLink="login" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email" (open)="refresh()">
       <div *ngIf="!user.isVerified" class="center">
-          <button class="important" (click)="user.activate()">Activer le compte</button>
+        <button class="important" (click)="user.activate()">Activer le compte</button>
       </div>
       <div class="buttons">
         <button routerLink="/mon-compte">Information</button>
@@ -35,11 +35,15 @@
   <fa-icon (click)="toggleMenu(); refresh();" class="mobile" [icon]="faBars"></fa-icon>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
     <a *ngIf="!user.isLogged" routerLink="login">Mon compte</a>
-    
+
     <div class="center" *ngIf="user.isLogged">
-      <a class="user">{{user.email}} </a>
+      <div class="user">
+        <img *ngIf="user.photoURL !== null" class="photo-id" [src]="user.photoURL">
+        <span class="user">{{user.email}} </span>
+      </div>
+
       <div *ngIf="!user.isVerified" class="center">
-          <button class="important" (click)="user.activate()">Activer le compte</button>
+        <button class="important" (click)="user.activate()">Activer le compte</button>
       </div>
       <div class="buttons">
         <button routerLink="/mon-compte">Manage</button>

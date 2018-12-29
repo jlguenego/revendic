@@ -112,4 +112,16 @@ header {
         display: flex;
         justify-content: space-evenly;
     }
+
+    .photo-id {
+        width: 3rem;
+    }
+
+    .user {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: bold;
+        margin: 0.5rem;
+    }
 }

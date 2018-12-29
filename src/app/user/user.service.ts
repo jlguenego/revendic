@@ -20,8 +20,8 @@ export class UserService {
 
   isVerified = false;
   isLogged = false;
-  firstname = "";
-  lastname = "";
+  displayName = "";
+  photoURL = null;
   email = "";
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
     this.afAuth.user.subscribe(user => {
@@ -34,15 +34,15 @@ export class UserService {
     if (user) {
       this.isLogged = true;
       this.isVerified = user.emailVerified;
-      this.firstname = user.displayName;
-      this.lastname = user.displayName;
+      this.displayName = user.displayName;
       this.email = user.email;
+      this.photoURL = user.photoURL;
     } else {
       this.isLogged = false;
       this.isVerified = false;
-      this.firstname = "";
-      this.lastname = "";
+      this.displayName = "";
       this.email = "";
+      this.photoURL = null;
     }
   }
 
@@ -103,6 +103,7 @@ export class UserService {
               });
             });
           }
+          console.log('error', error);
           return Promise.reject();
         });
       });
