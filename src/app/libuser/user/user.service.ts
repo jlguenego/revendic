@@ -179,6 +179,10 @@ export class UserService {
       });
   }
 
+  updatePassword(password: string, newPassword: string) {
+    console.log('update password');
+  }
+
   activate() {
     const user = this.afAuth.auth.currentUser;
     user.sendEmailVerification();

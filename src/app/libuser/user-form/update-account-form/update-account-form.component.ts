@@ -19,7 +19,7 @@ export class UpdateAccountFormComponent implements OnInit {
     displayName: new FormControl(this.user.displayName, [Validators.required]),
     email: new FormControl(this.user.email, [Validators.required, Validators.email]),
     photoURL: new FormControl(this.user.photoURL),
-  });;
+  });
 
   constructor(public user: UserService) { }
 
