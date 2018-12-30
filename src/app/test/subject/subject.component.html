@@ -1,0 +1,16 @@
+<section>
+    <h1>Test Component</h1>
+    <p>
+      Counter = {{test.counter | async}}
+    </p>
+    <p *ngIf="isListening">
+      Counter = {{test.counter | async}}
+    </p>
+    <p>
+      <button *ngIf="!test.isStarted" (click)="test.start()">Start</button>
+      <button *ngIf="test.isStarted" (click)="test.stop()">Stop</button>
+  
+      <button *ngIf="test.isStarted" (click)="start()">Start Listening</button>
+      <button *ngIf="test.isStarted" (click)="stop()">Stop Listening</button>
+    </p>
+  </section>

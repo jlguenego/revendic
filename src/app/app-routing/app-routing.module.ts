@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorComponent } from './error/error.component';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from '../libuser/user-routing/user-routing.module';
+import { TestRoutingModule } from '../test/test-routing/test-routing.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    TestRoutingModule,
     UserRoutingModule, 
     RouterModule.forRoot(routes), 
     CommonModule, 
