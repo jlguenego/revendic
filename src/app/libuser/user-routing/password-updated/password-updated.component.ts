@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserPath } from '../user-path';
 
 @Component({
   selector: 'app-password-updated',
