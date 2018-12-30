@@ -24,7 +24,6 @@ export class UserService {
   displayName = "";
   photoURL = null;
   email = "";
-  providerId: string;
 
   subject: Subject<boolean>;
   private observer: Observer<boolean>;
@@ -48,14 +47,12 @@ export class UserService {
       this.displayName = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL;
-      this.providerId = providerIdFormat(user.providerData[0].providerId);
     } else {
       this.isLogged = false;
       this.isVerified = false;
       this.displayName = "";
       this.email = "";
       this.photoURL = null;
-      this.providerId = undefined;
     }
     this.observer.next(true);
   }
@@ -220,18 +217,9 @@ export class UserService {
   }
 
   isFromSocialLogin() {
-    return this.providerId === 'Google' || this.providerId === 'Facebook';
+    return this.afAuth.auth.currentUser.providerData.reduce((acc, provider) => {
+      return acc && provider.providerId === 'password';
+    }, true);
   }
 
-}
-
-
-function providerIdFormat(providerId: string): string {
-  if (/google/i.test(providerId)) {
-    return 'Google';
-  }
-  if (/facebook/i.test(providerId)) {
-    return 'Facebook';
-  }
-  return 'mail';
 }
