@@ -25,7 +25,13 @@ export class UpdateAccountFormComponent implements OnInit {
 
   ngOnInit() {
     console.log('this.user', this.user);
-    
+    this.user.subject.subscribe(() => {
+      this.f.setValue({
+        displayName: this.user.displayName,
+        email: this.user.email,
+        photoURL: this.user.photoURL,
+      });
+    });
   }
 
   onSubmit() {

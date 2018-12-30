@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseUtils } from '../FirebaseUtils';
 import { UserData } from './user.module';
+import { Subject, Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,11 +26,19 @@ export class UserService {
   email = "";
   providerId: string;
 
+  subject: Subject<boolean>;
+  private observer: Observer<boolean>;
+
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
-    this.afAuth.user.subscribe(user => {
-      console.log('user', user);
-      this.sync(user);
+    const observable = Observable.create(observer => {
+      this.observer = observer;
+      this.afAuth.user.subscribe(user => {
+        console.log('user', user);
+        this.sync(user);
+      });
     });
+    this.subject = new Subject();
+    observable.subscribe(this.subject);
   }
 
   sync(user) {
@@ -48,14 +57,17 @@ export class UserService {
       this.photoURL = null;
       this.providerId = undefined;
     }
+    this.observer.next(true);
   }
 
   refresh() {
     const user = this.afAuth.auth.currentUser;
     if (user) {
-      user.reload().then(() => {
+      user.reload().finally(() => {
         this.sync(user);
       });
+    } else {
+      this.sync(user);
     }
   }
 
