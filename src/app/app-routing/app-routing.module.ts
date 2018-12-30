@@ -5,7 +5,6 @@ import { CreateRevendicationComponent } from './create-revendication/create-reve
 import { ObservatoireComponent } from './observatoire/observatoire.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { LegalComponent } from './legal/legal.component';
-import { FormModule } from '../form/form.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WidgetModule } from '../widget/widget.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
     UserRoutingModule, 
     RouterModule.forRoot(routes), 
     CommonModule, 
-    FormModule, 
     FontAwesomeModule, 
     WidgetModule
   ],

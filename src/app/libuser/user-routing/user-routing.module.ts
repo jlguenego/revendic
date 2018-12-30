@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FormModule } from 'src/app/form/form.module';
+import { FormModule } from 'src/app/libuser/form/form.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WidgetModule } from 'src/app/widget/widget.module';
 import { LoginComponent } from './login/login.component';

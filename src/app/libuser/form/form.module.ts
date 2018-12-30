@@ -4,10 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { LoginFormComponent } from './login-form/login-form.component';
-import { WidgetModule } from '../widget/widget.module';
 import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
 import { PasswordForgottenFormComponent } from './password-forgotten-form/password-forgotten-form.component';
 import { UpdateAccountFormComponent } from './update-account-form/update-account-form.component';
+import { WidgetModule } from 'src/app/widget/widget.module';
 
 
 @NgModule({
