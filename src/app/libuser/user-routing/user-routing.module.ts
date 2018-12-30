@@ -14,21 +14,12 @@ import { ManageAccountComponent } from './manage-account/manage-account.componen
 import { DeletedAccountComponent } from './deleted-account/deleted-account.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { UpdatedAccountComponent } from './updated-account/updated-account.component';
+import { UserPath } from './user-path';
 
-const urls = {
-  login: 'connexion',
-  createAccount: 'nouveau-compte',
-  passwordForgotten: 'oubli-mot-de-passe',
-  accountCreated: 'compte-cree',
-  resetMailSent: 'email-mot-de-passe-envoye',
-  manageAccount: 'mon-compte',
-  deletedAccount: 'compte-efface',
-  verifyAccount: 'verifie-compte',
-  updatedAccount: 'compte-mis-a-jour',
-}
+const path = UserPath.path;
 
 const routes: Routes = [
-  { path: urls.login, component: LoginComponent },
+  { path: path.login, component: LoginComponent },
   { path: 'nouveau-compte', component: CreateAccountComponent },
   { path: 'oubli-mot-de-passe', component: PasswordForgottenComponent },
   { path: 'compte-cree', component: AccountCreatedComponent },
@@ -61,6 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class UserRoutingModule { 
-  static urls = urls;
-}
+export class UserRoutingModule { }

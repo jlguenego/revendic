@@ -12,7 +12,7 @@
     <a routerLink="presentation" class="href">Presentation</a>
   </nav>
   <nav class="utilities">
-    <a class="button" [routerLink]="userRouting.urls.login" *ngIf="!user.isLogged">Mon compte</a>
+    <a class="button" [routerLink]="login" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email" (open)="refresh()">
       <div *ngIf="!user.isVerified" class="center">
         <button class="important" (click)="user.activate()">Activer le compte</button>
@@ -34,7 +34,7 @@
   </div>
   <fa-icon (click)="toggleMenu(); refresh();" class="mobile" [icon]="faBars"></fa-icon>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
-    <a *ngIf="!user.isLogged" [routerLink]="userRouting.urls.login">Mon compte</a>
+    <a *ngIf="!user.isLogged" [routerLink]="login">Mon compte</a>
 
     <div class="center" *ngIf="user.isLogged">
       <div class="user">
