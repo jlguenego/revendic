@@ -15,9 +15,17 @@ export class UpdatePasswordFormComponent implements OnInit {
     newPassword: new FormControl('', [Validators.required, this.check.validate()]),
   });
 
-  constructor(private user: UserService, private check: PasswordCheckService) { }
+  constructor(public user: UserService, private check: PasswordCheckService) { }
 
   ngOnInit() {
+    this.refresh();
+    this.user.subject.subscribe(() => this.refresh());
+  }
+
+  refresh() {
+    if (this.user.isFromSocialLogin()) {
+      this.f.removeControl('password');
+    }
   }
 
   onSubmit() {

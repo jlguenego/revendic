@@ -116,9 +116,11 @@ export class UserService {
                 const provider = new auth.GoogleAuthProvider();
                 provider.setCustomParameters({ login_hint: error.email });
                 return this.afAuth.auth.signInWithPopup(provider)
-                  .then(this.navigateTo('/'));
               });
-            });
+            }).then(() => {
+              this.afAuth.auth.currentUser.linkWithPopup(new auth.FacebookAuthProvider())
+            })
+            .then(this.navigateTo('/'));
           }
           console.log('error', error);
           return Promise.reject();
@@ -181,9 +183,19 @@ export class UserService {
 
   updatePassword(password: string, newPassword: string) {
     console.log('update password');
-    this.afAuth.auth.signInWithEmailAndPassword(this.email, password).then(() => {
-      return this.afAuth.auth.currentUser.updatePassword(newPassword);
-    }).then(this.navigateTo('/mot-de-passe-change-avec-succes'))
+    Promise.resolve()
+      .then(() => {
+        if (this.isFromSocialLogin()) {
+          const credential = auth.EmailAuthProvider.credential(this.email, newPassword);
+          return this.afAuth.auth.currentUser.linkAndRetrieveDataWithCredential(credential).then(() => {
+            console.log('user created password');
+          });
+        }
+        return this.afAuth.auth.signInWithEmailAndPassword(this.email, password).then(() => {
+          return this.afAuth.auth.currentUser.updatePassword(newPassword);
+        })
+      })
+      .then(this.navigateTo('/mot-de-passe-change-avec-succes'))
       .catch(error => {
         console.log('error', error);
         const message = FirebaseUtils.getLocaleMessage(error);
@@ -205,6 +217,10 @@ export class UserService {
       img.onerror = reject;
       img.src = url;
     });
+  }
+
+  isFromSocialLogin() {
+    return this.providerId === 'Google' || this.providerId === 'Facebook';
   }
 
 }
