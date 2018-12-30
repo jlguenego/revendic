@@ -25,4 +25,4 @@ import { WidgetModule } from 'src/app/widget/widget.module';
     UpdateAccountFormComponent
   ]
 })
-export class FormModule { }
+export class UserFormModule { }
