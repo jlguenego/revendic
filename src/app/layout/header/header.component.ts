@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { ResponsiveService } from '../responsive.service';
 import { UserService } from 'src/app/libuser/user/user.service';
+import { UserRoutingModule } from 'src/app/libuser/user-routing/user-routing.module';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,8 @@ export class HeaderComponent implements OnInit {
 
   faBars = faBars;
   isMenuOpen = false;
+
+  userRouting = UserRoutingModule;
   
   constructor(public resp: ResponsiveService, public user: UserService, private cd: ChangeDetectorRef) { 
     window.addEventListener("focus", event => this.refresh(), false);
