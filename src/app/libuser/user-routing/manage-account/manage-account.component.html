@@ -1,6 +1,11 @@
 <div class="center">
   <div class="frame">
     <h1>Mon compte</h1>
+    <h2>Mot de passe</h2>
+    <p>
+      <button class="shadow" [routerLink]="updatePasswordLink">Mettre un nouveau mot de passe</button>
+    </p>
+    
     <h2>Mise à jour des données personnelles</h2>
     <p *ngIf="isFromSocialLogin()">
       Vous êtes connecté depuis {{user.providerId}}, du coup,

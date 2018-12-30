@@ -8,10 +8,16 @@ import { CreateAccountFormComponent } from './create-account-form/create-account
 import { PasswordForgottenFormComponent } from './password-forgotten-form/password-forgotten-form.component';
 import { UpdateAccountFormComponent } from './update-account-form/update-account-form.component';
 import { WidgetModule } from 'src/app/widget/widget.module';
+import { UpdatePasswordFormComponent } from './update-password-form/update-password-form.component';
 
 
 @NgModule({
-  declarations: [LoginFormComponent, CreateAccountFormComponent, PasswordForgottenFormComponent, UpdateAccountFormComponent],
+  declarations: [
+    LoginFormComponent, 
+    CreateAccountFormComponent, 
+    PasswordForgottenFormComponent,
+     UpdateAccountFormComponent, 
+     UpdatePasswordFormComponent],
   imports: [
     CommonModule,
     WidgetModule,
@@ -22,7 +28,8 @@ import { WidgetModule } from 'src/app/widget/widget.module';
     LoginFormComponent,
     CreateAccountFormComponent,
     PasswordForgottenFormComponent,
-    UpdateAccountFormComponent
+    UpdateAccountFormComponent,
+    UpdatePasswordFormComponent
   ]
 })
 export class UserFormModule { }

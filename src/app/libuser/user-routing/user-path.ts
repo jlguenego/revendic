@@ -8,6 +8,7 @@ const path = {
     deletedAccount: 'compte-efface',
     verifyAccount: 'verifie-compte',
     updatedAccount: 'compte-mis-a-jour',
+    updatePassword: 'modification-mot-de-passe',
 };
 
 // generate the same objet with prefix '/'

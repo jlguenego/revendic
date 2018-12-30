@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-
-import { UserFormModule } from 'src/app/libuser/user-form/user-form.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { UserPath } from './user-path';
+import { UserFormModule } from 'src/app/libuser/user-form/user-form.module';
 import { WidgetModule } from 'src/app/widget/widget.module';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -14,7 +15,7 @@ import { ManageAccountComponent } from './manage-account/manage-account.componen
 import { DeletedAccountComponent } from './deleted-account/deleted-account.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { UpdatedAccountComponent } from './updated-account/updated-account.component';
-import { UserPath } from './user-path';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 const path = UserPath.path;
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'compte-efface', component: DeletedAccountComponent },
   { path: 'verifie-compte', component: VerifyAccountComponent },
   { path: 'compte-mis-a-jour', component: UpdatedAccountComponent },
+  { path: path.updatePassword, component: UpdatePasswordComponent },
 ];
 
 
@@ -48,7 +50,8 @@ const routes: Routes = [
     ManageAccountComponent,
     DeletedAccountComponent,
     VerifyAccountComponent,
-    UpdatedAccountComponent
+    UpdatedAccountComponent,
+    UpdatePasswordComponent
   ],
   exports: [RouterModule]
 })

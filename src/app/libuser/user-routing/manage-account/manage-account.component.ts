@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/libuser/user/user.service';
+import { UserPath } from '../user-path';
 
 @Component({
   selector: 'app-manage-account',
@@ -9,6 +10,8 @@ import { UserService } from 'src/app/libuser/user/user.service';
 export class ManageAccountComponent implements OnInit {
 
   constructor(public user: UserService) { }
+
+  updatePasswordLink = UserPath.url.updatePassword;
 
   ngOnInit() {
   }
