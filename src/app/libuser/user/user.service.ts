@@ -134,7 +134,7 @@ export class UserService {
     return this.afAuth.auth.createUserWithEmailAndPassword(obj.email, obj.password)
       .then(() => {
         const user = this.afAuth.auth.currentUser;
-        return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL});
+        return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL });
       })
       .then(() => this.activate())
       .catch(error => {
@@ -153,7 +153,7 @@ export class UserService {
 
   updateAccount(obj: UserData) {
     const user = this.afAuth.auth.currentUser;
-    return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL})
+    return user.updateProfile({ displayName: obj.displayName, photoURL: obj.photoURL })
       .then(this.navigateTo('/compte-mis-a-jour'))
       .catch(error => {
         return this.zone.run(() => {
@@ -181,6 +181,15 @@ export class UserService {
 
   updatePassword(password: string, newPassword: string) {
     console.log('update password');
+    this.afAuth.auth.signInWithEmailAndPassword(this.email, password).then(() => {
+      return this.afAuth.auth.currentUser.updatePassword(newPassword);
+    }).then(this.navigateTo('/mot-de-passe-change-avec-succes'))
+      .catch(error => {
+        console.log('error', error);
+        const message = FirebaseUtils.getLocaleMessage(error);
+        this.router.navigate(['erreur', { message }])
+      });
+
   }
 
   activate() {

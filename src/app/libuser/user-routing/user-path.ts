@@ -9,6 +9,7 @@ const path = {
     verifyAccount: 'verifie-compte',
     updatedAccount: 'compte-mis-a-jour',
     updatePassword: 'modification-mot-de-passe',
+    passwordUpdated: 'mot-de-passe-change-avec-succes',
 };
 
 // generate the same objet with prefix '/'

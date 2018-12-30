@@ -16,6 +16,7 @@ import { DeletedAccountComponent } from './deleted-account/deleted-account.compo
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { UpdatedAccountComponent } from './updated-account/updated-account.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { PasswordUpdatedComponent } from './password-updated/password-updated.component';
 
 const path = UserPath.path;
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'verifie-compte', component: VerifyAccountComponent },
   { path: 'compte-mis-a-jour', component: UpdatedAccountComponent },
   { path: path.updatePassword, component: UpdatePasswordComponent },
+  { path: path.passwordUpdated, component: PasswordUpdatedComponent },
 ];
 
 
@@ -51,7 +53,8 @@ const routes: Routes = [
     DeletedAccountComponent,
     VerifyAccountComponent,
     UpdatedAccountComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    PasswordUpdatedComponent
   ],
   exports: [RouterModule]
 })

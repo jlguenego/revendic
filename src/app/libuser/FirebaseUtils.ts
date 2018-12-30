@@ -7,6 +7,6 @@ const config = {
 
 export class FirebaseUtils {
     static getLocaleMessage(error) {
-        return config[error.code];
+        return config[error.code] || 'Erreur non traduite: ' + error;
     }
 }
