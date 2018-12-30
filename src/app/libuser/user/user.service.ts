@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 import { FirebaseUtils } from '../FirebaseUtils';
 import { UserData } from './user.module';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

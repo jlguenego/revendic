@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from 'src/app/user/user.service';
+import { UserService } from 'src/app/libuser/user/user.service';
 import { Router } from '@angular/router';
 import { PasswordCheckService } from 'src/app/widget/password-check.service';
-import { UserData } from 'src/app/user/user.module';
+import { UserData } from 'src/app/libuser/user/user.module';
 
 @Component({
   selector: 'app-create-account-form',
