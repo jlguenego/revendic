@@ -24,7 +24,6 @@ export class UserService {
   photoURL = null;
   email = "";
   providerId: string;
-  fromSocialLogin = false;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
     this.afAuth.user.subscribe(user => {
@@ -40,8 +39,7 @@ export class UserService {
       this.displayName = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL;
-      this.providerId = user.providerData[0].providerId;
-      this.fromSocialLogin = this.providerId === 'google.com' || this.providerId === 'facebook.com';
+      this.providerId = providerIdFormat(user.providerData[0].providerId);
     } else {
       this.isLogged = false;
       this.isVerified = false;
@@ -49,7 +47,6 @@ export class UserService {
       this.email = "";
       this.photoURL = null;
       this.providerId = undefined;
-      this.fromSocialLogin = false;
     }
   }
 
@@ -185,4 +182,15 @@ export class UserService {
     });
   }
 
+}
+
+
+function providerIdFormat(providerId: string): string {
+  if (/google/i.test(providerId)) {
+    return 'Google';
+  }
+  if (/facebook/i.test(providerId)) {
+    return 'Facebook';
+  }
+  return 'mail';
 }

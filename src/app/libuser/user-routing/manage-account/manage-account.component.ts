@@ -20,4 +20,8 @@ export class ManageAccountComponent implements OnInit {
     }
   }
 
+  isFromSocialLogin() {
+    return this.user.providerId === 'Facebook' || this.user.providerId === 'Google';
+  }
+
 }
