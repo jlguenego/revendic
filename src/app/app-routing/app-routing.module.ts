@@ -20,6 +20,7 @@ import { ErrorComponent } from './error/error.component';
 import { VerifyAccountComponent } from './verify-account/verify-account.component';
 import { UpdatedAccountComponent } from './updated-account/updated-account.component';
 import { CommonModule } from '@angular/common';
+import { UserRoutingModule } from '../libuser/user-routing/user-routing.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,7 @@ const routes: Routes = [
   { path: 'observatoire', component: ObservatoireComponent },
   { path: 'presentation', component: PresentationComponent },
   { path: 'mentions-legales', component: LegalComponent },
-  { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent },
   { path: 'nouveau-compte', component: CreateAccountComponent },
   { path: 'oubli-mot-de-passe', component: PasswordForgottenComponent },
   { path: 'compte-cree', component: AccountCreatedComponent },
@@ -41,7 +42,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule, FormModule, FontAwesomeModule, WidgetModule],
+  imports: [
+    UserRoutingModule, 
+    RouterModule.forRoot(routes), 
+    CommonModule, 
+    FormModule, 
+    FontAwesomeModule, 
+    WidgetModule
+  ],
   declarations: [
     HomeComponent,
     CreateRevendicationComponent,
