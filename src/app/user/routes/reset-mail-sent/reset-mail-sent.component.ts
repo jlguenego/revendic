@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserPath } from '../user-path';
+import { UserPath } from '../../user-path';
 
 @Component({
   selector: 'app-reset-mail-sent',

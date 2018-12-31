@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/libuser/user/user.service';
+
+import { UserService } from '../../user.service';
+
 
 @Component({
   selector: 'app-verify-account',

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/libuser/user/user.service';
-import { UserPath } from '../user-path';
+
+import { UserService } from '../../user.service';
+import { UserPath } from '../../user-path';
+
+
 
 @Component({
   selector: 'app-manage-account',

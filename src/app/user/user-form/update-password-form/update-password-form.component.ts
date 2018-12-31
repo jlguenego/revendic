@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from '../../user/user.service';
+import { UserService } from '../../user.service';
 import { PasswordCheckService } from 'src/app/widget/password-check.service';
 
 @Component({
