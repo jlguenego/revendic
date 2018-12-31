@@ -18,8 +18,8 @@ const path = UserPath.path;
 
 const routes: Routes = [
   { path: path.login, component: LoginComponent },
-  { path: 'nouveau-compte', component: CreateAccountComponent },
-  { path: 'oubli-mot-de-passe', component: PasswordForgottenComponent },
+  { path: path.createAccount, component: CreateAccountComponent },
+  { path: path.passwordForgotten, component: PasswordForgottenComponent },
   { path: 'compte-cree', component: AccountCreatedComponent },
   { path: 'email-mot-de-passe-envoye', component: ResetMailSentComponent },
   { path: 'mon-compte', component: ManageAccountComponent },
