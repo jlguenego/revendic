@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { FirebaseUtils } from './FirebaseUtils';
 import { Subject, Observable, Observer } from 'rxjs';
+import { UserPath } from './user-path';
+import { promised } from 'q';
 
 export interface UserData {
   displayName: string;
@@ -18,6 +20,8 @@ export interface UserData {
 })
 export class UserService {
 
+  path = UserPath.path;
+
   public static ERROR = {
     MAIL_ALREADY_IN_USE: 'mail-already-in-use',
     WEAK_PASSWORD: 'weak-password',
@@ -26,7 +30,7 @@ export class UserService {
   };
 
   isVerified = false;
-  isLogged = false;
+  isLogged = undefined;
   displayName = "";
   photoURL = null;
   email = "";
@@ -61,6 +65,25 @@ export class UserService {
       this.photoURL = null;
     }
     this.observer.next(true);
+  }
+
+  isConnected() {
+    return new Promise((resolved, rejected) => {
+      if (this.isLogged === undefined) {
+        this.afAuth.authState.subscribe(user => {
+          if (user) {
+            resolved();
+          } else {
+            rejected();
+          }
+        });
+
+      } else if (this.isLogged === true) {
+        resolved();
+      } else if (this.isLogged === false) {
+        rejected();
+      }
+    });
   }
 
   refresh() {
@@ -123,7 +146,7 @@ export class UserService {
             }).then(() => {
               this.afAuth.auth.currentUser.linkWithPopup(new auth.FacebookAuthProvider())
             })
-            .then(this.navigateTo('/'));
+              .then(this.navigateTo('/'));
           }
           console.log('error', error);
           return Promise.reject();
