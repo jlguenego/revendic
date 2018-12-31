@@ -17,8 +17,8 @@ import { WidgetModule } from '../widget/widget.module';
   imports: [
     CommonModule,
     FontAwesomeModule,
+    WidgetModule,
     AppRoutingModule,
-    WidgetModule
   ],
   exports: [
     HeaderComponent, 

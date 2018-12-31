@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CreateRevendicationComponent } from './create-revendication/create-revendication.component';
 import { ObservatoireComponent } from './observatoire/observatoire.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { LegalComponent } from './legal/legal.component';
@@ -12,10 +11,10 @@ import { ErrorComponent } from './error/error.component';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from '../libuser/user-routing/user-routing.module';
 import { TestRoutingModule } from '../test/test-routing/test-routing.module';
+import { RevModule } from '../rev/rev.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'creer-revendication', component: CreateRevendicationComponent },
   { path: 'observatoire', component: ObservatoireComponent },
   { path: 'presentation', component: PresentationComponent },
   { path: 'mentions-legales', component: LegalComponent },
@@ -26,7 +25,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     TestRoutingModule,
-    UserRoutingModule, 
+    UserRoutingModule,
+    RevModule,
     RouterModule.forRoot(routes), 
     CommonModule, 
     FontAwesomeModule, 
@@ -34,7 +34,6 @@ const routes: Routes = [
   ],
   declarations: [
     HomeComponent,
-    CreateRevendicationComponent,
     ObservatoireComponent,
     PresentationComponent,
     LegalComponent,
