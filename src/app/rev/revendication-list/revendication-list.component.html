@@ -1,5 +1,5 @@
 <div class="frame">
   <ul>
-    <li *ngFor="let rev of revendications"><b>{{rev.title}}</b> - {{rev.author.displayName}}</li>
+    <li *ngFor="let rev of revendications | async"><b>{{rev.title}}</b> - {{rev.author}}</li>
   </ul>
 </div>

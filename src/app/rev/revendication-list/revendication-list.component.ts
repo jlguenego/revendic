@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class RevendicationListComponent implements OnInit {
 
-  revendications: RevendicationRecord[];
+  revendications: Observable<RevendicationRecord[]>;
 
   constructor(private db: AngularFirestore) { }
 
@@ -31,24 +31,8 @@ export class RevendicationListComponent implements OnInit {
     //   }
     // ];
 
-    this.db.collection('/revendications').valueChanges()
-      .subscribe(revendications => {
-        this.revendications = [];
-        revendications.forEach(rev => {
-          const revendicationRecord: RevendicationRecord = {
-            title: rev['title'],
-            author: {
-              displayName: ''
-            }
-          }
-          this.revendications.push(revendicationRecord);
-          const reference: DocumentReference = rev['author'];
-          console.log('typeof reference', reference);
-          this.db.collection('/users').doc(reference.id).valueChanges().subscribe(
-            user => revendicationRecord.author.displayName = user['displayName']
-          );
-        })
-      });
+    this.revendications = this.db.collection<RevendicationRecord>('/revendications').valueChanges();
+      
 
 
   }
