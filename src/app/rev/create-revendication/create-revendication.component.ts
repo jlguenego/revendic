@@ -23,6 +23,7 @@ export class CreateRevendicationComponent implements OnInit {
 
   onSubmit() {
     console.log('create revendication');
+    
   }
 
 }
