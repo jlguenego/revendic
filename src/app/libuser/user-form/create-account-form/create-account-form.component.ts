@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from 'src/app/libuser/user/user.service';
-import { UserData } from 'src/app/libuser/user/user.module';
+import { UserService, UserData } from 'src/app/libuser/user/user.service';
 import { PasswordCheckService } from 'src/app/widget/password-check.service';
 
 @Component({

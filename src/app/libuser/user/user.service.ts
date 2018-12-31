@@ -4,8 +4,14 @@ import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 
 import { FirebaseUtils } from '../FirebaseUtils';
-import { UserData } from './user.module';
 import { Subject, Observable, Observer } from 'rxjs';
+
+export interface UserData {
+  displayName: string;
+  photoURL: string;
+  email: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root',
