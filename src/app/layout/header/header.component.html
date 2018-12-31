@@ -17,8 +17,11 @@
       <div *ngIf="!user.isVerified" class="center">
         <button class="important" (click)="user.activate()">Activer le compte</button>
       </div>
+      <div class="center">
+          <button class="secondary" routerLink="mes-revendications">Mes revendications</button>
+        </div>
       <div class="buttons">
-        <button routerLink="/mon-compte">Information</button>
+        <button routerLink="/mon-compte">Gérer</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
       </div>
     </app-popup>
@@ -50,10 +53,14 @@
         <button class="important" (click)="user.activate()">Activer le compte</button>
       </div>
       <div class="buttons">
-        <button routerLink="/mon-compte">Manage</button>
-        <button class="secondary" (click)="user.logout()">Signout</button>
+        <button routerLink="/mon-compte">Gérer</button>
+        <button class="secondary" (click)="user.logout()">Déconnexion</button>
       </div>
 
+    </div>
+    <div *ngIf="user.isLogged">
+      <div class="separator"></div>
+      <a routerLink="mes-revendications">Mes revendications</a>
     </div>
     <div class="separator"></div>
     <a routerLink="creer-revendication">Créer une revendication</a>
