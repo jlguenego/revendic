@@ -10,6 +10,7 @@ import { RevService } from '../rev.service';
 export class CreateRevendicationComponent implements OnInit {
 
   ERROR = RevService.ERROR;
+  errorCode: number = undefined;
 
   f = new FormGroup({
     content: new FormControl(''),
