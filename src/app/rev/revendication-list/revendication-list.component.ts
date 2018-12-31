@@ -16,22 +16,10 @@ export class RevendicationListComponent implements OnInit {
   constructor(private db: AngularFirestore) { }
 
   ngOnInit() {
-    // this.revendications = [
-    //   {
-    //     title: 'Je veux un gros SMIC !',
-    //     author: {
-    //       displayName: 'Marcel Duschmoll'
-    //     }
-    //   },
-    //   {
-    //     title: 'Je veux le RIC ou je casse tout !',
-    //     author: {
-    //       displayName: 'Simone Lavieille-Charue'
-    //     }
-    //   }
-    // ];
 
-    this.revendications = this.db.collection<RevendicationRecord>('/revendications').valueChanges();
+    this.revendications = this.db.collection<RevendicationRecord>(
+      '/revendications', 
+      ref => ref.orderBy('createdAt', 'desc')).valueChanges();
       
 
 

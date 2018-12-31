@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { UserService } from '../user/user.service';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +19,11 @@ export class RevService {
   constructor(private db: AngularFirestore, private user: UserService, private router: Router) { }
 
   add(content: string) {
+    const timestamp = firebase.firestore.FieldValue.serverTimestamp();
     const revendicationRecord: RevendicationRecord = {
       title: content,
       author: this.user.displayName,
+      createdAt: timestamp,
     };
 
     this.db.collection("revendications").add(revendicationRecord).then(docRef => {

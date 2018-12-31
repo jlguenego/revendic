@@ -27,7 +27,6 @@ export class CreateRevendicationComponent implements OnInit {
   onSubmit() {
     console.log('create revendication');
     this.rev.add(this.f.value.content);
-    
   }
 
 }
