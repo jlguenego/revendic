@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { RevService } from '../rev.service';
 
 @Component({
   selector: 'app-create-revendication',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateRevendicationComponent implements OnInit {
 
+  ERROR = RevService.ERROR;
+
+  f = new FormGroup({
+    content: new FormControl(''),
+  });
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit() {
+    console.log('create revendication');
   }
 
 }

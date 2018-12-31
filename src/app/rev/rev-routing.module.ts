@@ -7,12 +7,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  declarations: [
-    CreateRevendicationComponent,
-  ],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class RevRoutingModule { }

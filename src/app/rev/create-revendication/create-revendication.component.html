@@ -1,3 +1,18 @@
-<p>
-  create-revendication works!
-</p>
+<div class="frame">
+    <h1>Créer une nouvelle revendication</h1>
+    <form autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
+        <label>
+          <div>Contenu de la revendication*</div>
+          <textarea name="content" formControlName="content"></textarea>
+        </label>
+        <div class="error-block">
+          <div class="error-incorrect" *ngIf="errorCode !== undefined">
+            <span *ngIf="errorCode === ERROR.UNKNOWN">Erreur technique. Réessayer ultérieurement.</span>
+          </div>
+        </div>
+      
+        <div class="submit">
+          <button type="submit" class="submit">Créer votre revendication</button>
+        </div>
+      </form>
+  </div>
