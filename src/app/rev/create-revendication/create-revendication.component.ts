@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from 'src/app/user/user.service';
+
 import { RevService } from '../rev.service';
 
 @Component({
@@ -16,13 +19,14 @@ export class CreateRevendicationComponent implements OnInit {
     content: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private rev: RevService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
     console.log('create revendication');
+    this.rev.add(this.f.value.content);
     
   }
 
