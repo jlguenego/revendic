@@ -50,6 +50,9 @@ header {
     padding: 0 1rem;
     white-space: nowrap;
     color: white;
+    >.button {
+        border: 1px solid white;
+    }
 }
 
 .buttons {
@@ -59,7 +62,11 @@ header {
     min-width: 20rem;
 }
 
-.revendication {
+.activation {
+    padding-top: 1rem;
+}
+
+.section {
     button {
         width: 100%;
     }
@@ -69,7 +76,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0rem;
+    margin: 0;
     .photo-id {
         width: 6rem;
     }
