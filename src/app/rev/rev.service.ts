@@ -28,9 +28,9 @@ export class RevService {
 
     return this.db.collection("revendications").add(revendicationRecord).then(docRef => {
       console.log("Document written with ID: ", docRef.id);
-      this.router.navigate(['/']);
     }).catch(error => {
       console.error("Error adding document: ", error);
+      return Promise.reject(error);
     });
   }
 }

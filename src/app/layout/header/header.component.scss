@@ -54,9 +54,32 @@ header {
 
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding: 1rem 0;
+    min-width: 20rem;
+}
+
+.revendication {
     button {
-        margin: 1rem;
+        width: 100%;
+    }
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rem;
+    .photo-id {
+        width: 6rem;
+    }
+    .user-info {
+        .display-name {
+            font-weight: bold;
+        }
+        .mail {
+            font-size: 0.8rem;
+        }
     }
 }
 
@@ -99,6 +122,9 @@ header {
                     color: transparentize(black, 0.3);
                     background: hsl(240, 100%, 80%);
                 }
+                &.important {
+                    background-color: hsl(120, 100%, 90%);
+                }
             }
             .separator {
                 display: block;
@@ -125,4 +151,6 @@ header {
             }
         }
     }
+
+    
 }

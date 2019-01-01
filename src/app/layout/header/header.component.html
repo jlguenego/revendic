@@ -14,15 +14,21 @@
   <nav class="utilities">
     <a class="button" (click)="user.navigateToAuth(user.routes.url.login)" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email" (open)="refresh()">
-      <div *ngIf="!user.isVerified" class="center">
-        <button class="important" (click)="user.activate()">Activer le compte</button>
-      </div>
-      <div class="center">
-          <button class="secondary" routerLink="mes-revendications">Mes revendications</button>
+      <div class="user">
+        <img *ngIf="user.photoURL !== null" class="photo-id" [src]="user.photoURL">
+        <div class="user-info">
+          <div class="display-name">{{user.displayName}} </div>
         </div>
+        <div *ngIf="!user.isVerified" class="center">
+          <button class="important" (click)="user.activate()">Activer le compte</button>
+        </div>
+      </div>
       <div class="buttons">
-        <button routerLink="/mon-compte">Gérer</button>
+        <button class="secondary" routerLink="/mon-compte">Mon profile</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
+      </div>
+      <div class="center revendication">
+        <button routerLink="/mes-revendications">Gérer mes revendications</button>
       </div>
     </app-popup>
   </nav>
@@ -53,14 +59,14 @@
         <button class="important" (click)="user.activate()">Activer le compte</button>
       </div>
       <div class="buttons">
-        <button routerLink="/mon-compte">Gérer</button>
+        <button class="secondary" routerLink="/mon-compte">Profile</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
       </div>
 
     </div>
     <div *ngIf="user.isLogged">
       <div class="separator"></div>
-      <a routerLink="mes-revendications">Mes revendications</a>
+      <a class="important" routerLink="mes-revendications">&gt; Gérer mes revendications</a>
     </div>
     <div class="separator"></div>
     <a routerLink="creer-revendication">Créer une revendication</a>

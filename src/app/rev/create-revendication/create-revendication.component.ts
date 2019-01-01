@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from 'src/app/user/user.service';
 
 import { RevService } from '../rev.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-revendication',
@@ -19,14 +20,16 @@ export class CreateRevendicationComponent implements OnInit {
     content: new FormControl(''),
   });
 
-  constructor(private rev: RevService) { }
+  constructor(private rev: RevService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
     console.log('create revendication');
-    this.rev.add(this.f.value.content);
+    this.rev.add(this.f.value.content).then(() => {
+      this.router.navigate([''])
+    });
   }
 
 }
