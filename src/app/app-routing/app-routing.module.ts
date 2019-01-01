@@ -9,9 +9,9 @@ import { WidgetModule } from '../widget/widget.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorComponent } from './error/error.component';
 import { CommonModule } from '@angular/common';
-import { TestRoutingModule } from '../test/test-routing/test-routing.module';
 import { RevModule } from '../rev/rev.module';
 import { UserModule } from '../user/user.module';
+import { TestModule } from '../test/test.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    TestRoutingModule,
+    TestModule,
     UserModule,
     RevModule,
     RouterModule.forRoot(routes), 
