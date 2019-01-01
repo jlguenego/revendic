@@ -1,0 +1,10 @@
+<form [formGroup]="f" (ngSubmit)="onSubmit()">
+  <label>
+    <div>Contenu de la revendication*</div>
+    <textarea name="content" formControlName="content"></textarea>
+  </label>
+
+  <div class="submit">
+    <button type="submit" class="submit">Créer votre revendication</button>
+  </div>
+</form>
