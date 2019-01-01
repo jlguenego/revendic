@@ -5,9 +5,10 @@ import { RevRoutingModule } from './rev-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateRevendicationComponent } from './create-revendication/create-revendication.component';
 import { RevendicationListComponent } from './revendication-list/revendication-list.component';
+import { ManageMyRevendicationComponent } from './routes/manage-my-revendication/manage-my-revendication.component';
 
 @NgModule({
-  declarations: [CreateRevendicationComponent, RevendicationListComponent],
+  declarations: [CreateRevendicationComponent, RevendicationListComponent, ManageMyRevendicationComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
