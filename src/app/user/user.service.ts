@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { FirebaseUtils } from './FirebaseUtils';
 import { Subject, Observable, Observer } from 'rxjs';
 import { UserPath } from './user-path';
-import { promised } from 'q';
 
 export interface UserData {
   displayName: string;
