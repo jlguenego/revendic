@@ -1,0 +1,10 @@
+<section>
+  <h1>Liste de mes revendications</h1>
+
+  <div class="frame">
+    <ul>
+      <li *ngFor="let rev of revendications | async"><b>{{rev.title}}</b> - {{rev.author}} - {{rev.createdAt.toDate() |
+        date : 'short'}}</li>
+    </ul>
+  </div>
+</section>

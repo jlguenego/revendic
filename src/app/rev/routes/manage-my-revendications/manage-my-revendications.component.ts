@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RevendicationRecord } from '../../revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
-  selector: 'app-manage-my-revendication',
-  templateUrl: './manage-my-revendication.component.html',
-  styleUrls: ['./manage-my-revendication.component.scss']
+  selector: 'app-manage-my-revendications',
+  templateUrl: './manage-my-revendications.component.html',
+  styleUrls: ['./manage-my-revendications.component.scss']
 })
-export class ManageMyRevendicationComponent implements OnInit {
+export class ManageMyRevendicationsComponent implements OnInit {
 
   revendications: Observable<RevendicationRecord[]>;
 
