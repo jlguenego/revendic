@@ -18,7 +18,7 @@ export class AuthGuardServiceGuard implements CanActivate {
       .then(() => true)
       .catch(() => {
         this.user.url = state.url;
-        this.router.navigate([this.user.path.login]);
+        this.router.navigate([this.user.routes.path.login]);
         return false;
       });
   }

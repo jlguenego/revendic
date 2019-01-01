@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserPath } from './user-path';
+import { UserRoutes } from './user-routes';
 import { LoginComponent } from './routes/login/login.component';
 import { CreateAccountComponent } from './routes/create-account/create-account.component';
 import { PasswordForgottenComponent } from './routes/password-forgotten/password-forgotten.component';
@@ -14,7 +14,7 @@ import { UpdatedAccountComponent } from './routes/updated-account/updated-accoun
 import { UpdatePasswordComponent } from './routes/update-password/update-password.component';
 import { PasswordUpdatedComponent } from './routes/password-updated/password-updated.component';
 
-const path = UserPath.path;
+const path = UserRoutes.path;
 
 const routes: Routes = [
   { path: path.login, component: LoginComponent },

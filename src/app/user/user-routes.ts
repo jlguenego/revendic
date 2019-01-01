@@ -1,4 +1,19 @@
-const path = {
+interface UserPath {
+    login: string;
+    createAccount: string;
+    passwordForgotten: string;
+    accountCreated: string;
+    resetMailSent: string;
+    manageAccount: string;
+    deletedAccount: string;
+    verifyAccount: string;
+    updatedAccount: string;
+    updatePassword: string;
+    passwordUpdated: string;
+}
+
+
+const path: UserPath = {
     login: 'connexion',
     createAccount: 'nouveau-compte',
     passwordForgotten: 'oubli-mot-de-passe',
@@ -13,12 +28,12 @@ const path = {
 };
 
 // generate the same objet with prefix '/'
-const url: { [key: string]: string } = Object.keys(path).reduce((acc, prop) => {
+const url = Object.keys(path).reduce((acc, prop) => {
     acc[prop] = '/' + path[prop];
     return acc;
-}, {}); 
+}, {}) as UserPath; 
 
-export class UserPath {
+export class UserRoutes {
     static path = path;
     static url = url;
 }

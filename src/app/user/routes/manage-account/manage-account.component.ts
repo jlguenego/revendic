@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { UserService } from '../../user.service';
-import { UserPath } from '../../user-path';
+import { UserRoutes } from '../../user-routes';
 
 
 
@@ -14,7 +14,7 @@ export class ManageAccountComponent implements OnInit {
 
   constructor(public user: UserService) { }
 
-  updatePasswordLink = UserPath.url.updatePassword;
+  updatePasswordLink = UserRoutes.url.updatePassword;
 
   ngOnInit() {
   }

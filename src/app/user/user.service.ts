@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { FirebaseUtils } from './FirebaseUtils';
 import { Subject, Observable, Observer } from 'rxjs';
-import { UserPath } from './user-path';
+import { UserRoutes } from './user-routes';
 
 export interface UserData {
   displayName: string;
@@ -19,7 +19,7 @@ export interface UserData {
 })
 export class UserService {
 
-  path = UserPath.path;
+  routes = UserRoutes;
 
   public static ERROR = {
     MAIL_ALREADY_IN_USE: 'mail-already-in-use',
@@ -119,6 +119,11 @@ export class UserService {
         this.router.navigate([url]);
       });
     };
+  }
+
+  navigateToAuth(url: string, nextUrl = '/') {
+    this.url = nextUrl;
+    this.router.navigate([url]);
   }
 
   login(email, password) {
