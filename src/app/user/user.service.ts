@@ -35,6 +35,7 @@ export class UserService {
   displayName = "";
   photoURL = null;
   email = "";
+  uid = "";
 
   subject: Subject<boolean>;
   private observer: Observer<boolean>;
@@ -58,12 +59,15 @@ export class UserService {
       this.displayName = user.displayName;
       this.email = user.email;
       this.photoURL = user.photoURL;
+      this.uid = user.uid;
+      console.log('this.uid connected', user.uid);
     } else {
       this.isLogged = false;
       this.isVerified = false;
       this.displayName = "";
       this.email = "";
       this.photoURL = null;
+      this.uid = "";
     }
     this.observer.next(true);
   }

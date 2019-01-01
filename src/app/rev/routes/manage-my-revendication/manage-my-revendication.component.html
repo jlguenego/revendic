@@ -1,3 +1,6 @@
-<p>
-  manage-my-revendication works!
-</p>
+<div class="frame">
+  <ul>
+    <li *ngFor="let rev of revendications | async"><b>{{rev.title}}</b> - {{rev.author}} - {{rev.createdAt.toDate() |
+      date : 'short'}}</li>
+  </ul>
+</div>

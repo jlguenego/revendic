@@ -3,7 +3,6 @@ import { RevendicationRecord } from './revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { UserService } from '../user/user.service';
-import { Router } from '@angular/router';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 
@@ -16,14 +15,16 @@ export class RevService {
     UNKNOWN: 0,
   }
 
-  constructor(private db: AngularFirestore, private user: UserService, private router: Router) { }
+  constructor(private db: AngularFirestore, private user: UserService) { }
 
   add(content: string) {
+    console.log('this.user.uid', this.user.uid);
     const timestamp = firestore.FieldValue.serverTimestamp();
     const revendicationRecord: RevendicationRecord = {
       title: content,
       author: this.user.displayName,
       createdAt: timestamp,
+      userid: this.user.uid,
     };
 
     return this.db.collection("revendications").add(revendicationRecord).then(docRef => {
