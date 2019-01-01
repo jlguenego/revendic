@@ -1,0 +1,13 @@
+main {
+    display: block;
+    margin: 0px auto;
+    width: 100%;
+    max-width: $maxWidth;
+    min-height: $body-height;
+    text-align: center;
+}
+
+section {
+    display: block;
+    text-align: left;
+}
