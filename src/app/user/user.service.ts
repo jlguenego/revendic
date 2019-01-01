@@ -29,6 +29,8 @@ export class UserService {
     BAD_PASSWORD: 'bad password',
   };
 
+  url = '/';
+
   isVerified = false;
   isLogged = undefined;
   displayName = "";
@@ -110,9 +112,19 @@ export class UserService {
     };
   };
 
-  login(email: string, password: string, nextUrl = "/") {
+  navigateToNextUrl() {
+    return () => {
+      return this.zone.run(() => {
+        const url = this.url;
+        this.url = '/';
+        this.router.navigate([url]);
+      });
+    };
+  }
+
+  login(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(this.navigateTo(nextUrl))
+      .then(this.navigateToNextUrl())
       .catch(error => {
         console.error('error', error);
         if (error.code === 'auth/wrong-password') {
@@ -125,14 +137,14 @@ export class UserService {
       });
   }
 
-  loginWithGoogle(nextUrl = "/") {
+  loginWithGoogle() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-      .then(this.navigateTo(nextUrl));
+      .then(this.navigateToNextUrl());
   }
 
-  loginWithFacebook(nextUrl = "/") {
+  loginWithFacebook() {
     return this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
-      .then(this.navigateTo(nextUrl))
+      .then(this.navigateToNextUrl())
       .catch(error => {
         return this.zone.run(() => {
           if (error.code === 'auth/account-exists-with-different-credential') {
@@ -146,7 +158,7 @@ export class UserService {
             }).then(() => {
               this.afAuth.auth.currentUser.linkWithPopup(new auth.FacebookAuthProvider())
             })
-              .then(this.navigateTo(nextUrl));
+              .then(this.navigateToNextUrl());
           }
           console.log('error', error);
           return Promise.reject();
@@ -154,8 +166,8 @@ export class UserService {
       });
   }
 
-  logout(nextUrl = "") {
-    return this.afAuth.auth.signOut().then(this.navigateTo(nextUrl));
+  logout() {
+    return this.afAuth.auth.signOut().then(this.navigateToNextUrl());
   }
 
   createAccount(obj: UserData) {
