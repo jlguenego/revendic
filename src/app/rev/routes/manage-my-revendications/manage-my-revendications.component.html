@@ -1,16 +1,18 @@
-<section>
-  <h1>Liste de mes revendications</h1>
+<main>
+  <section>
+    <h1>Liste de mes revendications</h1>
 
-  <div class="frame">
-    <ul>
-      <li *ngFor="let rev of revendications | async">
-        <b>{{rev.title}}</b>
-        - {{rev.author}} - {{rev.createdAt.toDate() |
-        date : 'short'}}
-        - {{rev.id}} -
-        <button (click)="delete(rev.id)">Effacer</button>
-        <button (click)="update(rev.id)">Editer</button>
-      </li>
-    </ul>
-  </div>
-</section>
+    <div class="frame">
+      <ul>
+        <li *ngFor="let rev of revendications | async">
+          <b>{{rev.title}}</b>
+          - {{rev.author}} - {{rev.createdAt.toDate() |
+          date : 'short'}}
+          - {{rev.id}} -
+          <button (click)="delete(rev.id)">Effacer</button>
+          <button (click)="update(rev.id)">Editer</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>

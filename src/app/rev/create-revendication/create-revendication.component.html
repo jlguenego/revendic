@@ -1,30 +1,34 @@
-<div class="frame">
-  <h1>Créer une nouvelle revendication</h1>
-  <form autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
-    <label>
-      <div>Titre*</div>
-      <input type="text" name="title" formControlName="title">
-    </label>
-    <label>
-      <div>Contenu*</div>
-      <textarea name="content" formControlName="content" placeholder="Entrer ici librement le contenu de votre revendication."></textarea>
-    </label>
-    <label>
-      <div>Categorie*</div>
-      <select formControlName="category">
-        <option value="travail">Travail</option>
-        <option value="politique">Politique</option>
-        <option value="autre">Autre</option>
-      </select>
-    </label>
-    <div class="error-block">
-      <div class="error-incorrect" *ngIf="errorCode !== undefined">
-        <span *ngIf="errorCode === ERROR.UNKNOWN">Erreur technique. Réessayer ultérieurement.</span>
-      </div>
-    </div>
+<main>
+  <section>
+    <div class="frame">
+      <h1>Créer une nouvelle revendication</h1>
+      <form autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
+        <label>
+          <div>Titre*</div>
+          <input type="text" name="title" formControlName="title">
+        </label>
+        <label>
+          <div>Contenu*</div>
+          <textarea name="content" formControlName="content" placeholder="Entrer ici librement le contenu de votre revendication."></textarea>
+        </label>
+        <label>
+          <div>Categorie*</div>
+          <select formControlName="category">
+            <option value="travail">Travail</option>
+            <option value="politique">Politique</option>
+            <option value="autre">Autre</option>
+          </select>
+        </label>
+        <div class="error-block">
+          <div class="error-incorrect" *ngIf="errorCode !== undefined">
+            <span *ngIf="errorCode === ERROR.UNKNOWN">Erreur technique. Réessayer ultérieurement.</span>
+          </div>
+        </div>
 
-    <div class="submit">
-      <button type="submit" class="submit">Créer votre revendication</button>
+        <div class="submit">
+          <button type="submit" class="submit">Créer votre revendication</button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
+  </section>
+</main>

@@ -2,11 +2,11 @@
     display: inline-block;
     width: 100%;
     max-width: 30rem;
+    margin: 0;
     padding: 0 0.5rem 1rem;
     text-align: left;
     border: 1px solid hsl(0, 0%, 90%);
     border-radius: $border-radius;
-    margin: 1rem;
 }
 
 .center {

@@ -47,7 +47,7 @@ export class RevendicationListComponent implements OnInit {
         console.log('start random');
         let revendications = [];
         const random = this.rev.random();
-        const filter = ref => ref.where("_random", "<=", random).orderBy("_random").limit(mx);
+        const filter = ref => ref.where("_random", "<=", random).orderBy("_random", "desc").limit(mx);
         this.db.collection<RevendicationRecord>(
           '/revendications', filter).valueChanges().subscribe(revs => {
             console.log('revs', revs);
@@ -57,7 +57,7 @@ export class RevendicationListComponent implements OnInit {
               return;
             }
             console.log('revendications.length', revendications.length);
-            const filter = ref => ref.where("_random", ">=", random).orderBy("_random").limit(mx - revendications.length);
+            const filter = ref => ref.where("_random", ">=", random).orderBy("_random", "asc").limit(mx - revendications.length);
             this.db.collection<RevendicationRecord>(
               '/revendications', filter).valueChanges().subscribe(revs => {
                 console.log('revs2', revs);
