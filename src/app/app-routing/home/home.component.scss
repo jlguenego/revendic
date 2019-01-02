@@ -30,12 +30,19 @@ main {
 
 .press {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    padding: 1rem;
-    img {
-        width: 20rem;
-        border: 1px solid black;
+    a {
+        
+        img {
+            width: 100%;
+            max-width: 20rem;
+            border: 1px solid black;
+        }
+        div {
+            padding: 0.5rem 0 2rem;
+        }
     }
 }
 
