@@ -1,27 +1,65 @@
 <main>
     <section class="jumbo">
-        <h1>Le bon coin de toutes les revendications.</h1>
-        <p>Et vous, quelle sera votre prochaine revendication ?</p>
-        <button class="important" routerLink="/creer-revendication">J'exprime ma revendication.</button>
+        <div class="margin">
+            <h1>Le bon coin de toutes les revendications.</h1>
+            <p>Et vous, quelle sera votre prochaine revendication ?</p>
+            <button class="important" routerLink="/creer-revendication">J'exprime ma revendication.</button>
+        </div>
+
     </section>
-    <section class="content">
-        <h2>Les 5 dernieres revendications</h2>
-        <app-revendication-list orderByUpdatedAt max="5"></app-revendication-list>
-        <h2>Les 3 revendications avec le plus de soutien</h2>
-        <app-revendication-list mostLiked max="3"></app-revendication-list>
-        <h2>2 revendications au hasard</h2>
-        <app-revendication-list random max="2"></app-revendication-list>
+    <section>
+        <div class="margin">
+            <h2>Les 5 dernieres revendications</h2>
+            <app-revendication-list orderByUpdatedAt max="5"></app-revendication-list>
+            <h2>Les 3 revendications avec le plus de soutien</h2>
+            <app-revendication-list mostLiked max="3"></app-revendication-list>
+            <h2>2 revendications au hasard</h2>
+            <app-revendication-list random max="2"></app-revendication-list>
+        </div>
     </section>
-    <section class="content gray">
-        <h1>Créez une petite annonce pour vos revendications</h1>
-        <p>
-            Pour vendre un objet, vous créez une petite annonce sur le Bon Coin. Pour revendiquer vous faites comment ?
-            Revendique est un site pour publier vos revendications : politique, travail, consommation, autre… Déposez
-            votre
-            « revendication ». Nous faisons tout pour les mettre en valeurs et vous faire entendre des décideurs
-            (syndicats, politiques, class-action, ONG, média, influents…), ou vous mettre en relation avec des membres
-            de
-            la communauté qui partagent les mêmes revendications que vous.
-        </p>
+    <section class="dark">
+        <div class="margin">
+            <h1>Créez une petite annonce pour vos revendications</h1>
+            <p>
+                Pour vendre un objet, vous créez une petite annonce sur le bon coin.
+                Pour revendiquer vous faites comment ?
+            </p>
+            <p>
+                Revendique.com est le site spécialisé pour <b>mettre en valeur</b> vos revendications&nbsp;: <br>
+                politique, travail, consommation, autre…
+            </p>
+            <p>
+                Nous faisons tout pour :
+            </p>
+            <ul>
+                <li>
+                    - <b>publier</b> vos revendications ;
+                </li>
+                <li>
+                    - <b>les faire connaître</b> des décideurs :
+                    syndicats, politiques, class-action, ONG, média, influents... ;
+                </li>
+                <li>
+                    - <b>vous mettre en relation</b> avec des membres de
+                    la communauté qui partagent les mêmes revendications que vous.
+                </li>
+            </ul>
+
+
+        </div>
+    </section>
+    <section>
+        <div class="margin">
+            <h1>Ils parlent de nous</h1>
+            <div class="center press">
+                <a href="#" onClick="MyWindow=window.open('https://podcast.rmc.fr/channel215/20181212_carrement_brunet_2.mp3','MyWindow','width=400,height=100'); return false;">
+                    <img src="https://rmc.bfmtv.com/static/nxt-rmc/evenement/radio-brunet/img/partage.jpg">
+                    <div>Interview d'un des membres fondateurs à la minute 21.</div>
+                </a>
+                <a target="_blank" href="https://www.lopinion.fr/edition/politique/gilet-jaunes-qu-attend-on-lancer-bon-coin-revendication-syndicale-169704">
+                    <img src="http://www.cbnews.fr/var/media/415/728x338/lopinion-414451.jpg">
+                </a>
+            </div>
+        </div>
     </section>
 </main>
