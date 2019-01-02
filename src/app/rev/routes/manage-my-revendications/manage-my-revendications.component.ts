@@ -31,11 +31,14 @@ export class ManageMyRevendicationsComponent implements OnInit {
   }
 
   delete(id) {
-    this.db.doc(`/revendications/${id}`).delete()
-      .then((obj) => { console.log(obj) })
-      .catch(
-        error => console.error('error', error)
-      );
+    const bool = window.confirm('Etes-vous sûr de vouloir effacer ce commentaire ?');
+    if (bool) {
+      this.db.doc(`/revendications/${id}`).delete()
+        .then((obj) => { console.log(obj) })
+        .catch(
+          error => console.error('error', error)
+        );
+    }
   }
 
 }
