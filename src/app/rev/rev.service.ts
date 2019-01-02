@@ -19,17 +19,16 @@ export class RevService {
   constructor(private db: AngularFirestore, private user: UserService) { }
 
   get(revId: string): Observable<RevendicationRecord> {
-    console.log('get', revId);
     return this.db.doc<RevendicationRecord>(`/revendications/${revId}`).valueChanges();
   }
 
   add(revendication: RevendicationRecord) {
-    console.log('this.user.uid', this.user.uid);
     const timestamp = firestore.FieldValue.serverTimestamp();
     const revendicationRecord: RevendicationRecord = {
       ...revendication,
       author: this.user.displayName,
       createdAt: timestamp,
+      updatedAt: timestamp,
       userid: this.user.uid,
     };
 

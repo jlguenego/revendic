@@ -19,11 +19,14 @@ export class RevendicationListComponent implements OnInit {
 
   ngOnInit() {
     const max = +this.max;
+    let filter = ref => ref.orderBy('updatedAt', 'desc');
+    if (max > 0) {
+      filter = ref => ref.orderBy('updatedAt', 'desc').limit(max);
+    }
 
     this.revendications = this.db.collection<RevendicationRecord>(
-      '/revendications', 
-      ref => ref.orderBy('createdAt', 'desc').limit(max)).valueChanges();
-      
+      '/revendications', filter).valueChanges();
+
 
 
   }

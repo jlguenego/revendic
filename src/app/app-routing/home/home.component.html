@@ -1,3 +1,13 @@
-<section class="jumbo">Le bon coin de toutes les revendications.</section>
-<section class="content">Voici la liste des dernières revendications</section>
-<app-revendication-list max="2"></app-revendication-list>
+<section class="jumbo">
+    <h1>Le bon coin de toutes les revendications.</h1>
+    <p>Et vous, quelle sera votre prochaine revendication ?</p>
+    <button class="important" routerLink="/creer-revendication">J'exprime ma revendication.</button>
+</section>
+<section class="content">
+    <h2>Les 5 dernieres revendications</h2>
+    <app-revendication-list orderByUpdatedAt max="5"></app-revendication-list>
+    <h2>Les 5 revendications avec le plus de soutien</h2>
+    <app-revendication-list mostLiked max="5"></app-revendication-list>
+    <h2>5 revendications au hasard</h2>
+    <app-revendication-list random max="5"></app-revendication-list>
+</section>

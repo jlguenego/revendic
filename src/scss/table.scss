@@ -1,0 +1,9 @@
+
+
+.table {
+    border: 1px solid gray;
+    padding: 0.2rem;
+    .row:nth-child(odd) {
+        background: hsl(0, 0%, 98%);
+    }
+}
