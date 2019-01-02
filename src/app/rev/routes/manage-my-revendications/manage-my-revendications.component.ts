@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { RevendicationRecord } from '../../revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-my-revendications',
@@ -14,7 +15,7 @@ export class ManageMyRevendicationsComponent implements OnInit {
 
   revendications: Observable<RevendicationRecord[]>;
 
-  constructor(private user: UserService, private db: AngularFirestore) { }
+  constructor(private user: UserService, private db: AngularFirestore, private router: Router) { }
 
   ngOnInit() {
     this.revendications = this.db.collection<RevendicationRecord>('/revendications', ref => ref.where("userid", "==", this.user.uid)
@@ -30,15 +31,19 @@ export class ManageMyRevendicationsComponent implements OnInit {
       );
   }
 
-  delete(id) {
+  delete(revId: string) {
     const bool = window.confirm('Etes-vous sûr de vouloir effacer ce commentaire ?');
     if (bool) {
-      this.db.doc(`/revendications/${id}`).delete()
+      this.db.doc(`/revendications/${revId}`).delete()
         .then((obj) => { console.log(obj) })
         .catch(
           error => console.error('error', error)
         );
     }
+  }
+
+  update(revId: string) {
+    this.router.navigate(['mes-revendications/edition/', revId]);
   }
 
 }

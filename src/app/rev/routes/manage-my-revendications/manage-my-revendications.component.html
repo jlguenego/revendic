@@ -3,8 +3,14 @@
 
   <div class="frame">
     <ul>
-      <li *ngFor="let rev of revendications | async"><b>{{rev.title}}</b> - {{rev.author}} - {{rev.createdAt.toDate() |
-        date : 'short'}} - {{rev.id}} - <button (click)="delete(rev.id)">Effacer</button></li>
+      <li *ngFor="let rev of revendications | async">
+        <b>{{rev.title}}</b>
+        - {{rev.author}} - {{rev.createdAt.toDate() |
+        date : 'short'}}
+        - {{rev.id}} -
+        <button (click)="delete(rev.id)">Effacer</button>
+        <button (click)="update(rev.id)">Editer</button>
+      </li>
     </ul>
   </div>
 </section>
