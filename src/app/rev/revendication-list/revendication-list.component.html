@@ -1,5 +1,9 @@
 <div class="frame">
   <ul>
-    <li *ngFor="let rev of revendications | async"><b>{{rev.title}}</b> - {{rev.author}} - {{rev.createdAt.toDate() | date  : 'short'}}</li>
+    <li *ngFor="let rev of revendications | async">
+      <div> <b>{{rev.title}}</b> - {{rev.category}} - {{rev.author}} - {{rev.createdAt.toDate() | date  : 'short'}}</div>
+     <div><i>{{rev.content}}</i></div>
+    
+    </li>
   </ul>
 </div>

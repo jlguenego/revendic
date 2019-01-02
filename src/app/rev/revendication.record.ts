@@ -5,4 +5,6 @@ export interface RevendicationRecord {
     createdAt?: any;
     updatedAt?: any;
     userid?: any;
+    category: any;
+    content: any;
 }
