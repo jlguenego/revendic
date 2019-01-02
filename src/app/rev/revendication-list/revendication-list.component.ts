@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { RevendicationRecord } from '../revendication.record';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
@@ -11,15 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class RevendicationListComponent implements OnInit {
 
+  @Input() max: string;
+
   revendications: Observable<RevendicationRecord[]>;
 
   constructor(private db: AngularFirestore) { }
 
   ngOnInit() {
+    const max = +this.max;
 
     this.revendications = this.db.collection<RevendicationRecord>(
       '/revendications', 
-      ref => ref.orderBy('createdAt', 'desc')).valueChanges();
+      ref => ref.orderBy('createdAt', 'desc').limit(max)).valueChanges();
       
 
 
