@@ -7,6 +7,8 @@ import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 import { Observable } from 'rxjs';
 
+const MAX_RANDOM = 1e9;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +19,10 @@ export class RevService {
   }
 
   constructor(private db: AngularFirestore, private user: UserService) { }
+
+  random() {
+    return Math.round(Math.random() * MAX_RANDOM);
+  }
 
   get(revId: string): Observable<RevendicationRecord> {
     return this.db.doc<RevendicationRecord>(`/revendications/${revId}`).valueChanges();
@@ -30,6 +36,7 @@ export class RevService {
       createdAt: timestamp,
       updatedAt: timestamp,
       userid: this.user.uid,
+      _random: this.random(),
     };
 
     return this.db.collection("revendications").add(revendicationRecord).then(docRef => {

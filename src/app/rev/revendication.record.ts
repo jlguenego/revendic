@@ -7,4 +7,5 @@ export interface RevendicationRecord {
     userid?: any;
     category?: any;
     content?: any;
+    _random?: any;
 }
