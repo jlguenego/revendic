@@ -43,7 +43,7 @@ export class ManageMyRevendicationsComponent implements OnInit {
   }
 
   update(revId: string) {
-    this.router.navigate(['mes-revendications/edition/', revId]);
+    this.router.navigate(['mes-revendications' , 'edition', revId]);
   }
 
 }

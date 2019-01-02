@@ -6,9 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateRevendicationComponent } from './create-revendication/create-revendication.component';
 import { RevendicationListComponent } from './revendication-list/revendication-list.component';
 import { ManageMyRevendicationsComponent } from './routes/manage-my-revendications/manage-my-revendications.component';
+import { UpdateRevendicationComponent } from './routes/update-revendication/update-revendication.component';
 
 @NgModule({
-  declarations: [CreateRevendicationComponent, RevendicationListComponent, ManageMyRevendicationsComponent],
+  declarations: [CreateRevendicationComponent, RevendicationListComponent, ManageMyRevendicationsComponent, UpdateRevendicationComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
