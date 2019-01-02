@@ -8,7 +8,7 @@
     
     <h2>Mise à jour des données personnelles</h2>
     <p *ngIf="isFromSocialLogin()">
-      Vous êtes connecté depuis {{user.providerId}}, du coup,
+      Vous êtes connecté depuis <b>{{user.provider}}</b>, du coup,
       pas besoin de mettre à jour les données personnelles de votre compte.
     </p>
     <app-update-account-form *ngIf="!isFromSocialLogin()"></app-update-account-form>

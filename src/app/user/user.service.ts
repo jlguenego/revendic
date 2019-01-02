@@ -36,6 +36,7 @@ export class UserService {
   photoURL = null;
   email = "";
   uid = "";
+  provider = "";
 
   subject: Subject<boolean>;
   private observer: Observer<boolean>;
@@ -60,6 +61,7 @@ export class UserService {
       this.email = user.email;
       this.photoURL = user.photoURL;
       this.uid = user.uid;
+      this.provider = user.providerData[0].providerId;
       console.log('this.uid connected', user.uid);
     } else {
       this.isLogged = false;
@@ -68,6 +70,7 @@ export class UserService {
       this.email = "";
       this.photoURL = null;
       this.uid = "";
+      this.provider = "";
     }
     this.observer.next(true);
   }
@@ -267,7 +270,7 @@ export class UserService {
 
   isFromSocialLogin() {
     return this.afAuth.auth.currentUser.providerData.reduce((acc, provider) => {
-      return acc && provider.providerId === 'password';
+      return acc && provider.providerId !== 'password';
     }, true);
   }
 
