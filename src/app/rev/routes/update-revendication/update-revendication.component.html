@@ -1,3 +1,20 @@
-<p>
-  update-revendication works!
-</p>
+<section>
+  <h1>Edition de ma revendication</h1>
+
+  <form autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
+    <label>
+      <div>Titre*</div>
+      <input name="title" formControlName="title">
+    </label>
+    <div class="error-block">
+      <div class="error-incorrect" *ngIf="errorCode !== undefined">
+        <span *ngIf="errorCode === ERROR.UNKNOWN">Erreur technique. Réessayer ultérieurement.</span>
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" >Mettre à jour les modifications</button>
+    </div>
+  </form>
+
+</section>

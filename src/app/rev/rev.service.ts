@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user/user.service';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,11 @@ export class RevService {
   }
 
   constructor(private db: AngularFirestore, private user: UserService) { }
+
+  get(revId: string): Observable<RevendicationRecord> {
+    console.log('get', revId);
+    return this.db.doc<RevendicationRecord>(`/revendications/${revId}`).valueChanges();
+  }
 
   add(content: string) {
     console.log('this.user.uid', this.user.uid);
