@@ -13,19 +13,28 @@ export class RevendicationListComponent implements OnInit {
 
   @Input() max: string;
 
+  @Input() orderByUpdatedAt;
+
   revendications: Observable<RevendicationRecord[]>;
 
   constructor(private db: AngularFirestore) { }
 
   ngOnInit() {
-    const max = +this.max;
-    let filter = ref => ref.orderBy('updatedAt', 'desc');
-    if (max > 0) {
-      filter = ref => ref.orderBy('updatedAt', 'desc').limit(max);
+    let filter = ref => ref.orderBy('createdAt', 'desc');
+    if (this.orderByUpdatedAt === '') {
+      console.log('orderByUpdatedAt');
+      filter = ref => ref.orderBy('updatedAt', 'desc');
     }
 
+    const max = +this.max;  
+    let limitFilter = filter;
+    if (max > 0) {
+      limitFilter = ref => filter(ref).limit(max);
+    }
+    
+
     this.revendications = this.db.collection<RevendicationRecord>(
-      '/revendications', filter).valueChanges();
+      '/revendications', limitFilter).valueChanges();
 
 
 
