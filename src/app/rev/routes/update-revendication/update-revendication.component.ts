@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RevService } from '../../rev.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-revendication',
@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpdateRevendicationComponent implements OnInit {
 
+  revId: string;
+
   ERROR = RevService.ERROR;
   errorCode: number = undefined;
 
@@ -17,12 +19,12 @@ export class UpdateRevendicationComponent implements OnInit {
     title: new FormControl(''),
   });
 
-  constructor(private rev: RevService, private route: ActivatedRoute) { }
+  constructor(private rev: RevService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const revId = params.id;
-      this.rev.get(revId).subscribe(revendication => {
+      this.revId = params.id;
+      this.rev.get(this.revId).subscribe(revendication => {
         console.log('revendication', revendication);
         this.f.setValue({
           title: revendication.title,
@@ -31,6 +33,11 @@ export class UpdateRevendicationComponent implements OnInit {
     });
   }
 
-  onSubmit() { }
+  onSubmit() { 
+    console.log('update revendication');
+    this.rev.update(this.revId, this.f.value).then(() => {
+      this.router.navigate(['mes-revendications'])
+    });
+  }
 
 }

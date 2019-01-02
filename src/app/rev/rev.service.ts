@@ -30,6 +30,7 @@ export class RevService {
       title: content,
       author: this.user.displayName,
       createdAt: timestamp,
+      updatedAt: timestamp,
       userid: this.user.uid,
     };
 
@@ -39,5 +40,18 @@ export class RevService {
       console.error("Error adding document: ", error);
       return Promise.reject(error);
     });
+  }
+
+  update(revId: string, revendication: RevendicationRecord): Promise<void> {
+    console.log('rev service update', revendication);
+    const timestamp = firestore.FieldValue.serverTimestamp();
+    const rev = { ...revendication };
+    delete rev.id;
+    rev.updatedAt = timestamp;
+    
+
+    const doc = this.db.collection("revendications").doc(revId);
+    console.log('doc', doc);
+    return doc.update(rev)
   }
 }
