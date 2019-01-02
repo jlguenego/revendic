@@ -17,7 +17,9 @@ export class CreateRevendicationComponent implements OnInit {
   errorCode: number = undefined;
 
   f = new FormGroup({
+    title: new FormControl(''),
     content: new FormControl(''),
+    categorie: new FormControl(''),
   });
 
   constructor(private rev: RevService, private router: Router) { }
@@ -27,7 +29,7 @@ export class CreateRevendicationComponent implements OnInit {
 
   onSubmit() {
     console.log('create revendication');
-    this.rev.add(this.f.value.content).then(() => {
+    this.rev.add(this.f.value).then(() => {
       this.router.navigate([''])
     });
   }

@@ -23,14 +23,13 @@ export class RevService {
     return this.db.doc<RevendicationRecord>(`/revendications/${revId}`).valueChanges();
   }
 
-  add(content: string) {
+  add(revendication: RevendicationRecord) {
     console.log('this.user.uid', this.user.uid);
     const timestamp = firestore.FieldValue.serverTimestamp();
     const revendicationRecord: RevendicationRecord = {
-      title: content,
+      ...revendication,
       author: this.user.displayName,
       createdAt: timestamp,
-      updatedAt: timestamp,
       userid: this.user.uid,
     };
 
