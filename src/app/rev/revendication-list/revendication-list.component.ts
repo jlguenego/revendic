@@ -3,7 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RevendicationRecord } from '../revendication.record';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { randomBytes } from 'crypto';
 import { RevService } from '../rev.service';
 
 @Component({
@@ -54,6 +53,7 @@ export class RevendicationListComponent implements OnInit {
             console.log('revs', revs);
             revendications.push(...revs);
             if (revendications.length >= mx) {
+              observer.next(revendications);
               return;
             }
             console.log('revendications.length', revendications.length);
