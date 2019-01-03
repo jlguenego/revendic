@@ -5,6 +5,7 @@ import { RevendicationRecord } from '../../revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
+import { AngularFirestoreService } from 'src/app/angular-firestore.service';
 
 @Component({
   selector: 'app-manage-my-revendications',
@@ -15,19 +16,17 @@ export class ManageMyRevendicationsComponent implements OnInit {
 
   revendications: Observable<RevendicationRecord[]>;
 
-  constructor(private user: UserService, private db: AngularFirestore, private router: Router) { }
+  constructor(
+    private user: UserService,
+    private db: AngularFirestore,
+    private afs: AngularFirestoreService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.revendications = this.db.collection<RevendicationRecord>('/revendications', ref => ref.where("userid", "==", this.user.uid)
-      .orderBy('createdAt', 'desc')).snapshotChanges().pipe(
-        map(changes => {
-          return changes.map(change => {
-            const data = change.payload.doc.data();
-            const id = change.payload.doc.id;
-            return { id, ...data };
-          });
-        })
-      );
+    this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
+      '/revendications',
+      ref => ref.where("userid", "==", this.user.uid)
+        .orderBy('createdAt', 'desc')));
   }
 
   delete(revId: string) {
