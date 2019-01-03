@@ -10,6 +10,7 @@ interface UserPath {
     updatedAccount: string;
     updatePassword: string;
     passwordUpdated: string;
+    accountNotActivated: string;
 }
 
 
@@ -25,6 +26,7 @@ const path: UserPath = {
     updatedAccount: 'compte-mis-a-jour',
     updatePassword: 'modification-mot-de-passe',
     passwordUpdated: 'mot-de-passe-change-avec-succes',
+    accountNotActivated: 'compte-non-active',
 };
 
 // generate the same objet with prefix '/'

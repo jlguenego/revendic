@@ -16,6 +16,7 @@ import { VerifyAccountComponent } from './routes/verify-account/verify-account.c
 import { UpdatedAccountComponent } from './routes/updated-account/updated-account.component';
 import { UpdatePasswordComponent } from './routes/update-password/update-password.component';
 import { PasswordUpdatedComponent } from './routes/password-updated/password-updated.component';
+import { AccountNotActivatedComponent } from './routes/account-not-activated/account-not-activated.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PasswordUpdatedComponent } from './routes/password-updated/password-upd
     VerifyAccountComponent,
     UpdatedAccountComponent,
     UpdatePasswordComponent,
-    PasswordUpdatedComponent
+    PasswordUpdatedComponent,
+    AccountNotActivatedComponent
   ],
   imports: [
     CommonModule,

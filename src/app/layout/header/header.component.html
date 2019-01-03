@@ -20,14 +20,15 @@
           <div class="display-name">{{user.displayName}} </div>
         </div>
       </div>
-      <div *ngIf="!user.isVerified" class="center section activation">
-        <button class="important" (click)="user.activate()">Activer le compte</button>
-      </div>
+
       <div class="buttons">
         <button class="secondary" routerLink="/mon-compte">Mon profile</button>
         <button class="secondary" (click)="user.logout()">Déconnexion</button>
       </div>
-      <div class="center section">
+      <div *ngIf="!user.isVerified" class="center section activation">
+        <button class="important" (click)="user.activate()">Activer le compte</button>
+      </div>
+      <div *ngIf="user.isVerified" class="center section">
         <button routerLink="/mes-revendications">Gérer mes revendications</button>
       </div>
     </app-popup>

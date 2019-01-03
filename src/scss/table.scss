@@ -1,9 +1,16 @@
-
-
 .table {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
     border: 1px solid gray;
     padding: 0.2rem;
-    .row:nth-child(odd) {
-        background: hsl(0, 0%, 98%);
+    .row {
+        display: block;
+        padding: 0.2rem;
+        &:nth-child(odd) {
+            background: hsl(0, 0%, 98%);
+        }
     }
 }

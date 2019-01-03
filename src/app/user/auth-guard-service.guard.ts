@@ -15,7 +15,13 @@ export class AuthGuardServiceGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     return this.user.isConnected()
-      .then(() => true)
+      .then(() => {
+        if (!this.user.isVerified) {
+          this.router.navigate([this.user.routes.path.accountNotActivated]);
+          return false;
+        }
+        return true;
+      })
       .catch(() => {
         this.user.url = state.url;
         this.router.navigate([this.user.routes.path.login]);

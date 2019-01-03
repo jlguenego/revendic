@@ -13,6 +13,7 @@ import { VerifyAccountComponent } from './routes/verify-account/verify-account.c
 import { UpdatedAccountComponent } from './routes/updated-account/updated-account.component';
 import { UpdatePasswordComponent } from './routes/update-password/update-password.component';
 import { PasswordUpdatedComponent } from './routes/password-updated/password-updated.component';
+import { AccountNotActivatedComponent } from './routes/account-not-activated/account-not-activated.component';
 
 const path = UserRoutes.path;
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'compte-mis-a-jour', component: UpdatedAccountComponent },
   { path: path.updatePassword, component: UpdatePasswordComponent },
   { path: path.passwordUpdated, component: PasswordUpdatedComponent },
+  { path: path.accountNotActivated, component: AccountNotActivatedComponent },
 ];
 
 
