@@ -12,12 +12,11 @@ export class AngularFirestoreService {
 
   query<T>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
     return collection.snapshotChanges().pipe(
-      map((changes: DocumentChangeAction<T>[]) => {
-        console.log('changes', changes);
+      map((changes) => {
         return changes.map(change => {
           const data = change.payload.doc.data();
           const id = change.payload.doc.id;
-          return { id, ...data };
+          return { id, ...data as unknown } as T;
         });
       })
     );
@@ -26,15 +25,12 @@ export class AngularFirestoreService {
   doc<T>(collection, id) {
     return this.db.collection(collection).doc(id).snapshotChanges().pipe(
       map(change => {
-        console.log('change', change);
         if (change.payload.exists === false) {
           return undefined;
         }
         const data = change.payload.data();
         const id = change.payload.id;
-        console.log('id', id);
-        console.log('data', data);
-        return { id, ...data };
+        return { id, ...data as unknown } as T;
       })
     );
   }

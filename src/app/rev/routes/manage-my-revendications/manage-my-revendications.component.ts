@@ -21,7 +21,6 @@ export class ManageMyRevendicationsComponent implements OnInit {
     this.revendications = this.db.collection<RevendicationRecord>('/revendications', ref => ref.where("userid", "==", this.user.uid)
       .orderBy('createdAt', 'desc')).snapshotChanges().pipe(
         map(changes => {
-          console.log('changes', changes);
           return changes.map(change => {
             const data = change.payload.doc.data();
             const id = change.payload.doc.id;
@@ -35,15 +34,13 @@ export class ManageMyRevendicationsComponent implements OnInit {
     const bool = window.confirm('Etes-vous sûr de vouloir effacer cette revendication ?');
     if (bool) {
       this.db.doc(`/revendications/${revId}`).delete()
-        .then((obj) => { console.log(obj) })
-        .catch(
-          error => console.error('error', error)
-        );
+        .then(obj => { })
+        .catch(error => console.error('error', error));
     }
   }
 
   update(revId: string) {
-    this.router.navigate(['mes-revendications' , 'edition', revId]);
+    this.router.navigate(['mes-revendications', 'edition', revId]);
   }
 
 }

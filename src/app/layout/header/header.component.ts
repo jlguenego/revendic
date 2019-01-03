@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
-    console.log('refresh');
     this.user.refresh();
   }
 

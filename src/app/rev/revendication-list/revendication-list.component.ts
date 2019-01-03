@@ -39,34 +39,27 @@ export class RevendicationListComponent implements OnInit {
     }
 
     if (this.orderByUpdatedAt === '') {
-      console.log('orderByUpdatedAt');
       const filter = ref => ref.orderBy('updatedAt', 'desc');
       this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
         '/revendications', pipeLimit(filter)));
       // } else if (this.mostLiked === '') {
-      //   console.log('mostLiked');
       //   this.revendications = this.db.
     } else if (this.random === '') {
-      console.log('random');
       const mx = max || 5;
       this.revendications = Observable.create(observer => {
-        console.log('start random');
         let revendications = [];
         const random = this.rev.random();
         const filter = ref => ref.where("_random", "<=", random).orderBy("_random", "desc").limit(mx);
         this.afs.query(this.db.collection<RevendicationRecord>(
           '/revendications', filter)).subscribe(revs => {
-            console.log('revs', revs);
             revendications.push(...revs);
             if (revendications.length >= mx) {
               observer.next(revendications);
               return;
             }
-            console.log('revendications.length', revendications.length);
             const filter = ref => ref.where("_random", ">=", random).orderBy("_random", "asc").limit(mx - revendications.length);
             this.afs.query(this.db.collection<RevendicationRecord>(
               '/revendications', filter)).subscribe(revs => {
-                console.log('revs2', revs);
                 revendications.push(...revs);
                 observer.next(revendications);
               });
@@ -74,7 +67,6 @@ export class RevendicationListComponent implements OnInit {
 
       });
     } else {
-      console.log('default');
       const filter = ref => ref.orderBy('createdAt', 'desc');
       this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
         '/revendications', pipeLimit(filter)));

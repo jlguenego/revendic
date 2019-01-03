@@ -27,15 +27,12 @@ export class RevendicationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.afs.doc<RevendicationRecord>('/revendications', params.id).subscribe(r => {
-        console.log('r', r);
         this.r = r;
         if (r === undefined) {
           return;
         }
-        this.createdAt = this.r.createdAt.toDate();
         this.isMyRevendication = this.user.uid === this.r.userid;
         this.editLink = `/mes-revendications/edition/${r.id}`;
-
       });
     });
   }
@@ -45,7 +42,6 @@ export class RevendicationComponent implements OnInit {
     if (bool) {
       this.db.doc(`/revendications/${this.r.id}`).delete()
         .then((obj) => {
-          console.log(obj);
           this.router.navigate(['/'])
         })
         .catch(

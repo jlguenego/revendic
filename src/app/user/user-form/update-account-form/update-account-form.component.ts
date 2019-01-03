@@ -25,7 +25,6 @@ export class UpdateAccountFormComponent implements OnInit {
   constructor(public user: UserService) { }
 
   ngOnInit() {
-    console.log('this.user', this.user);
     this.user.subject.subscribe(() => {
       this.f.setValue({
         displayName: this.user.displayName,
@@ -36,16 +35,12 @@ export class UpdateAccountFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('account update');
     this.errorCode = undefined;
 
     this.user.testURL(this.f.value.photoURL).catch(error => {
-      console.log('set to default');
       this.f.controls['photoURL'].setValue('/assets/user.svg');
-      console.log('new photo: ', this.f.value.photoURL);
     }).then(() => this.user.updateAccount(this.f.value)
     ).catch(errorCode => {
-      console.log('error2', errorCode);
       this.errorCode = errorCode;
     });
   }

@@ -29,7 +29,6 @@ export class CreateAccountFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('account creation');
     this.errorCode = undefined;
     const userData: UserData = {
       displayName: this.f.value.firstname + ' ' + this.f.value.lastname,
@@ -40,7 +39,6 @@ export class CreateAccountFormComponent implements OnInit {
 
     this.user.createAccount(userData).catch(
       errorCode => {
-        console.log('error2', errorCode);
         this.errorCode = errorCode;
       });
   }

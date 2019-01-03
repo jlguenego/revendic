@@ -25,7 +25,6 @@ export class UpdateRevendicationComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.revId = params.id;
       this.rev.get(this.revId).subscribe(revendication => {
-        console.log('revendication', revendication);
         this.f.setValue({
           title: revendication.title,
         });
@@ -34,7 +33,6 @@ export class UpdateRevendicationComponent implements OnInit {
   }
 
   onSubmit() { 
-    console.log('update revendication');
     this.rev.update(this.revId, this.f.value).then(() => {
       this.router.navigate(['mes-revendications'])
     });

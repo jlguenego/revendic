@@ -26,7 +26,6 @@ export class LoginFormComponent implements OnInit {
   onSubmit() {
     this.errorCode = undefined;
     this.user.login(this.f.value.email, this.f.value.password).catch(errorCode => {
-      console.log('error2', errorCode);
       this.errorCode = errorCode;
     });
   }

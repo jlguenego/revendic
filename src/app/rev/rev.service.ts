@@ -40,7 +40,6 @@ export class RevService {
     };
 
     return this.db.collection("revendications").add(revendicationRecord).then(docRef => {
-      console.log("Document written with ID: ", docRef.id);
     }).catch(error => {
       console.error("Error adding document: ", error);
       return Promise.reject(error);
@@ -48,7 +47,6 @@ export class RevService {
   }
 
   update(revId: string, revendication: RevendicationRecord): Promise<void> {
-    console.log('rev service update', revendication);
     const timestamp = firestore.FieldValue.serverTimestamp();
     const rev = { ...revendication };
     delete rev.id;
@@ -56,7 +54,6 @@ export class RevService {
     
 
     const doc = this.db.collection("revendications").doc(revId);
-    console.log('doc', doc);
     return doc.update(rev)
   }
 }
