@@ -73,18 +73,12 @@ export class RevendicationListComponent implements OnInit {
           });
 
       });
-
-
-
-
-
     } else {
       console.log('default');
       const filter = ref => ref.orderBy('createdAt', 'desc');
       this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
         '/revendications', pipeLimit(filter)));
     }
-
   }
 
   get(revId: string, revTitle: string = "") {
@@ -94,12 +88,8 @@ export class RevendicationListComponent implements OnInit {
 }
 
 function toNiceUrlTitle(str: string): string {
-  console.log('str', str);
-  str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-  console.log('str', str);
-  str = str.replace(/ /g, '-');
-  console.log('str', str);
-  str = str.toLocaleLowerCase();
-  console.log('str', str);
-  return str;
+  return str.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, '-')
+    .toLocaleLowerCase();
 }
