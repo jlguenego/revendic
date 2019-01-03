@@ -22,7 +22,6 @@ export class DialogComponent implements OnInit {
     if (check && $event.currentTarget !== $event.target) {
       return;
     }
-    console.log('onClose');
     this.close.emit();
   }
 

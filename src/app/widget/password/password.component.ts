@@ -26,14 +26,11 @@ export class PasswordComponent extends AbstractValueAccessor {
   }
 
   onFocus() {
-    console.log('focus');
     this.havingFocus = true;
   }
   onBlur() {
-    console.log('blur');
     this.havingFocus = false;
     this.onTouched();
-    console.log('touched');
   }
 
 }

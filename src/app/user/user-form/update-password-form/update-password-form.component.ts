@@ -29,7 +29,6 @@ export class UpdatePasswordFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
     this.user.updatePassword(this.f.value.password, this.f.value.newPassword);
   }
 

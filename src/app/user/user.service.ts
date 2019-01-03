@@ -45,7 +45,6 @@ export class UserService {
     const observable = Observable.create(observer => {
       this.observer = observer;
       this.afAuth.user.subscribe(user => {
-        console.log('user', user);
         this.sync(user);
       });
     });
@@ -62,7 +61,6 @@ export class UserService {
       this.photoURL = user.photoURL;
       this.uid = user.uid;
       this.provider = user.providerData[0].providerId;
-      console.log('this.uid connected', user.uid);
     } else {
       this.isLogged = false;
       this.isVerified = false;
@@ -106,7 +104,6 @@ export class UserService {
   }
 
   navigateTo(path: string, data?: any) {
-    console.log('navigate to', path);
     return () => {
       return this.zone.run(() => {
         if (data) {
@@ -161,7 +158,6 @@ export class UserService {
           if (error.code === 'auth/account-exists-with-different-credential') {
             return this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
               return this.zone.run(() => {
-                console.log('providers', providers);
                 const provider = new auth.GoogleAuthProvider();
                 provider.setCustomParameters({ login_hint: error.email });
                 return this.afAuth.auth.signInWithPopup(provider)
@@ -171,7 +167,6 @@ export class UserService {
             })
               .then(this.navigateToNextUrl());
           }
-          console.log('error', error);
           return Promise.reject();
         });
       });
@@ -224,20 +219,17 @@ export class UserService {
     this.afAuth.auth.currentUser.delete()
       .then(() => this.router.navigate(['compte-efface']))
       .catch(error => {
-        console.log('error', error);
         const message = FirebaseUtils.getLocaleMessage(error);
         this.router.navigate(['erreur', { message }])
       });
   }
 
   updatePassword(password: string, newPassword: string) {
-    console.log('update password');
     Promise.resolve()
       .then(() => {
         if (this.isFromSocialLogin()) {
           const credential = auth.EmailAuthProvider.credential(this.email, newPassword);
           return this.afAuth.auth.currentUser.linkAndRetrieveDataWithCredential(credential).then(() => {
-            console.log('user created password');
           });
         }
         return this.afAuth.auth.signInWithEmailAndPassword(this.email, password).then(() => {
@@ -246,7 +238,7 @@ export class UserService {
       })
       .then(this.navigateTo('/mot-de-passe-change-avec-succes'))
       .catch(error => {
-        console.log('error', error);
+        console.error('error', error);
         const message = FirebaseUtils.getLocaleMessage(error);
         this.router.navigate(['erreur', { message }])
       });
