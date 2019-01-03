@@ -32,7 +32,7 @@ export class ManageMyRevendicationsComponent implements OnInit {
   }
 
   delete(revId: string) {
-    const bool = window.confirm('Etes-vous sûr de vouloir effacer ce commentaire ?');
+    const bool = window.confirm('Etes-vous sûr de vouloir effacer cette revendication ?');
     if (bool) {
       this.db.doc(`/revendications/${revId}`).delete()
         .then((obj) => { console.log(obj) })

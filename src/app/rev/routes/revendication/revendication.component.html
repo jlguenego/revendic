@@ -1,0 +1,17 @@
+<main>
+  <section *ngIf="r">
+    <h1>Revendication: {{r.title}}</h1>
+
+    
+    <p>{{r.author}} - publié le {{createdAt | date : 'medium'}}
+      <span *ngIf="isMyRevendication"><button [routerLink]="editLink">Editer</button><button (click)="delete()">Supprimer</button></span>
+    </p>
+
+    <h2>Contenu</h2>
+
+    <p>{{r.content}}</p>
+
+    <h2>Catégories</h2>
+    {{r.category}}
+  </section>
+</main>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,13 +12,29 @@ export class AngularFirestoreService {
 
   query<T>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
     return collection.snapshotChanges().pipe(
-      map(changes => {
+      map((changes: DocumentChangeAction<T>[]) => {
         console.log('changes', changes);
         return changes.map(change => {
           const data = change.payload.doc.data();
           const id = change.payload.doc.id;
           return { id, ...data };
         });
+      })
+    );
+  }
+
+  doc<T>(collection, id) {
+    return this.db.collection(collection).doc(id).snapshotChanges().pipe(
+      map(change => {
+        console.log('change', change);
+        if (change.payload.exists === false) {
+          return undefined;
+        }
+        const data = change.payload.data();
+        const id = change.payload.id;
+        console.log('id', id);
+        console.log('data', data);
+        return { id, ...data };
       })
     );
   }

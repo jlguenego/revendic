@@ -4,7 +4,7 @@ import { CreateRevendicationComponent } from './create-revendication/create-reve
 import { AuthGuardServiceGuard } from '../user/auth-guard-service.guard';
 import { ManageMyRevendicationsComponent } from './routes/manage-my-revendications/manage-my-revendications.component';
 import { UpdateRevendicationComponent } from './routes/update-revendication/update-revendication.component';
-import { RevendicationComponent } from './revendication/revendication.component';
+import { RevendicationComponent } from './routes/revendication/revendication.component';
 
 const routes: Routes = [
   { path: 'creer-revendication', component: CreateRevendicationComponent, canActivate: [AuthGuardServiceGuard] },
