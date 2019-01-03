@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RevService } from '../../rev.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-update-revendication',
@@ -24,7 +25,7 @@ export class UpdateRevendicationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.revId = params.id;
-      this.rev.get(this.revId).subscribe(revendication => {
+      this.rev.get(this.revId).pipe(take(1)).subscribe(revendication => {
         this.f.setValue({
           title: revendication.title,
         });
