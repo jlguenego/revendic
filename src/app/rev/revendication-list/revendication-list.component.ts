@@ -81,10 +81,9 @@ export class RevendicationListComponent implements OnInit {
     }
   }
 
-  get(revId: string, revTitle: string = "") {
-    this.router.navigate(['revendications', revId, toNiceUrlTitle(revTitle)])
+  getLink(r: RevendicationRecord) {
+    return `/revendications/${r.id}/${toNiceUrlTitle(r.title)}`
   }
-
 }
 
 function toNiceUrlTitle(str: string): string {

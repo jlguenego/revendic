@@ -1,9 +1,10 @@
 <div>
   <ul class="table">
-    <li class="row" *ngFor="let r of revendications | async" (click)="get(r.id, r.title)">
-      <div> <b>{{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date  : 'short'}}</div>
-     <div><i>{{r.content}}</i></div>
-    
+    <li class="row" *ngFor="let r of revendications | async">
+      <a [routerLink]="getLink(r)">
+        <div> <b>{{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
+        <div><i>{{r.content}}</i></div>
+      </a>
     </li>
   </ul>
 </div>
