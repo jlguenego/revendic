@@ -1,6 +1,7 @@
 import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
 import { timer } from 'rxjs';
+import { NeedAccountDialogPageComponent } from './pages/need-account-dialog-page/need-account-dialog-page.component';
 
 export interface PageComponent {
   title: string;
@@ -13,12 +14,8 @@ export class DialogService {
 
   component: DialogComponent;
 
-  isVisible = false;
-
   pages;
   currentPage;
-
-  title: string = "xxx";
 
   constructor() { }
 
@@ -32,18 +29,20 @@ export class DialogService {
   }
 
   show(page: string, data = {}) {
-    this.isVisible = true;
-    this.component.cd.markForCheck();
-    timer(2000).subscribe(() => {
+    this.component.isVisible = true;
+    // needs digestion of isVisible. so we use the timer.
+    timer(0).subscribe(() => {
       this.currentPage = this.pages[page];
       const componentRef = this.component.loadComponent(this.currentPage);
-      this.title = (<PageComponent>componentRef.instance).title;
+      console.log('componentRef', componentRef);
+      const pageComponent = (<PageComponent>componentRef.instance);
+      this.component.title = pageComponent.title;
     });
 
   }
 
   close() {
-    this.isVisible = false;
+    this.component.isVisible = false;
   }
 
 

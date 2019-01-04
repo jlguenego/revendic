@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RevService } from 'src/app/rev/rev.service';
 
 @Component({
   selector: 'app-need-account-dialog-page',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NeedAccountDialogPageComponent implements OnInit {
 
-  title: 'Et si vous créez un compte citoyen ?';
+  title = 'Et si vous obteniez un compte citoyen ?';
 
-  constructor() { }
+  constructor(public rev: RevService) { }
 
   ngOnInit() {
+    console.log('random number', this.rev.random());
   }
 
 }

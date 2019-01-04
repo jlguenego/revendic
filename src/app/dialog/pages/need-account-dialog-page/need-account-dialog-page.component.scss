@@ -1,0 +1,11 @@
+.actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    button {
+        margin-top: 1rem;
+    }
+}

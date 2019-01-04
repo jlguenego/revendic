@@ -22,6 +22,9 @@ export class DialogComponent implements OnInit {
     this.dialog.init(val);
   }
 
+  title = "please set a title";
+  isVisible = false;
+
   faTimes = faTimes;
   constructor(
     public dialog: DialogService,

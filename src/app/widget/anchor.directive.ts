@@ -10,7 +10,6 @@ import { Directive, ViewContainerRef } from '@angular/core';
 export class AnchorDirective {
 
   constructor(public viewContainerRef: ViewContainerRef) { 
-    console.log('directive appAnchor called');
   }
 
 }
