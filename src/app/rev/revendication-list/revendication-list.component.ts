@@ -76,6 +76,14 @@ export class RevendicationListComponent implements OnInit {
   getLink(r: RevendicationRecord) {
     return `/revendications/${r.id}/${toNiceUrlTitle(r.title)}`
   }
+
+  like() {
+    console.log('like');
+  }
+
+  share() {
+    console.log('share');
+  }
 }
 
 function toNiceUrlTitle(str: string): string {

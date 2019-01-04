@@ -1,43 +1,8 @@
 <main>
   <section>
     <h1>Créer une nouvelle revendication</h1>
-    <form [formGroup]="question" (ngSubmit)="onSubmit()">
-      <label>
-        <div>Choisissez votre mode :</div>
-        <select name="mode" formControlName="mode">
-          <option value="debutant">Débutant</option>
-          <option value="expert">Expert</option>
-        </select>
-      </label>
-      <label *ngIf="question.value.mode === 'debutant'">
-        <div>Votre revendication concerne :</div>
-        <select name="category" formControlName="category">
-          <option value="politique">Politique</option>
-          <option value="travail">Travail</option>
-          <option value="autre">Autre</option>
-        </select>
-      </label>
-      <label *ngIf="question.value.mode === 'debutant' && question.value.category === 'travail'">
-        <div>Votre statut :</div>
-        <select name="category2" formControlName="category2">
-          <option value="independant">Independant</option>
-          <option value="salarie">Salarié</option>
-          <option value="chomeur">Chomeur</option>
-          <option value="employeur">Employeur</option>
-        </select>
-      </label>
-      <label *ngIf="question.value.mode === 'debutant' && question.value.category === 'politique'">
-        <div>Domaine politique :</div>
-        <select name="category2" formControlName="category2">
-          <option value="ecologie">Ecologie</option>
-          <option value="fiscalite">Fiscalité</option>
-          <option value="institution">Institution</option>
-          <option value="justice">Justice</option>
-        </select>
-      </label>
-    </form>
-    <hr>
-    <form *ngIf="showForm" autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
+    
+    <form [formGroup]="f" (ngSubmit)="onSubmit()">
       <label>
         <div>Titre*</div>
         <input type="text" name="title" formControlName="title">

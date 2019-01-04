@@ -5,6 +5,7 @@
         <div> <b>{{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
         <div><i>{{r.content}}</i></div>
       </a>
+      <div><a (click)="like()" >Je soutiens</a> - <a (click)="share()" >Je partage</a></div>
     </li>
   </ul>
 </div>
