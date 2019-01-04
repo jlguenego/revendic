@@ -66,7 +66,7 @@ export class RevService {
   like(r: RevendicationRecord) {
     console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
-      this.db.collection<LikeRecord>(`likes/${r.id}/revendications/`).doc(this.user.uid).set({
+      this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: 1
       }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
 
@@ -78,7 +78,7 @@ export class RevService {
   dislike(r: RevendicationRecord) {
     console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
-      this.db.collection<LikeRecord>(`likes/${r.id}/revendications/`).doc(this.user.uid).set({
+      this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: -1
       }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
 
