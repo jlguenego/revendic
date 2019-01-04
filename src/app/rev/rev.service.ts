@@ -6,6 +6,8 @@ import { UserService } from '../user/user.service';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { LikeRecord } from './like.record';
+import { errorFn } from '../common/utils';
 
 const MAX_RANDOM = 1e9;
 
@@ -51,7 +53,7 @@ export class RevService {
     const rev = { ...revendication };
     delete rev.id;
     rev.updatedAt = timestamp;
-    
+
 
     const doc = this.db.collection("revendications").doc(revId);
     return doc.update(rev)
@@ -59,6 +61,23 @@ export class RevService {
 
   like(r: RevendicationRecord) {
     console.log('like2');
+    this.user.isConnected().then(() => {
+      this.db.collection<LikeRecord>("like").add({
+        userid: this.user.uid,
+        revid: r.id,
+        type: 'like'
+      }).catch(errorFn);
+
+    }).catch(() => { 
+      // this.dialog.show('needConnectToLike');
+    });
+
+  }
+
+  dislike(r: RevendicationRecord) {
+    console.log('like2');
+    this.db.collection<LikeRecord>("like").add({ userid: this.user.uid, revid: r.id, type: 'dislike' })
+      .catch(errorFn);
   }
 
   share(r: RevendicationRecord) {

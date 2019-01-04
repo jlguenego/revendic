@@ -82,6 +82,11 @@ export class RevendicationListComponent implements OnInit {
     this.rev.like(r);
   }
 
+  dislike(r: RevendicationRecord) {
+    console.log('dislike');
+    this.rev.dislike(r);
+  }
+
   share(r: RevendicationRecord) {
     console.log('share');
     this.rev.share(r);
