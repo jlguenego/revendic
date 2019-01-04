@@ -66,22 +66,25 @@ export class RevService {
   like(r: RevendicationRecord) {
     console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
-      this.db.collection<LikeRecord>("likes").add({
-        userid: this.user.uid,
-        revid: r.id,
-        type: 'like'
-      }).catch(errorFn);
+      this.db.collection<LikeRecord>(`likes/${r.id}/revendications/`).doc(this.user.uid).set({
+        like: 1
+      }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
 
     }).catch(() => {
-      this.dialog.show('needAccount', { operation: 'like'});
+      this.dialog.show('needAccount', { operation: 'like' });
     });
-
   }
 
   dislike(r: RevendicationRecord) {
     console.log('like2', this.user.uid);
-    this.db.collection<LikeRecord>("likes").add({ userid: this.user.uid, revid: r.id, type: 'dislike' })
-      .catch(errorFn);
+    return this.user.isConnected().then(() => {
+      this.db.collection<LikeRecord>(`likes/${r.id}/revendications/`).doc(this.user.uid).set({
+        like: -1
+      }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
+
+    }).catch(() => {
+      this.dialog.show('needAccount', { operation: 'like' });
+    });
   }
 
   share(r: RevendicationRecord) {
