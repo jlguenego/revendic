@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogPages } from 'src/app/dialog/dialog-pages';
 
 @Component({
   selector: 'app-body',
@@ -11,5 +12,7 @@ export class BodyComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  pages = DialogPages.pages;
 
 }

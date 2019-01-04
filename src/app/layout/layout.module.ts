@@ -7,6 +7,7 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { WidgetModule } from '../widget/widget.module';
+import { DialogModule } from '../dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { WidgetModule } from '../widget/widget.module';
     CommonModule,
     FontAwesomeModule,
     WidgetModule,
+    DialogModule,
     AppRoutingModule,
   ],
   exports: [

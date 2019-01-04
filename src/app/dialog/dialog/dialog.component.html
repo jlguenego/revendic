@@ -1,0 +1,13 @@
+<div *ngIf="dialog.isVisible" class="overlay" (click)="dialog.close()">
+  <div class="panel">
+    <div class="header">
+      <div class="title">{{dialog.title}}</div>
+      <div class="close" (click)="dialog.close()">
+          <fa-icon [icon]="faTimes"></fa-icon>
+      </div>
+    </div>
+    <div class="content">
+      <ng-template appAnchor></ng-template>
+    </div>
+  </div>
+</div>

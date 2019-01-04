@@ -8,6 +8,7 @@ import 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { LikeRecord } from './like.record';
 import { errorFn } from '../common/utils';
+import { DialogService } from '../dialog/dialog.service';
 
 const MAX_RANDOM = 1e9;
 
@@ -20,7 +21,10 @@ export class RevService {
     UNKNOWN: 0,
   }
 
-  constructor(private db: AngularFirestore, private user: UserService) { }
+  constructor(
+    private db: AngularFirestore,
+    private user: UserService,
+    private dialog: DialogService) { }
 
   random() {
     return Math.round(Math.random() * MAX_RANDOM);
@@ -61,15 +65,15 @@ export class RevService {
 
   like(r: RevendicationRecord) {
     console.log('like2');
-    this.user.isConnected().then(() => {
+    return this.user.isConnected().then(() => {
       this.db.collection<LikeRecord>("like").add({
         userid: this.user.uid,
         revid: r.id,
         type: 'like'
       }).catch(errorFn);
 
-    }).catch(() => { 
-      // this.dialog.show('needConnectToLike');
+    }).catch(() => {
+      this.dialog.show('needAccount', { operation: 'like'});
     });
 
   }
