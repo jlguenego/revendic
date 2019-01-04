@@ -27,6 +27,7 @@ import { AnchorDirective } from './anchor.directive';
     SocialLoginComponent,
     PasswordCheckComponent,
     PopupComponent,
+    AnchorDirective,
   ]
 })
 export class WidgetModule { }

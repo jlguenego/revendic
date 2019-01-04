@@ -9,7 +9,7 @@ import { WidgetModule } from '../widget/widget.module';
 @NgModule({
   declarations: [
     DialogComponent,
-    NeedAccountDialogPageComponent
+    NeedAccountDialogPageComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +17,10 @@ import { WidgetModule } from '../widget/widget.module';
     WidgetModule,
   ],
   exports: [
-    DialogComponent
+    DialogComponent,
+  ],
+  entryComponents: [
+    NeedAccountDialogPageComponent,
   ]
 })
 export class DialogModule { }

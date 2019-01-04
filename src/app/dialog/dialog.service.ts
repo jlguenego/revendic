@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ChangeDetectorRef } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
+import { timer } from 'rxjs';
 
 export interface PageComponent {
   title: string;
@@ -9,7 +10,7 @@ export interface PageComponent {
   providedIn: 'root'
 })
 export class DialogService {
-  
+
   component: DialogComponent;
 
   isVisible = false;
@@ -30,13 +31,14 @@ export class DialogService {
     this.pages = pages;
   }
 
-  show(page: string, data: {}) {
-    console.log('show');
-    this.currentPage = this.pages[page];
-    console.log('currentPage', this.currentPage);
-    const componentRef = this.component.loadComponent(this.currentPage);
-    // <PageComponent>componentRef.instance.title
+  show(page: string, data = {}) {
     this.isVisible = true;
+    this.component.cd.markForCheck();
+    timer(2000).subscribe(() => {
+      this.currentPage = this.pages[page];
+      const componentRef = this.component.loadComponent(this.currentPage);
+      this.title = (<PageComponent>componentRef.instance).title;
+    });
 
   }
 
@@ -44,5 +46,5 @@ export class DialogService {
     this.isVisible = false;
   }
 
-  
+
 }

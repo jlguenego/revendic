@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, Type, ComponentRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, Type, ComponentRef, ChangeDetectorRef } from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { DialogService } from '../dialog.service';
 import { AnchorDirective } from 'src/app/widget/anchor.directive';
@@ -10,7 +10,12 @@ import { AnchorDirective } from 'src/app/widget/anchor.directive';
 })
 export class DialogComponent implements OnInit {
 
-  @ViewChild(AnchorDirective) anchorHost: AnchorDirective;
+  anchorHost: AnchorDirective;
+
+  @ViewChild(AnchorDirective) set setAnchorHost(val) {
+    console.log('setAnchorHost', val);
+    this.anchorHost = val;
+  }
 
   @Input() set init(val) {
     console.log('initializing dialog pages', val);
@@ -20,15 +25,18 @@ export class DialogComponent implements OnInit {
   faTimes = faTimes;
   constructor(
     public dialog: DialogService,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    public cd: ChangeDetectorRef
   ) {
     this.dialog.register(this);
   }
 
   ngOnInit() {
+    console.log('anchorHost', this.anchorHost);
   }
 
   loadComponent(component: Type<{}>): ComponentRef<{}> {
+    console.log('loadComponent', component);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef = this.anchorHost.viewContainerRef;
     viewContainerRef.clear();
