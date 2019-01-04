@@ -13,12 +13,10 @@ export class DialogComponent implements OnInit {
   anchorHost: AnchorDirective;
 
   @ViewChild(AnchorDirective) set setAnchorHost(val) {
-    console.log('setAnchorHost', val);
     this.anchorHost = val;
   }
 
   @Input() set init(val) {
-    console.log('initializing dialog pages', val);
     this.dialog.init(val);
   }
 
@@ -26,6 +24,7 @@ export class DialogComponent implements OnInit {
   isVisible = false;
 
   faTimes = faTimes;
+
   constructor(
     public dialog: DialogService,
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -35,11 +34,9 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('anchorHost', this.anchorHost);
   }
 
   loadComponent(component: Type<{}>): ComponentRef<{}> {
-    console.log('loadComponent', component);
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef = this.anchorHost.viewContainerRef;
     viewContainerRef.clear();

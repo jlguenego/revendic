@@ -7,6 +7,7 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { PasswordCheckComponent } from './password-check/password-check.component';
 import { PopupComponent } from './popup/popup.component';
 import { AnchorDirective } from './anchor.directive';
+import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AnchorDirective } from './anchor.directive';
     SocialLoginComponent,
     PasswordCheckComponent,
     PopupComponent,
-    AnchorDirective
+    AnchorDirective,
+    ClickStopPropagationDirective
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AnchorDirective } from './anchor.directive';
     PasswordCheckComponent,
     PopupComponent,
     AnchorDirective,
+    ClickStopPropagationDirective,
   ]
 })
 export class WidgetModule { }
