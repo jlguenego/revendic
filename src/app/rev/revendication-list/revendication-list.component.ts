@@ -77,12 +77,14 @@ export class RevendicationListComponent implements OnInit {
     return `/revendications/${r.id}/${toNiceUrlTitle(r.title)}`
   }
 
-  like() {
+  like(r: RevendicationRecord) {
     console.log('like');
+    this.rev.like(r);
   }
 
-  share() {
+  share(r: RevendicationRecord) {
     console.log('share');
+    this.rev.share(r);
   }
 }
 

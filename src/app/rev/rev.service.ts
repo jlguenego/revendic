@@ -56,4 +56,12 @@ export class RevService {
     const doc = this.db.collection("revendications").doc(revId);
     return doc.update(rev)
   }
+
+  like(r: RevendicationRecord) {
+    console.log('like2');
+  }
+
+  share(r: RevendicationRecord) {
+    console.log('share2');
+  }
 }
