@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { RevendicationRecord } from '../revendication.record';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
 import { AngularFirestoreService } from 'src/app/angular-firestore.service';
-import { Router } from '@angular/router';
 import { ListRevService } from '../list-rev.service';
 
 @Component({
@@ -21,7 +20,7 @@ export class RevendicationListComponent implements OnInit {
   @Input() mostLiked;
   @Input() random;
 
-  revendications: Observable<RevendicationRecord[]>;
+  revendications: Observable<RevendicationRecord[]> | Promise<RevendicationRecord[]>;
 
   constructor(
     private db: AngularFirestore,
@@ -31,47 +30,15 @@ export class RevendicationListComponent implements OnInit {
 
   ngOnInit() {
     const max = +this.max;
-    const pipeLimit = (filter) => {
-      if (max > 0) {
-        return ref => filter(ref).limit(max);
-      } else {
-        return filter;
-      }
-    }
 
     if (this.orderByUpdatedAt === '') {
-      const filter = ref => ref.orderBy('updatedAt', 'desc');
-      // this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
-      //   '/revendications', pipeLimit(filter)));/
-      this.revendications = this.listRev.listLastUpdatedRev(5);
-      // } else if (this.mostLiked === '') {
-      //   this.revendications = this.db.
+      this.revendications = this.listRev.lastUpdatedRevs$;
+    } else if (this.mostLiked === '') {
+      this.revendications = this.listRev.revs$;
     } else if (this.random === '') {
-      const mx = max || 5;
-      this.revendications = Observable.create(observer => {
-        let revendications = [];
-        const random = this.rev.random();
-        const filter = ref => ref.where("_random", "<=", random).orderBy("_random", "desc").limit(mx);
-        this.afs.query(this.db.collection<RevendicationRecord>(
-          '/revendications', filter)).subscribe(revs => {
-            revendications.push(...revs);
-            if (revendications.length >= mx) {
-              observer.next(revendications);
-              return;
-            }
-            const filter = ref => ref.where("_random", ">=", random).orderBy("_random", "asc").limit(mx - revendications.length);
-            this.afs.query(this.db.collection<RevendicationRecord>(
-              '/revendications', filter)).subscribe(revs => {
-                revendications.push(...revs);
-                observer.next(revendications);
-              });
-          });
-
-      });
+      this.revendications = this.listRev.getRandomRevs(2);
     } else {
-      const filter = ref => ref.orderBy('createdAt', 'desc');
-      this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
-        '/revendications', pipeLimit(filter)));
+      this.revendications = this.listRev.revs$;
     }
   }
 
