@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
 import { AngularFirestoreService } from 'src/app/angular-firestore.service';
 import { Router } from '@angular/router';
+import { ListRevService } from '../list-rev.service';
 
 @Component({
   selector: 'app-revendication-list',
@@ -26,7 +27,7 @@ export class RevendicationListComponent implements OnInit {
     private db: AngularFirestore,
     private afs: AngularFirestoreService,
     private rev: RevService,
-    private router: Router) { }
+    private listRev: ListRevService) { }
 
   ngOnInit() {
     const max = +this.max;
@@ -40,8 +41,9 @@ export class RevendicationListComponent implements OnInit {
 
     if (this.orderByUpdatedAt === '') {
       const filter = ref => ref.orderBy('updatedAt', 'desc');
-      this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
-        '/revendications', pipeLimit(filter)));
+      // this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
+      //   '/revendications', pipeLimit(filter)));/
+      this.revendications = this.listRev.listLastUpdatedRev(5);
       // } else if (this.mostLiked === '') {
       //   this.revendications = this.db.
     } else if (this.random === '') {

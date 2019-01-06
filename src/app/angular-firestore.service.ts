@@ -12,7 +12,7 @@ export class AngularFirestoreService {
 
   query<T>(collection: AngularFirestoreCollection<T>): Observable<T[]> {
     return collection.snapshotChanges().pipe(
-      map((changes) => {
+      map(changes => {
         return changes.map(change => {
           const data = change.payload.doc.data();
           const id = change.payload.doc.id;
