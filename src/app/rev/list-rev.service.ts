@@ -18,6 +18,8 @@ const pipeLimit = (max: number, filter: QueryFn) => {
   }
 }
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +29,12 @@ export class ListRevService {
 
   revs$: BehaviorSubject<RevendicationRecord[]>;
   lastUpdatedRevs$: BehaviorSubject<RevendicationRecord[]>;
+
+  mapLikes = map<RevendicationRecord[], any>(revs => revs.map(rev => {
+    rev.likes = this.like.getCount$(rev, "like");
+    rev.dislikes = this.like.getCount$(rev, "dislike");
+    return rev;
+  }));
 
   constructor(
     private db: AngularFirestore,
@@ -52,7 +60,11 @@ export class ListRevService {
     const filter = ref => ref;
     this.revs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
-      '/revendications', pipeLimit(max, filter))).subscribe(this.revs$);
+      '/revendications', pipeLimit(max, filter)))
+      .pipe(
+        this.mapLikes.bind(this)
+      )
+      .subscribe(this.revs$);
   }
 
   initLastUpdatedRevs(max: number = 5) {
@@ -61,10 +73,7 @@ export class ListRevService {
     this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter)))
       .pipe(
-        map(revs => revs.map(rev => { 
-          rev.likes = this.like.getCount$(rev); 
-          rev.dislikes = this.like.getCount$(rev, "dislike"); 
-          return rev; }))
+        this.mapLikes.bind(this)
       )
       .subscribe(this.lastUpdatedRevs$);
 
@@ -101,6 +110,10 @@ export class ListRevService {
         });
         return revendications;
       });
-    });
+    }).then(revs => revs.map(rev => {
+      rev.likes = this.like.getCount$(rev, "like");
+      rev.dislikes = this.like.getCount$(rev, "dislike");
+      return rev;
+    }));
   }
 }
