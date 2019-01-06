@@ -63,6 +63,12 @@ export class RevService {
     return doc.update(rev)
   }
 
+  delete(revId: string) {
+    this.db.doc(`/revendications/${revId}`).delete()
+      .then(obj => { })
+      .catch(error => console.error('error', error));
+  }
+
   like(r: RevendicationRecord) {
     console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
