@@ -4,8 +4,9 @@ import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 
 import { FirebaseUtils } from './FirebaseUtils';
-import { Subject, Observable, Observer } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { UserRoutes } from './user-routes';
+import { map } from 'rxjs/operators';
 
 export interface UserData {
   displayName: string;
@@ -38,18 +39,10 @@ export class UserService {
   uid = "";
   provider = "";
 
-  subject: Subject<boolean>;
-  private observer: Observer<boolean>;
+  subject: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
-    const observable = Observable.create(observer => {
-      this.observer = observer;
-      this.afAuth.user.subscribe(user => {
-        this.sync(user);
-      });
-    });
-    this.subject = new Subject();
-    observable.subscribe(this.subject);
+    this.afAuth.user.pipe(map(user => this.sync(user))).subscribe(this.subject);
   }
 
   sync(user) {
@@ -70,7 +63,8 @@ export class UserService {
       this.uid = "";
       this.provider = "";
     }
-    this.observer.next(true);
+    this.subject.next(true);
+    return user;
   }
 
   isConnected() {
@@ -156,7 +150,7 @@ export class UserService {
       .catch(error => {
         return this.zone.run(() => {
           if (error.code === 'auth/account-exists-with-different-credential') {
-            return this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(providers => {
+            return this.afAuth.auth.fetchSignInMethodsForEmail(error.email).then(() => {
               return this.zone.run(() => {
                 const provider = new auth.GoogleAuthProvider();
                 provider.setCustomParameters({ login_hint: error.email });
@@ -212,7 +206,7 @@ export class UserService {
   sendForgottenPasswordEmail(email: string): any {
     this.afAuth.auth.sendPasswordResetEmail(email)
       .then(() => this.router.navigate(['/email-mot-de-passe-envoye', { email }]))
-      .catch(error => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..' }]));
+      .catch(() => this.router.navigate(['/email-mot-de-passe-envoye', { email: email + '..' }]));
   }
 
   delete() {

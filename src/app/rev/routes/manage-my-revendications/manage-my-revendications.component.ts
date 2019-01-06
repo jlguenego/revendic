@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
 import { AngularFirestoreUtilsService } from 'src/app/angular-firestore-utils.service';
+import { ListRevService } from '../../list-rev.service';
 
 @Component({
   selector: 'app-manage-my-revendications',
@@ -20,13 +21,11 @@ export class ManageMyRevendicationsComponent implements OnInit {
     private user: UserService,
     private db: AngularFirestore,
     private afu: AngularFirestoreUtilsService,
+    private listRev: ListRevService,
     private router: Router) { }
 
   ngOnInit() {
-    this.revendications = this.afu.query(this.db.collection<RevendicationRecord>(
-      '/revendications',
-      ref => ref.where("userid", "==", this.user.uid)
-        .orderBy('createdAt', 'desc')));
+    this.revendications = this.listRev.getMyRevs();
   }
 
   delete(revId: string) {
