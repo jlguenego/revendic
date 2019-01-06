@@ -8,4 +8,6 @@ export interface RevendicationRecord {
     category?: any;
     content?: any;
     _random?: any;
+    likes?: any;
+    dislikes?: any;
 }

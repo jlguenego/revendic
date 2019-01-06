@@ -1,3 +1,3 @@
 export interface LikeRecord {
-    like: number;
+    like?: number;
 }

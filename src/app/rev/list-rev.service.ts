@@ -7,6 +7,8 @@ import { firestore } from 'firebase/app';
 import 'firebase/firestore';
 import { AngularFirestoreUtilsService } from '../angular-firestore-utils.service';
 import { UserService } from '../user/user.service';
+import { map } from 'rxjs/operators';
+import { LikeService } from './like.service';
 
 const pipeLimit = (max: number, filter: QueryFn) => {
   if (max > 0) {
@@ -30,7 +32,8 @@ export class ListRevService {
     private db: AngularFirestore,
     private afu: AngularFirestoreUtilsService,
     private rev: RevService,
-    private user: UserService
+    private user: UserService,
+    private like: LikeService,
   ) {
     console.log('constructor listrevservice');
     this._db = firestore();
@@ -40,9 +43,9 @@ export class ListRevService {
 
   getMyRevs() {
     return this.afu.query(this.db.collection<RevendicationRecord>(
-          '/revendications',
-          ref => ref.where("userid", "==", this.user.uid)
-            .orderBy('createdAt', 'desc')));
+      '/revendications',
+      ref => ref.where("userid", "==", this.user.uid)
+        .orderBy('createdAt', 'desc')));
   }
 
   initRevs(max: number = 3) {
@@ -56,7 +59,15 @@ export class ListRevService {
     const filter = ref => ref.orderBy('updatedAt', 'desc');
     this.lastUpdatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
-      '/revendications', pipeLimit(max, filter))).subscribe(this.lastUpdatedRevs$);
+      '/revendications', pipeLimit(max, filter)))
+      .pipe(
+        map(revs => revs.map(rev => { 
+          rev.likes = this.like.getCount$(rev); 
+          rev.dislikes = this.like.getCount$(rev, "dislike"); 
+          return rev; }))
+      )
+      .subscribe(this.lastUpdatedRevs$);
+
   }
 
   getRandomRevs(max: number = 5): Promise<RevendicationRecord[]> {
