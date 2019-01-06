@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AngularFirestoreService } from '../angular-firestore.service';
 import { AngularFirestore, QueryFn } from '@angular/fire/firestore';
 import { RevendicationRecord } from './revendication.record';
 import { RevService } from './rev.service';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
+import { AngularFirestoreUtilsService } from '../angular-firestore-utils.service';
 
 const pipeLimit = (max: number, filter: QueryFn) => {
   if (max > 0) {
@@ -27,7 +27,7 @@ export class ListRevService {
 
   constructor(
     private db: AngularFirestore,
-    private afs: AngularFirestoreService,
+    private afu: AngularFirestoreUtilsService,
     private rev: RevService,
   ) {
     console.log('constructor listrevservice');
@@ -39,14 +39,14 @@ export class ListRevService {
   initRevs(max: number = 3) {
     const filter = ref => ref;
     this.revs$ = new BehaviorSubject<RevendicationRecord[]>([]);
-    this.afs.query(this.db.collection<RevendicationRecord>(
+    this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter))).subscribe(this.revs$);
   }
 
   initLastUpdatedRevs(max: number = 5) {
     const filter = ref => ref.orderBy('updatedAt', 'desc');
     this.lastUpdatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
-    this.afs.query(this.db.collection<RevendicationRecord>(
+    this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter))).subscribe(this.lastUpdatedRevs$);
   }
 

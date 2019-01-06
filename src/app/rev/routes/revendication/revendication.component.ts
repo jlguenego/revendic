@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RevendicationRecord } from '../../revendication.record';
-import { AngularFirestoreService } from 'src/app/angular-firestore.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreUtilsService } from 'src/app/angular-firestore-utils.service';
 
 @Component({
   selector: 'app-revendication',
@@ -19,14 +19,14 @@ export class RevendicationComponent implements OnInit {
 
   constructor(
     private user: UserService,
-    private afs: AngularFirestoreService,
+    private afu: AngularFirestoreUtilsService,
     private db: AngularFirestore,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.afs.doc<RevendicationRecord>('/revendications', params.id).subscribe(r => {
+      this.afu.doc<RevendicationRecord>('/revendications', params.id).subscribe(r => {
         this.r = r;
         if (r === undefined) {
           return;

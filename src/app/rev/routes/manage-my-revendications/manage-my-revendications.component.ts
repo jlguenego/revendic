@@ -5,7 +5,7 @@ import { RevendicationRecord } from '../../revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
-import { AngularFirestoreService } from 'src/app/angular-firestore.service';
+import { AngularFirestoreUtilsService } from 'src/app/angular-firestore-utils.service';
 
 @Component({
   selector: 'app-manage-my-revendications',
@@ -19,11 +19,11 @@ export class ManageMyRevendicationsComponent implements OnInit {
   constructor(
     private user: UserService,
     private db: AngularFirestore,
-    private afs: AngularFirestoreService,
+    private afu: AngularFirestoreUtilsService,
     private router: Router) { }
 
   ngOnInit() {
-    this.revendications = this.afs.query(this.db.collection<RevendicationRecord>(
+    this.revendications = this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications',
       ref => ref.where("userid", "==", this.user.uid)
         .orderBy('createdAt', 'desc')));
