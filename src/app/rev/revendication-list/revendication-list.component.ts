@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { RevendicationRecord } from '../revendication.record';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
-import { AngularFirestoreService } from 'src/app/angular-firestore.service';
 import { ListRevService } from '../list-rev.service';
 
 @Component({
@@ -23,13 +21,10 @@ export class RevendicationListComponent implements OnInit {
   revendications: Observable<RevendicationRecord[]> | Promise<RevendicationRecord[]>;
 
   constructor(
-    private db: AngularFirestore,
-    private afs: AngularFirestoreService,
     private rev: RevService,
     private listRev: ListRevService) { }
 
   ngOnInit() {
-    const max = +this.max;
 
     if (this.orderByUpdatedAt === '') {
       this.revendications = this.listRev.lastUpdatedRevs$;
