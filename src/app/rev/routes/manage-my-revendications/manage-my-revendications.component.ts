@@ -12,7 +12,7 @@ import { RevService } from '../../rev.service';
 })
 export class ManageMyRevendicationsComponent implements OnInit {
 
-  revendications: Observable<RevendicationRecord[]>;
+  revendications$: Observable<RevendicationRecord[]>;
 
   constructor(
     private rev: RevService,
@@ -20,7 +20,7 @@ export class ManageMyRevendicationsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.revendications = this.listRev.getMyRevs();
+    this.revendications$ = this.listRev.getMyRevs();
   }
 
   delete(revId: string) {
