@@ -1,5 +1,4 @@
 @import 'variables';
-
 :host {
     display: block;
     background: $header-bgcolor;
@@ -23,7 +22,6 @@ header {
         position: relative;
         top: 0.1rem;
         width: 1.5rem;
-
     }
     a {
         text-decoration: none;
@@ -50,7 +48,8 @@ header {
         &:hover {
             color: $header-color-small-relief;
         }
-        &:active, &.active {
+        &:active,
+        &.active {
             color: $header-color-relief;
         }
     }
@@ -59,9 +58,14 @@ header {
 .utilities {
     padding: 0 1rem;
     white-space: nowrap;
-    color: white;
+    color: $header-color;
     >.button {
-        border: 1px solid white;
+        border: 1px solid $header-color;
+        color: $header-color;
+        &:hover {
+            border: 1px solid $header-color-relief;
+            color: $header-color-small-relief;
+        }
     }
 }
 
@@ -168,6 +172,4 @@ header {
             }
         }
     }
-
-    
 }

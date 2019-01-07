@@ -1,4 +1,5 @@
-button, .button {
+button,
+.button {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: $border-radius;
@@ -24,7 +25,6 @@ button, .button {
         color: $button-bgcolor;
         border: 1px solid $button-bgcolor;
         &:hover {
-            background: hsl(0, 0%, 98%);
             color: lighten($button-bgcolor, 30%);
         }
     }
@@ -55,8 +55,3 @@ button, .button {
 [routerlink] {
     cursor: pointer;
 }
-
-
-
-
-
