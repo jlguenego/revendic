@@ -1,32 +1,40 @@
 button,
 .button {
+    cursor: pointer;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: $border-radius;
+
     color: $button-color;
-    border: 1px solid $button-bgcolor;
-    background: $button-bgcolor;
-    cursor: pointer;
+
+    border: 1px solid $button-important-bgcolor;
+    background: $button-important-bgcolor;
     &:hover {
-        background: lighten($button-bgcolor, 30%);
+        border: 1px solid $button-important-bgcolor-hover;
+        background: $button-important-bgcolor-hover;
+        box-shadow: 0px 0px 5px 1px #ddd;
     }
+    &:active {
+        border: 1px solid $button-important-bgcolor-hover;
+        background: $button-important-bgcolor-hover;
+        box-shadow: 0px 0px 1px 1px #eee;
+    }
+
+    
     &.shadow {
         background: transparent;
-        color: $button-bgcolor;
+        color: $button-shadow-bgcolor;
         font-weight: bold;
         border: none;
         &:hover {
-            background: hsl(0, 0%, 98%);
-            color: lighten($button-bgcolor, 30%);
+            color: $button-shadow-bgcolor;
+            box-shadow: 0px 0px 3px 1px hsl(0, 0%, 95%);
         }
     }
     &.secondary {
         background: transparent;
         color: $button-bgcolor;
         border: 1px solid $button-bgcolor;
-        &:hover {
-            color: lighten($button-bgcolor, 30%);
-        }
     }
     &.danger {
         border: 1px solid red;
@@ -35,19 +43,8 @@ button,
     &[disabled] {
         background-color: #eee;
         border: 1px solid #eee;
-    }
-    &.important {
-        border: 1px solid $button-important-bgcolor;
-        background: $button-important-bgcolor;
         &:hover {
-            border: 1px solid $button-important-bgcolor-hover;
-            background: $button-important-bgcolor-hover;
-            box-shadow: 0px 0px 5px 1px #ddd;
-        }
-        &:active {
-            border: 1px solid $button-important-bgcolor-hover;
-            background: $button-important-bgcolor-hover;
-            box-shadow: 0px 0px 1px 1px #eee;
+            box-shadow: none;
         }
     }
 }

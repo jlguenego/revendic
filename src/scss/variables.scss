@@ -10,8 +10,10 @@ $footer-color-small-relief: $header-color-small-relief;
 
 $button-color: white;
 $button-bgcolor: $header-color-relief;
+$button-bgcolor-hover: $header-color-flash;
 $button-important-bgcolor: $header-color-flash;
 $button-important-bgcolor-hover: hsl(150, 100%, 38%);
+$button-shadow-bgcolor: hsl(150, 100%, 25%);
 
 $section-dark-bgcolor: hsl(150, 30%, 95%);
 

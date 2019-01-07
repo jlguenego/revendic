@@ -65,6 +65,7 @@ header {
         &:hover {
             border: 1px solid $header-color-relief;
             color: $header-color-small-relief;
+            box-shadow: none;
         }
     }
 }
