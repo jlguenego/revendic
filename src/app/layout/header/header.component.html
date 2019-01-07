@@ -55,7 +55,6 @@
           <div class="display-name">{{user.displayName}} </div>
           <div class="mail">{{user.email}} </div>
         </div>
-
       </div>
 
       <div *ngIf="!user.isVerified" class="center">
@@ -72,9 +71,9 @@
       <a class="important" routerLink="mes-revendications">&gt; Gérer mes revendications</a>
     </div>
     <div class="separator"></div>
-    <a routerLink="creer-revendication">Créer une revendication</a>
-    <a routerLink="observatoire">Observatoire</a>
-    <a routerLink="presentation">Presentation</a>
+    <a routerLink="/creer-revendication">Créer une revendication</a>
+    <a routerLink="/indicateurs">Indicateurs</a>
+    <a routerLink="/presentation">Presentation</a>
     <div class="separator"></div>
     <div *ngIf="user.email === 'jlguenego@gmail.com'">
       <a routerLink="test">Test</a>
