@@ -26,17 +26,18 @@ main {
 .press {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 
     .item {
         display: block;
         width: 100%;
-        max-width: 22rem;
+        max-width: 18rem;
         background: $section-dark-bgcolor;
         a {
             display: block;
             padding: 1rem;
             div.container {
-                width: 20rem;
+                width: 16rem;
                 height: 12rem;
                 &.rmc {
                     background-image: url("https://rmc.bfmtv.com/static/nxt-rmc/evenement/radio-brunet/img/partage.jpg");
@@ -46,7 +47,7 @@ main {
                 }
             }
             div.comment {
-                width: 20rem;
+                width: 16rem;
                 text-align: center;
             }
         }

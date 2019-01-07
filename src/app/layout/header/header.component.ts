@@ -37,6 +37,4 @@ export class HeaderComponent implements OnInit {
     this.user.refresh();
   }
 
-
-
 }
