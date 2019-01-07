@@ -1,7 +1,8 @@
 @import 'variables';
 :host {
     display: block;
-    background: #ccc;
+    color: $footer-color;
+    background: $footer-bgcolor;
 }
 
 footer {
@@ -15,6 +16,9 @@ footer {
     
     a {
         text-decoration: none;
-        color: black;
+        color: $footer-color;
+        &:hover {
+            color: $footer-color-small-relief;
+        }
     }
 }

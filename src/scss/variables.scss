@@ -4,9 +4,15 @@ $header-color-relief: hsl(150, 50%, 50%);
 $header-color-small-relief: hsl(150, 50%, 90%);
 $header-color-flash: hsl(150, 100%, 35%);
 
+$footer-color: $header-color;
+$footer-bgcolor: hsl(0, 0%, 20%);
+$footer-color-small-relief: $header-color-small-relief;
+
 $button-color: white;
 $button-bgcolor: $header-color-relief;
 $button-important-bgcolor: $header-color-flash;
+
+$section-dark-bgcolor: hsl(150, 30%, 95%);
 
 
 $color: white;

@@ -11,4 +11,7 @@ section {
     display: block;
     text-align: left;
     padding: 1rem;
+    &.dark {
+        background: $section-dark-bgcolor;
+    }
 }
