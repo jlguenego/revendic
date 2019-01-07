@@ -33,11 +33,6 @@ const routes: Routes = [
     WidgetModule
   ],
   declarations: [
-    HomeComponent,
-    PresentationComponent,
-    LegalComponent,
-    PageNotFoundComponent,
-    ErrorComponent,
   ],
   exports: [RouterModule]
 })

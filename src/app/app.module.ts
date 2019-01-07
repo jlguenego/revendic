@@ -12,6 +12,13 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { environment } from 'src/environments/environment';
 import { IndicatorComponent } from './app-routing/indicator/indicator.component';
+import { HomeComponent } from './app-routing/home/home.component';
+import { ErrorComponent } from './app-routing/error/error.component';
+import { LegalComponent } from './app-routing/legal/legal.component';
+import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-found.component';
+import { PresentationComponent } from './app-routing/presentation/presentation.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RevModule } from './rev/rev.module';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -19,9 +26,16 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
   declarations: [
     AppComponent,
     IndicatorComponent,
+    HomeComponent,
+    ErrorComponent,
+    LegalComponent,
+    PageNotFoundComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
+    RevModule,
     LayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
