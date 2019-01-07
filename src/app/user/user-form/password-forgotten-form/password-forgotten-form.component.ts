@@ -11,7 +11,7 @@ import { UserService } from '../../user.service';
 export class PasswordForgottenFormComponent implements OnInit {
 
   f = new FormGroup({
-    email: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(private user: UserService) { }
