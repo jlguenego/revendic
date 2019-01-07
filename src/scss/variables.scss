@@ -1,8 +1,10 @@
+$hue: 200;
+
 $header-color: white;
 $header-bgcolor: hsl(0, 0%, 20%);
-$header-color-relief: hsl(150, 50%, 50%);
-$header-color-small-relief: hsl(150, 50%, 90%);
-$header-color-flash: hsl(150, 100%, 35%);
+$header-color-relief: hsl($hue, 80%, 60%);
+$header-color-small-relief: hsl($hue, 100%, 90%);
+$header-color-flash: hsl($hue, 100%, 60%);
 
 $footer-color: $header-color;
 $footer-bgcolor: hsl(0, 0%, 20%);
@@ -10,18 +12,17 @@ $footer-color-small-relief: $header-color-small-relief;
 
 $button-color: white;
 $button-bgcolor: $header-color-relief;
-$button-bgcolor-hover: $header-color-flash;
+$button-bgcolor-hover: darken($button-bgcolor, 10);
 $button-important-bgcolor: $header-color-flash;
-$button-important-bgcolor-hover: hsl(150, 100%, 38%);
-$button-shadow-bgcolor: hsl(150, 100%, 25%);
+$button-important-bgcolor-hover: darken($button-important-bgcolor, 10);
+$button-shadow-bgcolor: hsl($hue, 100%, 25%);
 $button-danger-bgcolor: hsl(15, 65%, 55%);
 
+$dialog-bgcolor: hsl($hue, 100%, 40%);
 
+$section-dark-bgcolor: hsl($hue, 100%, 98%);
 
-$section-dark-bgcolor: hsl(150, 30%, 95%);
-
-$li-color: hsl(150, 100%, 25%);
-
+$li-color: hsl($hue, 100%, 25%);
 
 $color: white;
 $bgcolor: blue;

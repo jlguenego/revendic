@@ -35,9 +35,9 @@ main {
     text-decoration: none;
     color: black;
     border-radius: $border-radius;
-    background: hsl(150, 100%, 98%);
+    background: hsl($hue, 100%, 98%);
     &:hover {
-        background: hsl(150, 100%, 95%);
+        background: hsl($hue, 100%, 95%);
     }
     fa-icon {
         // position: absolute;
