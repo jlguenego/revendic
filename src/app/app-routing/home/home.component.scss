@@ -23,6 +23,37 @@ main {
     text-align: center;
 }
 
+.tagline {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    min-height: 9rem;
+    min-width: 18rem;
+    padding: 1.5rem 1rem;
+    text-decoration: none;
+    color: black;
+    border-radius: $border-radius;
+    background: hsl(150, 100%, 98%);
+    &:hover {
+        background: hsl(150, 100%, 95%);
+    }
+    fa-icon {
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        font-size: 8rem;
+        // transform: translate(-50%, -50%);
+        color: hsla(0, 0%, 80%, 0.5);
+        // z-index: 0;
+    }
+    span {
+        position: relative;
+        // z-index: 10;
+    }
+}
+
 .press {
     display: flex;
     justify-content: space-around;
