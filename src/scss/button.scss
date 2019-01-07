@@ -37,8 +37,8 @@ button,
         border: 1px solid $button-bgcolor;
     }
     &.danger {
-        border: 1px solid red;
-        background: red;
+        border: 1px solid $button-danger-bgcolor;
+        background: $button-danger-bgcolor;
     }
     &[disabled] {
         background-color: #eee;
