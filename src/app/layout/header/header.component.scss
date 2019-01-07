@@ -113,6 +113,7 @@ header {
 }
 
 .mobile {
+    position: relative;
     nav {
         background-color: white;
     }
@@ -126,7 +127,7 @@ header {
         display: none;
         &.open {
             display: block;
-            position: fixed;
+            position: absolute;
             z-index: 1000;
             width: 100%;
             top: 3rem;
