@@ -25,43 +25,29 @@ main {
 
 .press {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
-    align-items: stretch;
-    >div {
-        background: #eee;
-        padding: 1rem;
-        height: 100%;
-        &.rmc {
-            background: yellow;
-            >a {
-                >img {
-                    width: 100%;
-                    max-width: 20rem;
+
+    .item {
+        display: block;
+        width: 100%;
+        max-width: 22rem;
+        background: $section-dark-bgcolor;
+        a {
+            display: block;
+            padding: 1rem;
+            div.container {
+                width: 20rem;
+                height: 12rem;
+                &.rmc {
+                    background-image: url("https://rmc.bfmtv.com/static/nxt-rmc/evenement/radio-brunet/img/partage.jpg");
                 }
-                >div {
-                    text-align: center;
-                    width: 100%;
-                    max-width: 20rem;
-                    padding: 0.5rem 0;
+                &.opinion {
+                    background-image: url("http://www.cbnews.fr/var/media/415/728x338/lopinion-414451.jpg");
                 }
             }
-        }
-        &.opinion {
-            
-            >a {
-                display: block;
-                border: 1px solid black;
-                background: #aaa;
-                >img {
-                    width: 100%;
-                    max-width: 20rem;
-                }
-                >div {
-                    width: 100%;
-                    max-width: 20rem;
-                    padding: 0.5rem 0;
-                }
+            div.comment {
+                width: 20rem;
+                text-align: center;
             }
         }
     }
