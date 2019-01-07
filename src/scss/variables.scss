@@ -2,6 +2,12 @@ $header-color: white;
 $header-bgcolor: hsl(0, 0%, 20%);
 $header-color-relief: hsl(150, 50%, 50%);
 $header-color-small-relief: hsl(150, 50%, 90%);
+$header-color-flash: hsl(150, 100%, 35%);
+
+$button-color: white;
+$button-bgcolor: $header-color-relief;
+$button-important-bgcolor: $header-color-flash;
+
 
 $color: white;
 $bgcolor: blue;

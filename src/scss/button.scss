@@ -2,30 +2,30 @@ button, .button {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: $border-radius;
-    color: $color;
-    border: 1px solid $bgcolor;
-    background: $bgcolor;
+    color: $button-color;
+    border: 1px solid $button-bgcolor;
+    background: $button-bgcolor;
     cursor: pointer;
     &:hover {
-        background: lighten($bgcolor, 30%);
+        background: lighten($button-bgcolor, 30%);
     }
     &.shadow {
         background: transparent;
-        color: $bgcolor;
+        color: $button-bgcolor;
         font-weight: bold;
         border: none;
         &:hover {
             background: hsl(0, 0%, 98%);
-            color: lighten($bgcolor, 30%);
+            color: lighten($button-bgcolor, 30%);
         }
     }
     &.secondary {
         background: transparent;
-        color: $bgcolor;
-        border: 1px solid $bgcolor;
+        color: $button-bgcolor;
+        border: 1px solid $button-bgcolor;
         &:hover {
             background: hsl(0, 0%, 98%);
-            color: lighten($bgcolor, 30%);
+            color: lighten($button-bgcolor, 30%);
         }
     }
     &.danger {
@@ -37,8 +37,8 @@ button, .button {
         border: 1px solid #eee;
     }
     &.important {
-        border: 1px solid green;
-        background: green;
+        border: 1px solid $button-important-bgcolor;
+        background: $button-important-bgcolor;
     }
 }
 
