@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ObservatoireComponent } from './observatoire/observatoire.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { LegalComponent } from './legal/legal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,10 +11,11 @@ import { CommonModule } from '@angular/common';
 import { RevModule } from '../rev/rev.module';
 import { UserModule } from '../user/user.module';
 import { TestModule } from '../test/test.module';
+import { IndicatorComponent } from './indicator/indicator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'observatoire', component: ObservatoireComponent },
+  { path: 'indicateurs', component: IndicatorComponent },
   { path: 'presentation', component: PresentationComponent },
   { path: 'mentions-legales', component: LegalComponent },
   { path: 'erreur', component: ErrorComponent },
@@ -34,7 +34,6 @@ const routes: Routes = [
   ],
   declarations: [
     HomeComponent,
-    ObservatoireComponent,
     PresentationComponent,
     LegalComponent,
     PageNotFoundComponent,

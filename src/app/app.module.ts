@@ -11,12 +11,14 @@ import localeFrExtra from '@angular/common/locales/extra/fr';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { environment } from 'src/environments/environment';
+import { IndicatorComponent } from './app-routing/indicator/indicator.component';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
 @NgModule({
   declarations: [
     AppComponent,
+    IndicatorComponent,
   ],
   imports: [
     BrowserModule,
