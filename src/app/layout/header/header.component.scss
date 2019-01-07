@@ -1,7 +1,8 @@
 @import 'variables';
+
 :host {
     display: block;
-    background: $bgcolor;
+    background: $header-bgcolor;
 }
 
 header {
@@ -16,19 +17,25 @@ header {
 
 .logo {
     padding: 0 1rem;
-    font-weight: 900;
+    font-weight: normal;
     font-size: 2rem;
+    img {
+        position: relative;
+        top: 0.2rem;
+        width: 1.5rem;
+
+    }
     a {
         text-decoration: none;
     }
     .name {
-        color: $color;
+        color: $header-color;
     }
     .dot {
-        color: black;
+        color: $header-color;
     }
     .com {
-        color: red;
+        color: $header-color-relief;
     }
 }
 
@@ -41,7 +48,10 @@ header {
         text-decoration: none;
         white-space: nowrap;
         &:hover {
-            color: transparentize($color, 0.3);
+            color: $header-color-small-relief;
+        }
+        &:active, &.active {
+            color: $header-color-relief;
         }
     }
 }

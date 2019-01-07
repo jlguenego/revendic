@@ -1,15 +1,16 @@
 <header *ngIf="resp.desktop">
   <div class="logo">
     <a routerLink="">
+      <img src="../../../assets/protest.svg" alt="Revendique Logo">
       <span class="name">Revendique</span>
       <span class="dot">.</span>
       <span class="com">com</span>
     </a>
   </div>
   <nav class="primary-menu">
-    <a routerLink="creer-revendication" class="href">Créer une revendication</a>
-    <a routerLink="observatoire" class="href">Observatoire</a>
-    <a routerLink="presentation" class="href">Presentation</a>
+    <a routerLink="creer-revendication" routerLinkActive="active">Créer une revendication</a>
+    <a routerLink="observatoire" routerLinkActive="active">Observatoire</a>
+    <a routerLink="presentation" routerLinkActive="active">Presentation</a>
   </nav>
   <nav class="utilities">
     <a class="button" (click)="user.navigateToAuth(user.routes.url.login)" *ngIf="!user.isLogged">Mon compte</a>

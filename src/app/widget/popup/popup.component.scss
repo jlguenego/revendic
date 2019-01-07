@@ -7,6 +7,12 @@
 
 .label {
     cursor: pointer;
+    &:hover {
+        color: $header-color-small-relief;
+    }
+    &.active {
+        color: $header-color-relief;
+    }
 }
 
 .overlay {
