@@ -7,3 +7,6 @@ typings/
 
 # and of course... node_modules
 node_modules/
+
+# for SSR
+dist/

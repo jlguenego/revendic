@@ -34,7 +34,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     PresentationComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'revendic-whatever-1234er1234!@#$' }),
     RouterModule,
     FontAwesomeModule,
     RevModule,
