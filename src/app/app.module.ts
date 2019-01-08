@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from './app-routing/page-not-found/page-not-fou
 import { PresentationComponent } from './app-routing/presentation/presentation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RevModule } from './rev/rev.module';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -34,6 +35,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     FontAwesomeModule,
     RevModule,
     LayoutModule,
