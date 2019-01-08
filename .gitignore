@@ -44,3 +44,6 @@ Thumbs.db
 
 # Firebase
 /.firebase
+
+# Firebase logs
+/*.log
