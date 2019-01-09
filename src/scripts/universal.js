@@ -15,10 +15,12 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '../..');
 const dist = path.resolve(rootDir, './dist');
+const ssrDir = path.resolve(rootDir, './dist/ssr');
 
 try {
     fs.mkdirpSync(dist);
-    fs.copySync(path.resolve(rootDir, './functions/dist/browser'), path.resolve(rootDir, './dist/ssr'));
+    fs.emptyDirSync(ssrDir)
+    fs.copySync(path.resolve(rootDir, './functions/dist/browser'), ssrDir);
     fs.renameSync(path.resolve(rootDir, './dist/ssr/index.html'), path.resolve(rootDir, './dist/ssr/not-found.html'));
     console.log('success!');
 } catch (err) {
