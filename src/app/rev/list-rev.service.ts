@@ -105,7 +105,6 @@ export class ListRevService {
             ...doc.data()
           };
           revendications.push(rev);
-          dbg(doc.id, " => ", doc.data());
         });
         return revendications;
       });

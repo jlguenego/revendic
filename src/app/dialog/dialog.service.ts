@@ -24,7 +24,6 @@ export class DialogService {
   }
 
   init(pages) {
-    dbg('init page', pages);
     this.pages = pages;
   }
 

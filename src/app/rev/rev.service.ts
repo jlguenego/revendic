@@ -93,6 +93,5 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
-    dbg('share2');
   }
 }

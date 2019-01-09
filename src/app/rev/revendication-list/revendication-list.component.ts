@@ -43,7 +43,6 @@ export class RevendicationListComponent implements OnInit {
   }
 
   like(r: RevendicationRecord) {
-    dbg('like');
     this.rev.like(r);
   }
 

@@ -13,7 +13,6 @@ export class LikeService {
   constructor(private afs: AngularFirestore) { }
 
   getCount$(rev: RevendicationRecord, type = "like") {
-    dbg('rev.id', rev.id);
     const like = (type === "like") ? 1 : -1;
     return this.afs.collection<LikeRecord>(`likes-revendications/${rev.id}/users/`)
       .valueChanges().pipe(
