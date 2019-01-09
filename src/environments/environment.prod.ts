@@ -9,3 +9,5 @@ export const environment = {
     messagingSenderId: "919384495197"
   }
 };
+
+export const dbg = (...args) => {};

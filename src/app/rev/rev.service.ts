@@ -77,7 +77,7 @@ export class RevService {
       }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
 
     }).catch(() => {
-      this.dialog.show('needAccount', { operation: 'like' });
+      this.dialog.show('needAccount');
     });
   }
 
@@ -89,7 +89,7 @@ export class RevService {
       }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
 
     }).catch(() => {
-      this.dialog.show('needAccount', { operation: 'like' });
+      this.dialog.show('needAccount');
     });
   }
 

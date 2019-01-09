@@ -1,7 +1,7 @@
-import { Injectable, ChangeDetectorRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
 import { timer } from 'rxjs';
-import { NeedAccountDialogPageComponent } from './pages/need-account-dialog-page/need-account-dialog-page.component';
+import { dbg } from 'src/environments/environment';
 
 export interface PageComponent {
   title: string;
@@ -24,11 +24,11 @@ export class DialogService {
   }
 
   init(pages) {
-    console.log('init page', pages);
+    dbg('init page', pages);
     this.pages = pages;
   }
 
-  show(page: string, data = {}) {
+  show(page: string) {
     this.component.isVisible = true;
     // needs digestion of isVisible. so we use the timer.
     timer(0).subscribe(() => {
