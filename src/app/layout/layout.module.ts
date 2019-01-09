@@ -13,7 +13,7 @@ import { DialogModule } from '../dialog/dialog.module';
   declarations: [
     HeaderComponent, 
     BodyComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +25,7 @@ import { DialogModule } from '../dialog/dialog.module';
   exports: [
     HeaderComponent, 
     BodyComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class LayoutModule { }

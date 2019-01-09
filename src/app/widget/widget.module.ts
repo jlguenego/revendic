@@ -8,6 +8,7 @@ import { PasswordCheckComponent } from './password-check/password-check.componen
 import { PopupComponent } from './popup/popup.component';
 import { AnchorDirective } from './anchor.directive';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
+import { MetaDirective } from './meta.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ClickStopPropagationDirective } from './click-stop-propagation.directiv
     PasswordCheckComponent,
     PopupComponent,
     AnchorDirective,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    MetaDirective
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { ClickStopPropagationDirective } from './click-stop-propagation.directiv
     PopupComponent,
     AnchorDirective,
     ClickStopPropagationDirective,
+    MetaDirective
   ]
 })
 export class WidgetModule { }
