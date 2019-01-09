@@ -9,6 +9,7 @@ import { PopupComponent } from './popup/popup.component';
 import { AnchorDirective } from './anchor.directive';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 import { MetaDirective } from './meta.directive';
+import { MetaModule } from '@ngx-meta/core';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MetaDirective } from './meta.directive';
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MetaModule.forRoot()
   ],
   exports: [
     DividerComponent,

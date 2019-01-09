@@ -1,21 +1,19 @@
 import { Directive } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { MetaService } from '@ngx-meta/core';
 import { dbg, environment } from 'src/environments/environment';
 
 @Directive({
-  selector: '[appMeta]'
+  selector: '[appMeta]',
+  providers: [MetaService],
 })
 export class MetaDirective {
 
-  constructor(private meta: Meta) {
+  constructor(private readonly meta: MetaService) {
     dbg('appMeta working');
-    this.meta.addTag({ property: 'og:title', content: 'Revendique.com - Le bon coin de la revendication' });
-    this.meta.addTag({ property: 'og:type', content: 'article' });
-    this.meta.addTag({ property: 'og:image', content: 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg' });
-    this.meta.addTag({ property: 'og:url', content: environment.domain });
-
-
-    // this.meta.updateTag(tag: MetaDefinition, selector ?: string): HTMLMetaElement | null
+    this.meta.setTag('og:title', 'Revendique.com - Le bon coin de la revendication');
+    this.meta.setTag('og:type', 'article');
+    this.meta.setTag('og:image', 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg');
+    this.meta.setTag('og:url', environment.domain);
 
   }
 

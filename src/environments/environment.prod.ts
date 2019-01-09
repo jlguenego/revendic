@@ -7,7 +7,8 @@ export const environment = {
     projectId: "revendic-530b8",
     storageBucket: "revendic-530b8.appspot.com",
     messagingSenderId: "919384495197"
-  }
+  },
+  domain: 'https://preprod.revendique.com',
 };
 
 export const dbg = (...args) => {};
