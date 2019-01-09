@@ -34,7 +34,7 @@ export class RevendicationListComponent implements OnInit {
     } else if (this.random === '') {
       this.revendications = this.listRev.getRandomRevs(2);
     } else {
-      this.revendications = this.listRev.revs$;
+      this.revendications = this.listRev.allRevs$;
     }
   }
 

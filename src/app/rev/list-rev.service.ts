@@ -28,6 +28,7 @@ export class ListRevService {
 
   _db: firestore.Firestore;
 
+  allRevs$: BehaviorSubject<RevendicationRecord[]>;
   revs$: BehaviorSubject<RevendicationRecord[]>;
   lastUpdatedRevs$: BehaviorSubject<RevendicationRecord[]>;
 
@@ -45,6 +46,7 @@ export class ListRevService {
     private like: LikeService,
   ) {
     this._db = firestore();
+    this.initAllRevs();
     this.initRevs();
     this.initLastUpdatedRevs();
   }
@@ -54,6 +56,17 @@ export class ListRevService {
       '/revendications',
       ref => ref.where("userid", "==", this.user.uid)
         .orderBy('createdAt', 'desc')));
+  }
+
+  initAllRevs(max: number = 100) {
+    const filter = ref => ref;
+    this.allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    this.afu.query(this.db.collection<RevendicationRecord>(
+      '/revendications', pipeLimit(max, filter)))
+      .pipe(
+        this.mapLikes.bind(this)
+      )
+      .subscribe(this.allRevs$);
   }
 
   initRevs(max: number = 3) {
