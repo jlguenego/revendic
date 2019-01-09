@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { LikeRecord } from './like.record';
 import { errorFn } from '../common/utils';
 import { DialogService } from '../dialog/dialog.service';
+import { dbg } from 'src/environments/environment';
 
 const MAX_RANDOM = 1e9;
 
@@ -70,11 +71,10 @@ export class RevService {
   }
 
   like(r: RevendicationRecord) {
-    console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: 1
-      }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
+      }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
 
     }).catch(() => {
       this.dialog.show('needAccount');
@@ -82,11 +82,10 @@ export class RevService {
   }
 
   dislike(r: RevendicationRecord) {
-    console.log('like2', this.user.uid);
     return this.user.isConnected().then(() => {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: -1
-      }).then(docRef => console.log('docRef', docRef)).catch(errorFn);
+      }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
 
     }).catch(() => {
       this.dialog.show('needAccount');
@@ -94,6 +93,6 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
-    console.log('share2');
+    dbg('share2');
   }
 }

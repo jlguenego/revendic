@@ -9,6 +9,7 @@ import { AngularFirestoreUtilsService } from '../angular-firestore-utils.service
 import { UserService } from '../user/user.service';
 import { map } from 'rxjs/operators';
 import { LikeService } from './like.service';
+import { dbg } from 'src/environments/environment';
 
 const pipeLimit = (max: number, filter: QueryFn) => {
   if (max > 0) {
@@ -43,7 +44,6 @@ export class ListRevService {
     private user: UserService,
     private like: LikeService,
   ) {
-    console.log('constructor listrevservice');
     this._db = firestore();
     this.initRevs();
     this.initLastUpdatedRevs();
@@ -93,7 +93,6 @@ export class ListRevService {
           ...doc.data()
         };
         revendications.push(rev);
-        console.log(doc.id, " => ", doc.data());
       });
       if (revendications.length === max) {
         return revendications;
@@ -106,7 +105,7 @@ export class ListRevService {
             ...doc.data()
           };
           revendications.push(rev);
-          console.log(doc.id, " => ", doc.data());
+          dbg(doc.id, " => ", doc.data());
         });
         return revendications;
       });

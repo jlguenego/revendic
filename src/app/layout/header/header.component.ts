@@ -35,7 +35,6 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
-    console.log('header user refresh from host property');
     this.user.refresh();
   }
 

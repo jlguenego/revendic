@@ -3,6 +3,7 @@ import { RevendicationRecord } from './revendication.record';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { LikeRecord } from './like.record';
+import { dbg } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class LikeService {
   constructor(private afs: AngularFirestore) { }
 
   getCount$(rev: RevendicationRecord, type = "like") {
-    console.log('rev.id', rev.id);
+    dbg('rev.id', rev.id);
     const like = (type === "like") ? 1 : -1;
     return this.afs.collection<LikeRecord>(`likes-revendications/${rev.id}/users/`)
       .valueChanges().pipe(

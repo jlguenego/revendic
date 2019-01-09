@@ -22,7 +22,7 @@ try {
     fs.emptyDirSync(ssrDir)
     fs.copySync(path.resolve(rootDir, './functions/dist/browser'), ssrDir);
     fs.renameSync(path.resolve(rootDir, './dist/ssr/index.html'), path.resolve(rootDir, './dist/ssr/not-found.html'));
-    console.log('success!');
+    console.info('success!');
 } catch (err) {
     console.error(err);
 }

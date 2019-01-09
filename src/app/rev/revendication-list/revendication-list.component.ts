@@ -4,6 +4,7 @@ import { RevendicationRecord } from '../revendication.record';
 import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
 import { ListRevService } from '../list-rev.service';
+import { dbg } from 'src/environments/environment';
 
 @Component({
   selector: 'app-revendication-list',
@@ -42,17 +43,15 @@ export class RevendicationListComponent implements OnInit {
   }
 
   like(r: RevendicationRecord) {
-    console.log('like');
+    dbg('like');
     this.rev.like(r);
   }
 
   dislike(r: RevendicationRecord) {
-    console.log('dislike');
     this.rev.dislike(r);
   }
 
   share(r: RevendicationRecord) {
-    console.log('share');
     this.rev.share(r);
   }
 }

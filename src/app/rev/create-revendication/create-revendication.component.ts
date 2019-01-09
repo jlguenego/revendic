@@ -34,8 +34,6 @@ export class CreateRevendicationComponent implements OnInit {
 
   ngOnInit() {
     this.question.valueChanges.subscribe(value => {
-      console.log('previous', this.previous);
-      console.log('value', value);
 
       if (this.previous === undefined) {
         this.previous = value;

@@ -34,7 +34,6 @@ export class DialogService {
     timer(0).subscribe(() => {
       this.currentPage = this.pages[page];
       const componentRef = this.component.loadComponent(this.currentPage);
-      console.log('componentRef', componentRef);
       const pageComponent = (<PageComponent>componentRef.instance);
       this.component.title = pageComponent.title;
     });
