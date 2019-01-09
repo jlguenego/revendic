@@ -8,6 +8,7 @@ import { RevendicationListComponent } from './revendication-list/revendication-l
 import { ManageMyRevendicationsComponent } from './routes/manage-my-revendications/manage-my-revendications.component';
 import { UpdateRevendicationComponent } from './routes/update-revendication/update-revendication.component';
 import { RevendicationComponent } from './routes/revendication/revendication.component';
+import { ListAllRevendicationsComponent } from './routes/list-all-revendications/list-all-revendications.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RevendicationComponent } from './routes/revendication/revendication.com
     RevendicationListComponent,
     ManageMyRevendicationsComponent,
     UpdateRevendicationComponent,
-    RevendicationComponent
+    RevendicationComponent,
+    ListAllRevendicationsComponent
   ],
   imports: [
     CommonModule,
