@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/revendic-ssr",
+    "public": "dist/ssr",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source" : "**/*.@(css|js)",
-        "destination": "/index2.html"
+        "destination": "/not-found.html"
       },
       {
         "source": "**",
