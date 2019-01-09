@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'creer-revendication', component: CreateRevendicationComponent, canActivate: [AuthGuardServiceGuard] },
   { path: 'mes-revendications', component: ManageMyRevendicationsComponent, canActivate: [AuthGuardServiceGuard] },
   { path: 'mes-revendications/edition/:id', component: UpdateRevendicationComponent, canActivate: [AuthGuardServiceGuard] },
-  { path: 'revendications/:id/:title', component: RevendicationComponent },
+  { path: 'revendications/:id/:title', component: RevendicationComponent, data: { meta: true } },
   { path: 'revendications', component: ListAllRevendicationsComponent },
 ];
 

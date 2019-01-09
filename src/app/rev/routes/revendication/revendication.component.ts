@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreUtilsService } from 'src/app/angular-firestore-utils.service';
+import { MetaService } from '@ngx-meta/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-revendication',
@@ -22,7 +24,8 @@ export class RevendicationComponent implements OnInit {
     private afu: AngularFirestoreUtilsService,
     private db: AngularFirestore,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private meta: MetaService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -33,6 +36,15 @@ export class RevendicationComponent implements OnInit {
         }
         this.isMyRevendication = this.user.uid === this.r.userid;
         this.editLink = `/mes-revendications/edition/${r.id}`;
+        
+
+        // meta tags
+        const title = 'Revendication: ' + this.r.title;
+        this.meta.setTitle(title);
+        this.meta.setTag('og:title', title);
+        this.meta.setTag('og:type', 'article');
+        this.meta.setTag('og:image', 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg');
+        this.meta.setTag('og:url', environment.domain + this.router.url);
       });
     });
   }

@@ -26,11 +26,14 @@ export class MetaDirective {
       const path = url.replace(/^\/(.*)$/, '$1').replace(/^(.*)?\?.*$/, '$1');
       dbg('path', path);
       const data = router.config.find(route => route.path === path).data;
+      if (data.meta) {
+        return;
+      }
       let title = 'Revendique.com - Le bon coin de la revendication';
       if (data && data.title) {
         title = data.title;
       } 
-      this.meta.setTitle('Revendique.com - ' + title);
+      this.meta.setTitle(title);
       this.meta.setTag('og:title', title);
       this.meta.setTag('og:type', 'article');
       this.meta.setTag('og:image', 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg');
