@@ -12,8 +12,7 @@ export const environment = {
     storageBucket: "revendic-530b8.appspot.com",
     messagingSenderId: "919384495197"
   },
-  domain: 'https://preprod.revendique.com',
-  
+  domain: 'https://preprod.revendique.com'
 };
 
 export const dbg = console.log.bind(console);

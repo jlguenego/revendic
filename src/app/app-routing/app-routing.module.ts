@@ -15,11 +15,31 @@ import { IndicatorComponent } from './indicator/indicator.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'indicateurs', component: IndicatorComponent },
-  { path: 'presentation', component: PresentationComponent },
-  { path: 'mentions-legales', component: LegalComponent },
-  { path: 'erreur', component: ErrorComponent },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: 'indicateurs', component: IndicatorComponent, data: {
+      title: 'Les indicateurs de la revendication - statistiques'
+    }
+  },
+  {
+    path: 'presentation', component: PresentationComponent, data: {
+      title: 'Présentation du Collectif "Laissez faire les Français"'
+    }
+  },
+  {
+    path: 'mentions-legales', component: LegalComponent, data: {
+      title: 'Mentions Légales'
+    }
+  },
+  {
+    path: 'erreur', component: ErrorComponent, data: {
+      title: 'Oups... Erreur !'
+    }
+  },
+  {
+    path: '**', component: PageNotFoundComponent, data: {
+      title: 'Oups... Page non trouvée...'
+    }
+  }
 ];
 
 @NgModule({
@@ -27,9 +47,9 @@ const routes: Routes = [
     TestModule,
     UserModule,
     RevModule,
-    RouterModule.forRoot(routes), 
-    CommonModule, 
-    FontAwesomeModule, 
+    RouterModule.forRoot(routes),
+    CommonModule,
+    FontAwesomeModule,
     WidgetModule
   ],
   declarations: [
