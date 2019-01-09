@@ -1,4 +1,4 @@
 export class Utils {
 }
 
-export const errorFn = error => console.log('error', error);
+export const errorFn = error => console.error('error', error);
