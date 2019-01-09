@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng build --prod && firebase deploy",
-    "ssr-build": "ng run revendic:ssr-client --configuration=production && ng run revendic:ssr-server"
+    "build-universal": "ng run revendic:ssr-client --configuration=production && ng run revendic:ssr-server",
+    "build-ssr": "ng run revendic:ssr-server"
   },
   "private": true,
   "dependencies": {

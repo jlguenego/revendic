@@ -12,8 +12,8 @@ function mobilecheck() {
 })
 export class ResponsiveService {
 
-  mobile: boolean;
-  desktop: boolean;
+  mobile = false;
+  desktop = true;
   constructor(@Inject(PLATFORM_ID) private platformId) {
     
     if (isPlatformBrowser(platformId)) {

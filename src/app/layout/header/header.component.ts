@@ -7,16 +7,17 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  host: {
+    '(window:focus)': 'refresh($event)',
+  }
 })
 export class HeaderComponent implements OnInit {
 
   faBars = faBars;
   isMenuOpen = false;
 
-  constructor(public resp: ResponsiveService, public user: UserService, private cd: ChangeDetectorRef) {
-    window.addEventListener("focus", event => this.refresh(), false);
-  }
+  constructor(public resp: ResponsiveService, public user: UserService) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
+    console.log('header user refresh from host property');
     this.user.refresh();
   }
 

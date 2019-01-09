@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ListRevService } from '../../list-rev.service';
 import { RevService } from '../../rev.service';
 
+
 @Component({
   selector: 'app-manage-my-revendications',
   templateUrl: './manage-my-revendications.component.html',
