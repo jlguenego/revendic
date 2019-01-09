@@ -10,7 +10,7 @@ main {
 section {
     display: block;
     text-align: left;
-    padding: 1rem;
+    padding: 0 1rem;
     &.dark {
         background: $section-dark-bgcolor;
     }
