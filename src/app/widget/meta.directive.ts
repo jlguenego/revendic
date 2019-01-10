@@ -10,7 +10,7 @@ import { map, filter } from 'rxjs/operators';
 })
 export class MetaDirective {
 
-  constructor(private readonly meta: MetaService, private router: Router, private route: ActivatedRoute) {
+  constructor(private readonly meta: MetaService, private router: Router) {
     dbg('appMeta working');
     this.router.events.pipe(
       filter(e => e instanceof NavigationStart),
@@ -28,7 +28,7 @@ export class MetaDirective {
       let title = 'Revendique.com - Le bon coin de la revendication';
       if (data && data.title) {
         title = data.title;
-      } 
+      }
       this.meta.setTitle(title);
       this.meta.setTag('og:title', title);
       this.meta.setTag('og:description', 'Le site Revendique.com est la plateforme de mise en relation entre tous ceux qui ont des revendications et les décideurs qui peuvent les aider à les réaliser.');
