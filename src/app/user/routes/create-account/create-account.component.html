@@ -2,10 +2,20 @@
   <section class="center">
     <div class="frame">
       <h1>Créer un nouveau compte</h1>
-      <app-social-login></app-social-login>
+      <p class="center">
+        <b>Important: </b>en créant un compte, vous vous engagez à respecter <a routerLink="/mentions-legales" fragment="conditions-utilisation">nos conditions d'utilisation</a>.
+      </p>
+      <p class="accept">
+        <button (click)="accept()">J'accepte les conditions d'utilisation</button>
+      </p>
+      <br>
+      <div *ngIf="accepted">
+          <app-social-login></app-social-login>
 
-      <app-divider>ou</app-divider>
-      <app-create-account-form></app-create-account-form>
+          <app-divider>ou</app-divider>
+          <app-create-account-form></app-create-account-form>
+      </div>
+      
     </div>
   </section>
 </main>

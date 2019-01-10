@@ -11,9 +11,15 @@ export class CreateAccountComponent implements OnInit {
   faGoogle = faGoogle;
   faFacebook = faFacebook;
 
+  accepted = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  accept() {
+    this.accepted = true;
   }
 
 }
