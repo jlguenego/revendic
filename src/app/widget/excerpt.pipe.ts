@@ -10,7 +10,7 @@ export class ExcerptPipe implements PipeTransform {
       return value;
     }
     if (value.length > length) {
-      return value.substr(0, length) + '...';
+      return value.substr(0, length) + ' ...';
     }
     return value;
   }
