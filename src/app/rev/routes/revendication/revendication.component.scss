@@ -5,3 +5,10 @@
         width: 100%;
     }
 }
+
+.buttons {
+    display: flex;
+    button {
+        margin-right: 2rem;
+    }
+}

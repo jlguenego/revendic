@@ -8,8 +8,11 @@
 
 
 
-    <p>{{r.author}} - publié le {{r.createdAt.toDate() | date : 'medium'}}
-      <span *ngIf="isMyRevendication"><button [routerLink]="editLink">Editer</button><button (click)="delete()">Supprimer</button></span>
+    <p>
+      {{r.author}} - publié le {{r.createdAt.toDate() | date : 'medium'}}
+    </p>
+    <p class="buttons" *ngIf="isMyRevendication">
+      <button [routerLink]="editLink">Editer</button><button class="danger" (click)="delete()">Supprimer</button>
     </p>
 
     <h2>Contenu</h2>
