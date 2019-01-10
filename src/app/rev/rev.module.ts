@@ -9,6 +9,7 @@ import { ManageMyRevendicationsComponent } from './routes/manage-my-revendicatio
 import { UpdateRevendicationComponent } from './routes/update-revendication/update-revendication.component';
 import { RevendicationComponent } from './routes/revendication/revendication.component';
 import { ListAllRevendicationsComponent } from './routes/list-all-revendications/list-all-revendications.component';
+import { WidgetModule } from '../widget/widget.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ListAllRevendicationsComponent } from './routes/list-all-revendications
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    WidgetModule,
     RevRoutingModule
   ],
   exports: [RevendicationListComponent]

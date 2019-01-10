@@ -10,12 +10,11 @@ main {
 section {
     display: block;
     text-align: left;
-    padding: 0 1rem;
+    padding: 0 1rem 1rem;
     &.dark {
         background: $section-dark-bgcolor;
     }
 }
-
 
 // to be used on image
 // width: 150px;

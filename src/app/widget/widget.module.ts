@@ -10,6 +10,7 @@ import { AnchorDirective } from './anchor.directive';
 import { ClickStopPropagationDirective } from './click-stop-propagation.directive';
 import { MetaDirective } from './meta.directive';
 import { MetaModule } from '@ngx-meta/core';
+import { Text2htmlPipe } from './text2html.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MetaModule } from '@ngx-meta/core';
     PopupComponent,
     AnchorDirective,
     ClickStopPropagationDirective,
-    MetaDirective
+    MetaDirective,
+    Text2htmlPipe
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { MetaModule } from '@ngx-meta/core';
     PopupComponent,
     AnchorDirective,
     ClickStopPropagationDirective,
-    MetaDirective
+    MetaDirective,
+    Text2htmlPipe
   ]
 })
 export class WidgetModule { }
