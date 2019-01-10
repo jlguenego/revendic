@@ -35,10 +35,13 @@ $radius: 1rem;
 }
 
 .title {
+    flex-grow: 1;
+    display: block;
     text-align: center;
 }
 
 .close {
+    flex-grow: 0;
     padding: 0 0.5rem;
     cursor: pointer;
 }
