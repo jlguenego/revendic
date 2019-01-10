@@ -18,6 +18,7 @@ export class CreateRevendicationComponent implements OnInit {
     title: new FormControl(''),
     content: new FormControl(''),
     category: new FormControl(''),
+    photo: new FormControl(''),
   });
 
   question = new FormGroup({

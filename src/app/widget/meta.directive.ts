@@ -21,7 +21,11 @@ export class MetaDirective {
     ).subscribe(url => {
       const path = url.replace(/^\/(.*)$/, '$1').replace(/^(.*)?\?.*$/, '$1');
       dbg('path', path);
-      const data = router.config.find(route => route.path === path).data;
+      const route = router.config.find(route => route.path === path);
+      if (!route) {
+        return;
+      }
+      const data = route.data;
       if (data && data.meta) {
         return;
       }

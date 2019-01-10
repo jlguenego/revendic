@@ -1,7 +1,7 @@
 <main>
   <section>
     <h1>Créer une nouvelle revendication</h1>
-    
+
     <form [formGroup]="f" (ngSubmit)="onSubmit()">
       <label>
         <div>Titre*</div>
@@ -18,6 +18,11 @@
           <option value="politique">Politique</option>
           <option value="autre">Autre</option>
         </select>
+      </label>
+      <label>
+        <div>Photo</div>
+        <input type="text" name="photo" formControlName="photo">
+        <img class="photo" [src]="f.value.photo">
       </label>
       <div class="error-block">
         <div class="error-incorrect" *ngIf="errorCode !== undefined">
