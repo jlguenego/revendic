@@ -24,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'mentions-legales', component: LegalComponent, data: {
-      title: 'Mentions Légales'
+      title: 'Mentions Légales',
+      image: 'https://www.e-monsite.com/medias/images/rediger-mentions-legales.png',
     }
   },
   {
