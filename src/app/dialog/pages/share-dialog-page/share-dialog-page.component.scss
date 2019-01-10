@@ -1,0 +1,22 @@
+.share {
+    display: flex;
+    align-items: center;
+    b {
+        padding: 1rem;
+    }
+}
+
+.facebook {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(66, 103, 178);
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    white-space: nowrap;
+    svg {
+        width: 3rem;
+        padding-right: 1rem;
+    }
+}
+

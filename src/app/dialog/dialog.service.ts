@@ -5,6 +5,7 @@ import { dbg } from 'src/environments/environment';
 
 export interface PageComponent {
   title: string;
+  data: any;
 }
 
 @Injectable({
@@ -27,7 +28,7 @@ export class DialogService {
     this.pages = pages;
   }
 
-  show(page: string) {
+  show(page: string, data = {}) {
     this.component.isVisible = true;
     // needs digestion of isVisible. so we use the timer.
     timer(0).subscribe(() => {
@@ -35,6 +36,7 @@ export class DialogService {
       const componentRef = this.component.loadComponent(this.currentPage);
       const pageComponent = (<PageComponent>componentRef.instance);
       this.component.title = pageComponent.title;
+      pageComponent.data = data;
     });
 
   }

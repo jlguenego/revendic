@@ -39,7 +39,7 @@ export class RevendicationListComponent implements OnInit {
   }
 
   getLink(r: RevendicationRecord) {
-    return `/revendications/${r.id}/${toNiceUrlTitle(r.title)}`
+    return this.rev.getLink(r);
   }
 
   like(r: RevendicationRecord) {
@@ -53,11 +53,4 @@ export class RevendicationListComponent implements OnInit {
   share(r: RevendicationRecord) {
     this.rev.share(r);
   }
-}
-
-function toNiceUrlTitle(str: string): string {
-  return str.normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[ '"’]/g, '-')
-    .toLocaleLowerCase();
 }

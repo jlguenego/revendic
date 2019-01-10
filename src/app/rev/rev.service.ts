@@ -93,6 +93,18 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
-      this.dialog.show('share');
+      this.dialog.show('share', {revendication: r});
+  }
+
+  getLink(r: RevendicationRecord) {
+    return `/revendications/${r.id}/${toNiceUrlTitle(r.title)}`
   }
 }
+
+function toNiceUrlTitle(str: string): string {
+  return str.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[ '"’]/g, '-')
+    .toLocaleLowerCase();
+}
+

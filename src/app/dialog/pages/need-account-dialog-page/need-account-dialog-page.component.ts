@@ -11,6 +11,7 @@ import { UserRoutes } from 'src/app/user/user-routes';
 export class NeedAccountDialogPageComponent implements OnInit {
 
   title = 'Et si vous obteniez un compte citoyen ?';
+  data = {};
 
   loginLink = UserRoutes.url.login;
   createAccountLink = UserRoutes.url.createAccount;
