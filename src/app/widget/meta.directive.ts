@@ -13,10 +13,6 @@ export class MetaDirective {
   constructor(private readonly meta: MetaService, private router: Router, private route: ActivatedRoute) {
     dbg('appMeta working');
     this.router.events.pipe(
-      // map(val => {
-      //   dbg('val-debug', val);
-      //   return val
-      // }),
       filter(e => e instanceof NavigationStart),
       map(val => {
         dbg('val', val);
@@ -26,7 +22,7 @@ export class MetaDirective {
       const path = url.replace(/^\/(.*)$/, '$1').replace(/^(.*)?\?.*$/, '$1');
       dbg('path', path);
       const data = router.config.find(route => route.path === path).data;
-      if (data.meta) {
+      if (data && data.meta) {
         return;
       }
       let title = 'Revendique.com - Le bon coin de la revendication';
@@ -35,6 +31,7 @@ export class MetaDirective {
       } 
       this.meta.setTitle(title);
       this.meta.setTag('og:title', title);
+      this.meta.setTag('og:description', 'Le site Revendique.com est la plateforme de mise en relation entre tous ceux qui ont des revendications et les décideurs qui peuvent les aider à les réaliser.');
       this.meta.setTag('og:type', 'article');
       this.meta.setTag('og:image', 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg');
       this.meta.setTag('og:url', environment.domain + url);
