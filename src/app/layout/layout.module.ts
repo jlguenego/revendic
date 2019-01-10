@@ -8,6 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { WidgetModule } from '../widget/widget.module';
 import { DialogModule } from '../dialog/dialog.module';
+import { TestModule } from '../test/test.module';
+import { UserModule } from '../user/user.module';
+import { RevModule } from '../rev/rev.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { DialogModule } from '../dialog/dialog.module';
     FontAwesomeModule,
     WidgetModule,
     DialogModule,
+    TestModule,
+    UserModule,
+    RevModule,
     AppRoutingModule,
   ],
   exports: [

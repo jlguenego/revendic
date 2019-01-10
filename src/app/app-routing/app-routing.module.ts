@@ -8,9 +8,6 @@ import { WidgetModule } from '../widget/widget.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorComponent } from './error/error.component';
 import { CommonModule } from '@angular/common';
-import { RevModule } from '../rev/rev.module';
-import { UserModule } from '../user/user.module';
-import { TestModule } from '../test/test.module';
 import { IndicatorComponent } from './indicator/indicator.component';
 
 const routes: Routes = [
@@ -44,9 +41,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    TestModule,
-    UserModule,
-    RevModule,
     RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     FontAwesomeModule,
