@@ -47,7 +47,7 @@ const routes: Routes = [
     TestModule,
     UserModule,
     RevModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'}),
     CommonModule,
     FontAwesomeModule,
     WidgetModule
