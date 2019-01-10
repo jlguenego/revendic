@@ -46,7 +46,7 @@ export class RevendicationComponent implements OnInit {
         this.meta.setTag('og:title', title);
         this.meta.setTag('og:description', this.r.content);
         this.meta.setTag('og:type', 'article');
-        this.meta.setTag('og:image', 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg');
+        this.meta.setTag('og:image', this.photo);
         this.meta.setTag('og:url', environment.domain + this.router.url);
       });
     });
