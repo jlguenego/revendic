@@ -93,5 +93,6 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
+      this.dialog.show('share');
   }
 }

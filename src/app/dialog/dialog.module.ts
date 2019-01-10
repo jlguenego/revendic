@@ -6,11 +6,13 @@ import { DialogComponent } from './dialog/dialog.component';
 import { NeedAccountDialogPageComponent } from './pages/need-account-dialog-page/need-account-dialog-page.component';
 import { WidgetModule } from '../widget/widget.module';
 import { RouterModule } from '@angular/router';
+import { ShareDialogPageComponent } from './pages/share-dialog-page/share-dialog-page.component';
 
 @NgModule({
   declarations: [
     DialogComponent,
     NeedAccountDialogPageComponent,
+    ShareDialogPageComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { RouterModule } from '@angular/router';
   ],
   entryComponents: [
     NeedAccountDialogPageComponent,
+    ShareDialogPageComponent
   ]
 })
 export class DialogModule { }
