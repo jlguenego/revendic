@@ -15,11 +15,7 @@
     <h2>Contenu</h2>
 
 
-    <p>
-
-      {{r.content | text2html }}
-
-    </p>
+    <p [innerHtml]="r.content | text2html"></p>
 
 
 
