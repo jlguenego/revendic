@@ -3,7 +3,7 @@
     <li class="row" *ngFor="let r of revendications | async">
       <a [routerLink]="getLink(r)">
         <div> <b>{{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
-        <div><i>{{r.content}}</i></div>
+        <div><i>{{r.content | excerpt}}</i></div>
       </a>
       <div>Soutiens: {{r.likes | async }} - Opposants: {{ r.dislikes | async }}</div>
       <div><a (click)="like(r)" >Oui, je soutiens</a> - <a (click)="share(r)" >Je partage</a> - <a (click)="dislike(r)" >Non, je m'oppose</a></div>

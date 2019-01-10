@@ -11,6 +11,7 @@ import { ClickStopPropagationDirective } from './click-stop-propagation.directiv
 import { MetaDirective } from './meta.directive';
 import { MetaModule } from '@ngx-meta/core';
 import { Text2htmlPipe } from './text2html.pipe';
+import { ExcerptPipe } from './excerpt.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { Text2htmlPipe } from './text2html.pipe';
     AnchorDirective,
     ClickStopPropagationDirective,
     MetaDirective,
-    Text2htmlPipe
+    Text2htmlPipe,
+    ExcerptPipe
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { Text2htmlPipe } from './text2html.pipe';
     AnchorDirective,
     ClickStopPropagationDirective,
     MetaDirective,
-    Text2htmlPipe
+    Text2htmlPipe,
+    ExcerptPipe
   ]
 })
 export class WidgetModule { }
