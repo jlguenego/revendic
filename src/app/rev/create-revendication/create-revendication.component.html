@@ -1,28 +1,38 @@
 <main>
   <section>
-    <h1>Créer une nouvelle revendication</h1>
+    <h1>Je crée ma revendication</h1>
 
     <form [formGroup]="f" (ngSubmit)="onSubmit()">
       <label>
         <div>Titre*</div>
-        <input type="text" name="title" formControlName="title">
+        <input type="text" name="title" formControlName="title" placeholder="Titre de ma revendication">
+      </label>
+      <label>
+        <div>Constat*</div>
+        <textarea name="content" formControlName="content" rows="10" placeholder="Décrivez ici la situation qui vous donne l'idée de la revendication."></textarea>
+        <div class="help">Une revendication est plus légitime lorsqu'elle décrit un problème initial, une souffrance,
+          une frustration.</div>
       </label>
       <label>
         <div>Contenu*</div>
-        <textarea name="content" formControlName="content" placeholder="Entrer ici librement le contenu de votre revendication."></textarea>
+        <textarea name="content" formControlName="content" rows="10" placeholder="Entrer ici librement le contenu de votre revendication, qui fait suite logique à votre constat."></textarea>
       </label>
       <label>
         <div>Categorie*</div>
         <select formControlName="category">
+          <option value="" disabled selected>&lt;Choisir une catégorie&gt;</option>
           <option value="travail">Travail</option>
           <option value="politique">Politique</option>
           <option value="autre">Autre</option>
         </select>
       </label>
       <label>
-        <div>Vous pouvez optionnellement illustrer votre revendication avec une URL de Photo</div>
-        <input type="text" name="photo" formControlName="photo">
-        <img class="photo" [src]="f.value.photo">
+        <div>OPTIONEL : Vous pouvez illustrer votre revendication avec une URL de Photo</div>
+        <input type="text" name="photo" formControlName="photo" placeholder="URL d'image sur internet">
+        <div>Exemple: https://bit.ly/2SKiFjn</div>
+        <div class="photo">
+            <img [src]="f.value.photo" >
+        </div>
       </label>
       <div class="error-block">
         <div class="error-incorrect" *ngIf="errorCode !== undefined">

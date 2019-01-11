@@ -2,7 +2,8 @@ export interface RevendicationRecord {
     id?: string;
     title?: string;
     author?: string;
-    content?: any;
+    constat?: string;
+    content?: string;
     photo?: string;
     category?: any;
 
