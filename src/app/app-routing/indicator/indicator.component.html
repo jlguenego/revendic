@@ -6,7 +6,7 @@
         Pour le lancement du site, nous ne présentons qu'un seul indicateur: le nombre de revendications, toutes
         confondues.
       </p>
-      <h1><a routerLink="/revendications">234 revendications</a></h1>
+      <h1><a routerLink="/revendications">{{(list.allRevs$ | async)?.length}} revendications</a></h1>
     </div>
   </section>
 </main>

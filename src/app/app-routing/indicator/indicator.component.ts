@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ListRevService } from 'src/app/rev/list-rev.service';
 
 @Component({
   selector: 'app-indicator',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndicatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public list: ListRevService) { }
 
   ngOnInit() {
   }
