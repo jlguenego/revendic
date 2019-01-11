@@ -39,7 +39,7 @@ export class UserService {
   uid = "";
   provider = "";
 
-  onDeletion$ = new Subject<{}>();
+  onDeletionPromiseList: (() => Promise<void>)[] = [];
 
   subject: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
@@ -212,13 +212,15 @@ export class UserService {
   }
 
   delete() {
-    this.onDeletion$.next();
-    this.afAuth.auth.currentUser.delete()
-      .then(() => this.router.navigate(['compte-efface']))
-      .catch(error => {
-        const message = FirebaseUtils.getLocaleMessage(error);
-        this.router.navigate(['erreur', { message }])
-      });
+    const promises = this.onDeletionPromiseList.map(fn => fn());
+    Promise.all(promises).then(() => {
+      return this.afAuth.auth.currentUser.delete();
+    }).then(() => this.router.navigate(['compte-efface'])
+    ).catch(error => {
+      const message = FirebaseUtils.getLocaleMessage(error);
+      this.router.navigate(['erreur', { message }])
+    });
+
   }
 
   updatePassword(password: string, newPassword: string) {

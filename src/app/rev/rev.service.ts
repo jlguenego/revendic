@@ -22,15 +22,28 @@ export class RevService {
     UNKNOWN: 0,
   }
 
+  _db = firestore();
+
   constructor(
     private db: AngularFirestore,
     private user: UserService,
-    private dialog: DialogService) { 
+    private dialog: DialogService) {
 
-      this.user.onDeletion$.subscribe(info => {
-        dbg('rev impact on deletion');
-      });
-    }
+
+    this.user.onDeletionPromiseList.push(() => {
+      dbg('about to delete all the user revendications');
+      return this._db.collection('/revendications').where("userid", "==", this.user.uid).get()
+        .then(querySnapshot => {
+          const promises = [];
+          querySnapshot.forEach(doc => {
+            const promise = doc.ref.delete();
+            promises.push(promise);
+          });
+          return <Promise<any>>Promise.all(promises);
+        });
+    });
+
+  }
 
   random() {
     return Math.round(Math.random() * MAX_RANDOM);
@@ -98,7 +111,7 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
-      this.dialog.show('share', {revendication: r});
+    this.dialog.show('share', { revendication: r });
   }
 
   getLink(r: RevendicationRecord) {
