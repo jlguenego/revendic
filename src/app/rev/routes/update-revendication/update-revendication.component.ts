@@ -18,6 +18,9 @@ export class UpdateRevendicationComponent implements OnInit {
 
   f = new FormGroup({
     title: new FormControl(''),
+    content: new FormControl(''),
+    category: new FormControl(''),
+    photo: new FormControl(''),
   });
 
   constructor(private rev: RevService, private route: ActivatedRoute, private router: Router) { }
@@ -28,6 +31,9 @@ export class UpdateRevendicationComponent implements OnInit {
       this.rev.get(this.revId).pipe(take(1)).subscribe(revendication => {
         this.f.setValue({
           title: revendication.title,
+          content: revendication.content,
+          category: revendication.category,
+          photo: revendication.photo,
         });
       });
     });

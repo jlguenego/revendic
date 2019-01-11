@@ -2,10 +2,27 @@
   <section>
     <h1>Edition de ma revendication</h1>
 
-    <form autocomplete [formGroup]="f" (ngSubmit)="onSubmit()">
+    <form [formGroup]="f" (ngSubmit)="onSubmit()">
       <label>
         <div>Titre*</div>
-        <input name="title" formControlName="title">
+        <input type="text" name="title" formControlName="title">
+      </label>
+      <label>
+        <div>Contenu*</div>
+        <textarea name="content" formControlName="content" placeholder="Entrer ici librement le contenu de votre revendication."></textarea>
+      </label>
+      <label>
+        <div>Categorie*</div>
+        <select formControlName="category">
+          <option value="travail">Travail</option>
+          <option value="politique">Politique</option>
+          <option value="autre">Autre</option>
+        </select>
+      </label>
+      <label>
+        <div>Vous pouvez optionnellement illustrer votre revendication avec une URL de Photo</div>
+        <input type="text" name="photo" formControlName="photo">
+        <img class="photo" [src]="f.value.photo">
       </label>
       <div class="error-block">
         <div class="error-incorrect" *ngIf="errorCode !== undefined">
@@ -13,7 +30,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="submit">
         <button type="submit">Mettre à jour les modifications</button>
       </div>
     </form>
