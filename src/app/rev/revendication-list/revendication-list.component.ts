@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
 import { ListRevService } from '../list-rev.service';
 import { dbg } from 'src/environments/environment';
+import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-revendication-list',
@@ -12,6 +13,8 @@ import { dbg } from 'src/environments/environment';
   styleUrls: ['./revendication-list.component.scss']
 })
 export class RevendicationListComponent implements OnInit {
+
+  faBullhorn = faBullhorn;
 
   @Input() max: string;
 

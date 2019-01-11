@@ -2,7 +2,7 @@
   <ul class="table">
     <li class="row" *ngFor="let r of revendications | async">
       <a [routerLink]="getLink(r)">
-        <div> <b>{{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
+        <div> <b><fa-icon class="icon" [icon]="faBullhorn"></fa-icon> {{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
         <div><i>{{r.content | excerpt}}</i></div>
       </a>
       <div>Soutiens: {{r.likes | async }} - Opposants: {{ r.dislikes | async }}</div>
