@@ -22,7 +22,7 @@ export class LikeService {
 
   mapLikes = map<RevendicationRecord[], any>(revs => revs.map(this.mapLike));
 
-  mapLike = (rev: RevendicationRecord) => {
+  mapLike = (rev: RevendicationRecord): RevendicationRecord => {
     console.log('rev', rev);
     rev.likes = this.getCount$(rev, "like");
     rev.dislikes = this.getCount$(rev, "dislike");

@@ -38,7 +38,7 @@ export class RevendicationComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.afu.doc<RevendicationRecord>('/revendications', params.id)
         .pipe(
-          map(this.like.mapLike.bind(this.like))
+          map<RevendicationRecord, any>(this.like.mapLike.bind(this.like))
         )
         .subscribe(r => {
           dbg('r', r);
