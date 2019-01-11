@@ -13,14 +13,12 @@
       {{r.author}} - publié le {{r.createdAt.toDate() | date : 'medium'}}
     </p>
     <p class="buttons">
-      <span>
-        <button (click)="rev.like(r)">Je soutiens !</button>
-        <span>{{r.likes | async }} soutiens</span>
-      </span> 
-      <span>
-        <button (click)="rev.dislike(r)">Je m'oppose !</button>
-        <span>{{r.dislikes | async }} opposants</span>
-      </span> 
+      <span class="like">{{r.likes | async }} soutiens</span>
+      <span class="like">{{r.dislikes | async }} opposants</span>
+    </p>
+    <p class="buttons">
+      <button (click)="rev.like(r)">Je soutiens !</button>
+      <button (click)="rev.dislike(r)">Je m'oppose !</button>
     </p>
     <h2>Contenu</h2>
     <p [innerHtml]="r.content | text2html"></p>
