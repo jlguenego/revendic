@@ -15,21 +15,6 @@
           <span>{{r.category}} - {{r.createdAt.toDate() | date : 'short'}}</span>
         </div>
       </a>
-      <div class="third-line">
-        <a (click)="like(r)" class="command like ">
-          <fa-icon [icon]="faThumbsUp"></fa-icon>
-          <span>{{r.likes | async }}</span>
-        </a>
-        <a (click)="share(r)" class="command">
-          <fa-icon [icon]="faShareSquare"></fa-icon>
-          <span>Partage</span> 
-        </a>
-        <a (click)="dislike(r)" class="command dislike ">
-          <fa-icon [icon]="faThumbsDown"></fa-icon>
-          <span>{{r.dislikes | async }}</span>
-        </a>
-        
-      </div>
     </li>
   </ul>
 </div>
