@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 
 import { FirebaseUtils } from './FirebaseUtils';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { UserRoutes } from './user-routes';
 import { map } from 'rxjs/operators';
 
@@ -38,6 +38,8 @@ export class UserService {
   email = "";
   uid = "";
   provider = "";
+
+  onDeletion$ = new Subject<{}>();
 
   subject: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
@@ -210,6 +212,7 @@ export class UserService {
   }
 
   delete() {
+    this.onDeletion$.next();
     this.afAuth.auth.currentUser.delete()
       .then(() => this.router.navigate(['compte-efface']))
       .catch(error => {

@@ -25,7 +25,12 @@ export class RevService {
   constructor(
     private db: AngularFirestore,
     private user: UserService,
-    private dialog: DialogService) { }
+    private dialog: DialogService) { 
+
+      this.user.onDeletion$.subscribe(info => {
+        dbg('rev impact on deletion');
+      });
+    }
 
   random() {
     return Math.round(Math.random() * MAX_RANDOM);
