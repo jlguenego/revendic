@@ -10,6 +10,7 @@ import { UpdateRevendicationComponent } from './routes/update-revendication/upda
 import { RevendicationComponent } from './routes/revendication/revendication.component';
 import { ListAllRevendicationsComponent } from './routes/list-all-revendications/list-all-revendications.component';
 import { WidgetModule } from '../widget/widget.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { WidgetModule } from '../widget/widget.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     WidgetModule,
     RevRoutingModule
   ],

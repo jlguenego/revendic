@@ -9,6 +9,7 @@ import { environment, dbg } from 'src/environments/environment';
 import { RevService } from '../../rev.service';
 import { LikeService } from '../../like.service';
 import { map } from 'rxjs/operators';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-revendication',
@@ -16,6 +17,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./revendication.component.scss']
 })
 export class RevendicationComponent implements OnInit {
+
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
 
   r: RevendicationRecord;
   createdAt: Date = new Date();
