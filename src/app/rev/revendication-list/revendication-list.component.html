@@ -2,11 +2,34 @@
   <ul class="table">
     <li class="row" *ngFor="let r of revendications | async">
       <a [routerLink]="getLink(r)">
-        <div> <b><fa-icon class="icon" [icon]="faBullhorn"></fa-icon> {{r.title}}</b> - {{r.category}} - {{r.author}} - {{r.createdAt.toDate() | date : 'short'}}</div>
-        <div><i>{{r.content | excerpt}}</i></div>
+        <div class="first-line">
+          <b class="title">
+            <fa-icon class="icon" [icon]="faBullhorn"></fa-icon> {{r.title}}
+          </b>
+          <span>
+            {{r.author}}
+          </span>
+        </div>
+        <div class="second-line">
+          <i>{{r.content | excerpt}}</i>
+          <span>{{r.category}} - {{r.createdAt.toDate() | date : 'short'}}</span>
+        </div>
       </a>
-      <div>Soutiens: {{r.likes | async }} - Opposants: {{ r.dislikes | async }}</div>
-      <div><a (click)="like(r)" >Oui, je soutiens</a> - <a (click)="share(r)" >Je partage</a> - <a (click)="dislike(r)" >Non, je m'oppose</a></div>
+      <div class="third-line">
+        <a (click)="like(r)" class="command like ">
+          <fa-icon [icon]="faThumbsUp"></fa-icon>
+          <span>{{r.likes | async }}</span>
+        </a>
+        <a (click)="share(r)" class="command">
+          <fa-icon [icon]="faShare"></fa-icon>
+          <span>Partage</span> 
+        </a>
+        <a (click)="dislike(r)" class="command dislike ">
+          <fa-icon [icon]="faThumbsDown"></fa-icon>
+          <span>{{r.dislikes | async }}</span>
+        </a>
+        
+      </div>
     </li>
   </ul>
 </div>
