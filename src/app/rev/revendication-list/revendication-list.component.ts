@@ -4,7 +4,8 @@ import { RevendicationRecord } from '../revendication.record';
 import { Observable } from 'rxjs';
 import { RevService } from '../rev.service';
 import { ListRevService } from '../list-rev.service';
-import { faBullhorn, faShare, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
+import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-revendication-list',
@@ -16,7 +17,7 @@ export class RevendicationListComponent implements OnInit {
   faBullhorn = faBullhorn;
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
-  faShare = faShare;
+  faShareSquare = faShareSquare;
 
   @Input() max: string;
 
