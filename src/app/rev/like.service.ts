@@ -18,8 +18,15 @@ export class LikeService {
       .valueChanges().pipe(
         map(docs => docs.filter(doc => doc.like === like).length)
       );
-
   }
 
+  mapLikes = map<RevendicationRecord[], any>(revs => revs.map(this.mapLike));
+
+  mapLike = (rev: RevendicationRecord) => {
+    console.log('rev', rev);
+    rev.likes = this.getCount$(rev, "like");
+    rev.dislikes = this.getCount$(rev, "dislike");
+    return rev;
+  };
   
 }

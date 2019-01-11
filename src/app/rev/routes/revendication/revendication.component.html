@@ -1,28 +1,36 @@
 <main>
   <section *ngIf="r !== undefined">
     <h1>Revendication: {{r.title}}</h1>
+    <p class="buttons" *ngIf="isMyRevendication">
+      <button [routerLink]="editLink">Editer</button><button class="danger" (click)="delete()">Supprimer</button>
+    </p>
 
     <div class="photo">
       <img [src]="photo">
     </div>
 
-
-
     <p>
       {{r.author}} - publié le {{r.createdAt.toDate() | date : 'medium'}}
+    </p>
+    <p class="buttons">
+      <span>
+        <button (click)="rev.like(r)">Je soutiens !</button>
+        <span>{{r.likes | async }} soutiens</span>
+      </span> 
+      <span>
+        <button (click)="rev.dislike(r)">Je m'oppose !</button>
+        <span>{{r.dislikes | async }} opposants</span>
+      </span> 
+    </p>
+    <h2>Contenu</h2>
+    <p [innerHtml]="r.content | text2html"></p>
+    <h2>Catégories</h2>
+    <p>
+      {{r.category}}
     </p>
     <p class="buttons" *ngIf="isMyRevendication">
       <button [routerLink]="editLink">Editer</button><button class="danger" (click)="delete()">Supprimer</button>
     </p>
 
-    <h2>Contenu</h2>
-
-
-    <p [innerHtml]="r.content | text2html"></p>
-
-
-
-    <h2>Catégories</h2>
-    {{r.category}}
   </section>
 </main>
