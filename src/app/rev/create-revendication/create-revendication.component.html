@@ -12,7 +12,7 @@
         <textarea name="content" formControlName="content" rows="10" placeholder="Je décris ce qui ne va pas."></textarea>
         <div class="help">
           <fa-icon [icon]=faInfoCircle></fa-icon>
-          Pour une revendication précise, je fais d'abord un constat d'une chose qui ne me va pas.
+          Pour une revendication précise, je fais d'abord le constat d'une situation qui ne me convient pas.
         </div>
       </label>
       <label>
@@ -20,7 +20,7 @@
         <textarea name="content" formControlName="content" rows="10" placeholder="Entrer ici librement le contenu de votre revendication, qui fait suite logique à votre constat."></textarea>
         <div class="help">
           <fa-icon [icon]=faInfoCircle></fa-icon>
-          Et ensuite, je revendique un droit, une solution pour résoudre le problème décrit dans le
+          Et ensuite, je revendique un droit, une solution pour résoudre la situation décrite dans le
           constat.
         </div>
       </label>
@@ -37,10 +37,10 @@
         <div class="label">Image d'illustration</div>
         <input type="text" name="photo" formControlName="photo" placeholder="URL d'image sur internet">
         <div class="help">
-          Optionnellement, vous pouvez specifier une image d'illustration. 
+          <fa-icon [icon]=faInfoCircle></fa-icon>
+          Optionnellement, vous pouvez specifier une image d'illustration.
           Par défaut, nous mettons une illustration d'un tableau célèbre de Delacroix.
         </div>
-        
         <div class="photo">
           <img [src]="f.value.photo">
         </div>
