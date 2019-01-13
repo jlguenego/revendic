@@ -56,6 +56,7 @@ export class RevendicationComponent implements OnInit {
           this.editLink = `/mes-revendications/edition/${r.id}`;
           this.photo = this.r.photo || 'https://bit.ly/2VS4pYb';
 
+          console.log('meta tags');
 
           // meta tags
           const title = 'Revendication: ' + this.r.title;
@@ -65,6 +66,7 @@ export class RevendicationComponent implements OnInit {
           this.meta.setTag('og:type', 'article');
           this.meta.setTag('og:image', this.photo);
           this.meta.setTag('og:url', environment.domain + this.router.url);
+          console.log('meta tags finished');
         });
     });
   }
