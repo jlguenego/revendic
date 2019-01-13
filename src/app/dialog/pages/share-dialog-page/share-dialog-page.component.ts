@@ -5,6 +5,7 @@ import { RevService } from 'src/app/rev/rev.service';
 import { DialogService } from '../../dialog.service';
 import { dbg } from 'src/environments/environment';
 import { errorFn } from 'src/app/common/utils';
+import { FacebookService } from 'src/app/widget/facebook.service';
 
 @Component({
   selector: 'app-share-dialog-page',
@@ -17,13 +18,11 @@ export class ShareDialogPageComponent implements OnInit {
   data = {};
   href = "";
 
-  constructor(public dialog: DialogService, private rev: RevService) {  }
+  constructor(private facebook: FacebookService, public dialog: DialogService, private rev: RevService) {  }
 
   share() {
     dbg('this.href', this.href);
-    const myUrl = encodeURI(this.href);
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${myUrl}&amp;src=sdkpreparse`;
-    window.open(url, 'Facebook', 'width=556,height=618');
+    this.facebook.share(this.href);
   }
 
   ngOnInit() {

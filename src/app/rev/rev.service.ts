@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 import { LikeRecord } from './like.record';
 import { errorFn } from '../common/utils';
 import { DialogService } from '../dialog/dialog.service';
-import { dbg } from 'src/environments/environment';
+import { dbg, environment } from 'src/environments/environment';
+import { FacebookService } from '../widget/facebook.service';
 
 const MAX_RANDOM = 1e9;
 
@@ -27,7 +28,8 @@ export class RevService {
   constructor(
     private db: AngularFirestore,
     private user: UserService,
-    private dialog: DialogService) {
+    private dialog: DialogService,
+    private facebook: FacebookService) {
 
 
     this.user.onDeletionPromiseList.push(() => {
@@ -111,7 +113,8 @@ export class RevService {
   }
 
   share(r: RevendicationRecord) {
-    this.dialog.show('share', { revendication: r });
+    const url = environment.domain + this.getLink(r);
+    this.facebook.share(url);
   }
 
   getLink(r: RevendicationRecord) {

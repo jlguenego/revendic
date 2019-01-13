@@ -10,6 +10,7 @@ import { RevService } from '../../rev.service';
 import { LikeService } from '../../like.service';
 import { map } from 'rxjs/operators';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-revendication',
@@ -20,6 +21,7 @@ export class RevendicationComponent implements OnInit {
 
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
+  faFacebook = faFacebook;
 
   r: RevendicationRecord;
   createdAt: Date = new Date();
