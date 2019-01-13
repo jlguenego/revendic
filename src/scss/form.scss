@@ -4,15 +4,24 @@ form {
     max-width: 30rem;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     display: block;
-    width: 100%;    
+    width: 100%;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     border: 2px solid hsl(0, 0%, 90%);
     &:focus {
         border: 2px solid hsl(0, 0%, 50%);
     }
+    &::placeholder {
+        color: $placeholder-color;
+    }
+}
+
+.disabled-option {
+    color: $placeholder-color;
 }
 
 label {

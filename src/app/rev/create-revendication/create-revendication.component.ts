@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { RevService } from '../rev.service';
 import { Router } from '@angular/router';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-revendication',
@@ -11,50 +12,22 @@ import { Router } from '@angular/router';
 })
 export class CreateRevendicationComponent implements OnInit {
 
+  faInfoCircle = faInfoCircle;
+
   ERROR = RevService.ERROR;
   errorCode: number = undefined;
 
   f = new FormGroup({
-    title: new FormControl(''),
-    content: new FormControl(''),
-    category: new FormControl(''),
-    photo: new FormControl(''),
+    title: new FormControl('', Validators.required),
+    constat: new FormControl('', Validators.required),
+    content: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
+    photo: new FormControl('', Validators.required),
   });
-
-  question = new FormGroup({
-    mode: new FormControl(''),
-    category: new FormControl(''),
-    category2: new FormControl(''),
-  });
-
-  showForm = false;
-
-  previous;
 
   constructor(private rev: RevService, private router: Router) { }
 
-  ngOnInit() {
-    this.question.valueChanges.subscribe(value => {
-
-      if (this.previous === undefined) {
-        this.previous = value;
-      }
-
-      if (value.mode !== this.previous.mode && value.category !== '') {
-        this.question.setValue({ mode: value.mode, category: '', category2: '' });
-      }
-
-      if (value.category !== this.previous.category && value.category2 !== '') {
-        this.question.setValue({ mode: value.mode, category: value.category, category2: '' });
-      }
-
-      const newValue = this.question.value;
-      this.showForm = (newValue.mode === 'expert') ||
-        (newValue.category2 !== '');
-
-      this.previous = value;
-    });
-  }
+  ngOnInit() { }
 
   onSubmit() {
     this.rev.add(this.f.value).then(() => {
