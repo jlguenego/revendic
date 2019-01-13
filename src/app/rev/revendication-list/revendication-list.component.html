@@ -2,17 +2,22 @@
   <ul class="table">
     <li class="row" *ngFor="let r of revendications | async">
       <a [routerLink]="getLink(r)">
-        <div class="first-line">
+        <div class="flex">
           <b class="title">
             <fa-icon class="icon" [icon]="faBullhorn"></fa-icon> {{r.title}}
           </b>
+
+        </div>
+        <div class="flex end">
           <span>
             {{r.author}}
           </span>
         </div>
-        <div class="second-line">
-          <i>{{r.content | excerpt}}</i>
+        <div class="flex end">
           <span>{{r.category}} - {{r.createdAt.toDate() | date : 'short'}}</span>
+        </div>
+        <div class="flex">
+          <i>{{r.content | excerpt : 200}}</i>
         </div>
       </a>
     </li>
