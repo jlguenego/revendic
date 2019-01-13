@@ -2,17 +2,30 @@
   <section>
     <h1>Liste de mes revendications</h1>
 
-    <div class="frame">
-      <ul>
-        <li *ngFor="let rev of revendications$ | async">
-          <b>{{rev.title}}</b>
-          - {{rev.author}} - {{rev.createdAt.toDate() |
-          date : 'short'}}
-          - {{rev.id}} -
-          <button (click)="delete(rev.id)">Effacer</button>
-          <button (click)="update(rev.id)">Editer</button>
-        </li>
-      </ul>
-    </div>
+    <ul class="table">
+      <li class="row" *ngFor="let r of revendications$ | async">
+        <a [routerLink]="rev.getLink(r)">
+          <div class="flex">
+            <b class="title">
+              <fa-icon class="icon" [icon]="faBullhorn"></fa-icon> {{r.title}}
+            </b>
+          </div>
+          <div class="flex end">
+            <span>
+              {{r.author}}
+            </span>
+          </div>
+          <div class="flex end">
+            <span>{{r.category}} - {{r.createdAt.toDate() | date : 'short'}}</span>
+          </div>
+          <div class="flex">
+            <i>{{r.content | excerpt : 200}}</i>
+          </div>
+        </a>
+        <span class="edition">
+          <button (click)="update(r.id)">Editer</button>
+        </span>
+      </li>
+    </ul>
   </section>
 </main>

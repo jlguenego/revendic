@@ -1,0 +1,15 @@
+.photo {
+    display: block;
+    padding: 1rem 0;
+    margin: 0;
+    width: 18rem;
+    img {
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+}
+
+.label {
+    font-weight: bold;
+}

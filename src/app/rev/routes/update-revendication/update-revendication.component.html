@@ -4,25 +4,46 @@
 
     <form [formGroup]="f" (ngSubmit)="onSubmit()">
       <label>
-        <div>Titre*</div>
-        <input type="text" name="title" formControlName="title">
+        <div class="label">Titre*</div>
+        <input type="text" name="title" formControlName="title" placeholder="Titre de ma revendication">
       </label>
       <label>
-        <div>Contenu*</div>
-        <textarea name="content" formControlName="content" placeholder="Entrer ici librement le contenu de votre revendication."></textarea>
+        <div class="label">Constat*</div>
+        <textarea name="constat" formControlName="constat" rows="10" placeholder="Je décris ce qui ne va pas."></textarea>
+        <div class="help">
+          <fa-icon [icon]=faInfoCircle></fa-icon>
+          Pour une revendication précise, je fais d'abord le constat d'une situation qui ne me convient pas.
+        </div>
       </label>
       <label>
-        <div>Categorie*</div>
+        <div class="label">Contenu*</div>
+        <textarea name="content" formControlName="content" rows="10" placeholder="Entrer ici librement le contenu de votre revendication, qui fait suite logique à votre constat."></textarea>
+        <div class="help">
+          <fa-icon [icon]=faInfoCircle></fa-icon>
+          Et ensuite, je revendique un droit, une solution pour résoudre la situation décrite dans le
+          constat.
+        </div>
+      </label>
+      <label>
+        <div class="label">Categorie*</div>
         <select formControlName="category">
           <option value="travail">Travail</option>
           <option value="politique">Politique</option>
+          <option value="consommation">Consommation</option>
           <option value="autre">Autre</option>
         </select>
       </label>
       <label>
-        <div>Vous pouvez optionnellement illustrer votre revendication avec une URL de Photo</div>
-        <input type="text" name="photo" formControlName="photo">
-        <img class="photo" [src]="f.value.photo">
+        <div class="label">Image d'illustration</div>
+        <input type="text" name="photo" formControlName="photo" placeholder="URL d'image sur internet">
+        <div class="help">
+          <fa-icon [icon]=faInfoCircle></fa-icon>
+          Optionnellement, vous pouvez specifier une image d'illustration.
+          Par défaut, nous mettons une illustration d'un tableau célèbre de Delacroix.
+        </div>
+        <div class="photo">
+          <img [src]="f.value.photo">
+        </div>
       </label>
       <div class="error-block">
         <div class="error-incorrect" *ngIf="errorCode !== undefined">
@@ -30,10 +51,17 @@
         </div>
       </div>
 
-      <div class="submit">
-        <button type="submit">Mettre à jour les modifications</button>
+      <div class="submit big">
+        <button type="submit" [disabled]="f.invalid">Mettre à jour ma revendication</button>
       </div>
     </form>
 
+    <h1>Zone de danger</h1>
+    <p>
+      Attention, les actions de suppression sont définitives.
+    </p>
+    <p>
+      <button (click)="delete()" class="danger">Supprimer définitivement ma revendication</button>
+    </p>
   </section>
 </main>

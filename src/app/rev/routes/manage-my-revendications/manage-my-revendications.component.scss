@@ -1,0 +1,39 @@
+@import 'variables';
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edition {
+    padding: 1rem;
+}
+
+.table {
+    max-width: 40rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.icon {
+    padding-right: 1rem;
+    color: gray;
+}
+
+.flex {
+    display: flex;
+}
+
+.start {
+    display: flex;
+}
+
+.end {
+    display: flex;
+    justify-content: flex-end;
+}

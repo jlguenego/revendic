@@ -85,7 +85,7 @@ export class RevService {
   }
 
   delete(revId: string) {
-    this.db.doc(`/revendications/${revId}`).delete()
+    return this.db.doc(`/revendications/${revId}`).delete()
       .then(obj => { })
       .catch(error => console.error('error', error));
   }

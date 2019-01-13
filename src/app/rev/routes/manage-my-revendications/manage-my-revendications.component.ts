@@ -4,6 +4,7 @@ import { RevendicationRecord } from '../../revendication.record';
 import { Router } from '@angular/router';
 import { ListRevService } from '../../list-rev.service';
 import { RevService } from '../../rev.service';
+import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -15,8 +16,10 @@ export class ManageMyRevendicationsComponent implements OnInit {
 
   revendications$: Observable<RevendicationRecord[]>;
 
+  faBullhorn = faBullhorn;
+
   constructor(
-    private rev: RevService,
+    public rev: RevService,
     private listRev: ListRevService,
     private router: Router) { }
 
