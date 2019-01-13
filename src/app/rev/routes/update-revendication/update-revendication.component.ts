@@ -54,7 +54,7 @@ export class UpdateRevendicationComponent implements OnInit {
     if (!confirm('Etes-vous sûr de vouloir effacer votre revendication ?')) {
       return;
     }
-    this.rev.delete(this.revId).then(this.router.navigate(['/']));
+    this.rev.delete(this.revId).then(() => this.router.navigate(['/']));
 
   }
 
