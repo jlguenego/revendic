@@ -30,7 +30,7 @@ export class MetaDirective {
         return;
       }
       let title = 'Revendique.com - Le bon coin de la revendication';
-      let image = 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg';
+      let image = 'https://bit.ly/2rBruCv';
       if (data && data.title) {
         title = data.title;
       }

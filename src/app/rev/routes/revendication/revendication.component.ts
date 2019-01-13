@@ -54,7 +54,7 @@ export class RevendicationComponent implements OnInit {
           }
           this.isMyRevendication = this.user.uid === this.r.userid;
           this.editLink = `/mes-revendications/edition/${r.id}`;
-          this.photo = this.r.photo || 'https://static.lpnt.fr/images/2018/11/26/17620105lpw-17620112-article-gilets-jaunes-societe-france-jpg_5759577_660x281.jpg';
+          this.photo = this.r.photo || 'https://bit.ly/2VS4pYb';
 
 
           // meta tags
