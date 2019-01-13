@@ -9,7 +9,7 @@
       </label>
       <label>
         <div class="label">Constat*</div>
-        <textarea name="content" formControlName="content" rows="10" placeholder="Je décris ce qui ne va pas."></textarea>
+        <textarea name="constat" formControlName="constat" rows="10" placeholder="Je décris ce qui ne va pas."></textarea>
         <div class="help">
           <fa-icon [icon]=faInfoCircle></fa-icon>
           Pour une revendication précise, je fais d'abord le constat d'une situation qui ne me convient pas.
@@ -51,8 +51,8 @@
         </div>
       </div>
 
-      <div class="submit">
-        <button type="submit" class="submit">Créer votre revendication</button>
+      <div class="submit big">
+        <button type="submit" [disabled]="f.invalid">Créer votre revendication</button>
       </div>
     </form>
   </section>

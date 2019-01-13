@@ -20,9 +20,9 @@ export class CreateRevendicationComponent implements OnInit {
   f = new FormGroup({
     title: new FormControl('', Validators.required),
     constat: new FormControl('', Validators.required),
-    content: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-    photo: new FormControl('https://bit.ly/2D5tLdp', Validators.required),
+    content: new FormControl(''),
+    category: new FormControl(''),
+    photo: new FormControl('https://bit.ly/2D5tLdp'),
   });
 
   constructor(private rev: RevService, private router: Router) { }

@@ -25,3 +25,16 @@ section {
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
+.big {
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .big {
+        font-size: 1.5rem;
+    }
+}
+
+
