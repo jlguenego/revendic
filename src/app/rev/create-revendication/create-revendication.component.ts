@@ -22,7 +22,7 @@ export class CreateRevendicationComponent implements OnInit {
     constat: new FormControl('', Validators.required),
     content: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
-    photo: new FormControl('', Validators.required),
+    photo: new FormControl('https://bit.ly/2D5tLdp', Validators.required),
   });
 
   constructor(private rev: RevService, private router: Router) { }

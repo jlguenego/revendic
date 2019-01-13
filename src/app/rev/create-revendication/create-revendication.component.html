@@ -34,9 +34,13 @@
         </select>
       </label>
       <label>
-        <div>OPTIONEL : Vous pouvez illustrer votre revendication avec une URL de Photo</div>
+        <div class="label">Image d'illustration</div>
         <input type="text" name="photo" formControlName="photo" placeholder="URL d'image sur internet">
-        <div>Exemple: https://bit.ly/2SKiFjn</div>
+        <div class="help">
+          Optionnellement, vous pouvez specifier une image d'illustration. 
+          Par défaut, nous mettons une illustration d'un tableau célèbre de Delacroix.
+        </div>
+        
         <div class="photo">
           <img [src]="f.value.photo">
         </div>
