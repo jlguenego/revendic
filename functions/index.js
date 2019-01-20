@@ -3,13 +3,12 @@
 // // // Create and Deploy Your First Cloud Functions
 // // // https://firebase.google.com/docs/functions/write-firebase-functions
 // //
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//     response.send("Hello from Firebase Jean-Louis!");
-// });
+
 
 require('zone.js/dist/zone-node');
 
 const functions = require('firebase-functions');
+const stats = require('./lib/stats');
 const express = require('express');
 const path = require('path');
 const { enableProdMode } = require('@angular/core');
@@ -33,3 +32,5 @@ app.get('**', function(req, res) {
 });
 
 exports.ssr = functions.https.onRequest(app);
+
+exports.stats = functions.https.onRequest(stats);
