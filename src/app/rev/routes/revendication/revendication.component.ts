@@ -11,6 +11,8 @@ import { LikeService } from '../../like.service';
 import { map } from 'rxjs/operators';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { LikeRecord } from '../../like.record';
 
 @Component({
   selector: 'app-revendication',
@@ -29,6 +31,9 @@ export class RevendicationComponent implements OnInit {
   editLink;
   photo: string;
 
+  didILiked = false;
+  didIDisliked = false;
+
   constructor(
     private user: UserService,
     private afu: AngularFirestoreUtilsService,
@@ -38,10 +43,31 @@ export class RevendicationComponent implements OnInit {
     private meta: MetaService,
     public rev: RevService,
     private like: LikeService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+
+      this.user.isConnected().then(() => {
+        dbg('revendication: user is connected.');
+        this.db.doc<LikeRecord>(`/likes-revendications/${params.id}/users/${this.user.uid}`).valueChanges().subscribe(
+          likeObj => {
+            dbg('revendication: check like value.');
+            if (!likeObj) {
+              this.didILiked = false;
+              this.didIDisliked = false;
+            } else if (likeObj.like === 1) {
+              this.didILiked = true;
+              this.didIDisliked = false;
+            } else if (likeObj.like === -1) {
+              this.didILiked = false;
+              this.didIDisliked = true;
+            }
+          }
+        );
+      });
+
+
       this.afu.doc<RevendicationRecord>('/revendications', params.id)
         .pipe(
           map<RevendicationRecord, any>(this.like.mapLike.bind(this.like))
@@ -69,6 +95,8 @@ export class RevendicationComponent implements OnInit {
           console.log('meta tags finished');
         });
     });
+
+
   }
 
   delete() {

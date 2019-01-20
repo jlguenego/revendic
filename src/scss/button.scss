@@ -43,8 +43,8 @@ button,
         background: $button-danger-bgcolor;
     }
     &[disabled] {
-        background-color: #eee;
-        border: 1px solid #eee;
+        background-color: #ddd;
+        border: 1px solid #ddd;
         &:hover {
             box-shadow: none;
         }

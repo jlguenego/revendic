@@ -7,10 +7,10 @@
       <span class="like">{{r.dislikes | async }} opposants</span>
     </p>
     <p class="buttons">
-      <button (click)="rev.like(r)">
+      <button [disabled]="didILiked" (click)="rev.like(r)">
         <fa-icon [icon]="faThumbsUp"></fa-icon> Je soutiens !
       </button>
-      <button (click)="rev.dislike(r)">
+      <button [disabled]="didIDisliked" (click)="rev.dislike(r)">
         <fa-icon [icon]="faThumbsDown"></fa-icon> Je m'oppose !
       </button>
     </p>
