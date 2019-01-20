@@ -2,11 +2,18 @@
   <section>
     <div class="center">
       <h1>Indicateurs</h1>
+      <h2>Revendications</h2>
       <p>
         Pour le lancement du site, nous ne présentons qu'un seul indicateur: le nombre de revendications, toutes
         confondues.
       </p>
       <h1><a routerLink="/revendications">{{(list.allRevs$ | async)?.length}} revendications</a></h1>
+      <br>
+      <h2>Utilisateurs</h2>
+      <p>
+        Depuis le 20 Janvier, nous donnons aussi le nombre de compte créés.
+      </p>
+      <h1>{{stat.totalUser}} utilisateurs</h1>
     </div>
   </section>
 </main>

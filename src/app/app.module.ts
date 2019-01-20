@@ -20,6 +20,7 @@ import { PresentationComponent } from './app-routing/presentation/presentation.c
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RevModule } from './rev/rev.module';
 import { RouterModule } from '@angular/router';
+import { StatModule } from './stat/stat.module';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -42,7 +43,8 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule // imports firebase/storage only needed for storage features
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    StatModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
