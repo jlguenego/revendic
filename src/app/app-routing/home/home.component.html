@@ -1,21 +1,20 @@
 <main>
     <section class="jumbo">
-        <div class="margin">
+        <div class="margin center">
             <h1>
                 <span>Le bon coin de toutes les revendications.</span>
             </h1>
             <p>
                 <button class="important" routerLink="/creer-revendication">Et vous, quelle est votre revendication ?</button>
             </p>
-            <p>
-                <a class="tagline" href="https://www.youtube.com/watch?v=XUoT78Xafas" target="_blank">
-                    <fa-icon class="video" [icon]="faYoutube"></fa-icon>
-                </a>
-            </p>
+            <div class="iframe-container">
+                <iframe src="https://player.vimeo.com/video/311425953" class="video" webkitallowfullscreen
+                    mozallowfullscreen allowfullscreen></iframe>
+            </div>
         </div>
     </section>
     <section>
-        <div class="margin">
+        <div class="margin center">
             <h2>Les 5 dernières revendications - <a routerLink="/revendications">Voir toutes les revendications</a></h2>
             <app-revendication-list orderByUpdatedAt max="5"></app-revendication-list>
             <h2>Les 3 revendications avec le plus de soutiens</h2>
