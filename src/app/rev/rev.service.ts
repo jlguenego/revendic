@@ -124,8 +124,9 @@ export class RevService {
 
 function toNiceUrlTitle(str: string): string {
   return str.normalize('NFD')
+    .toLocaleLowerCase()
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[ '"’]/g, '-')
-    .toLocaleLowerCase();
+    .replace(/[^a-z-]/g, '');
 }
 
