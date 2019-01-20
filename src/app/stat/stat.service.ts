@@ -13,7 +13,7 @@ export class StatService {
   totalUser = 0;
 
   constructor(private http: HttpClient) {
-    http.get<StatRecord>('http://localhost:5001/revendic-prod/us-central1/stats').subscribe(json => {
+    http.get<StatRecord>('https://us-central1-revendic-prod.cloudfunctions.net/stats').subscribe(json => {
       this.totalUser = json.count;
     });
   }
