@@ -52,7 +52,7 @@ export class ListRevService {
         .orderBy('createdAt', 'desc')));
   }
 
-  initAllRevs(max: number = 100) {
+  initAllRevs(max: number = -1) {
     const filter = ref => ref;
     this.allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
