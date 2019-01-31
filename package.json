@@ -8,10 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "npm run build-universal && npm run setup-universal && firebase deploy",
-    "serve": "npm run build-universal && npm run setup-universal && firebase serve",
-    "build-universal": "ng run revendic:ssr-client --configuration=production && ng run revendic:ssr-server",
-    "setup-universal": "node ./src/scripts/universal.js"
+    "deploy": "ts-node ./scripts/build-ssr.ts deploy",
+    "serve": "ts-node ./scripts/build-ssr.ts serve"
   },
   "private": true,
   "dependencies": {

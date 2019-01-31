@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBLWif0yDptR3HeJviVPMjQjA0ePWRwoyM",
-    authDomain: "revendic-prod.firebaseapp.com",
-    databaseURL: "https://revendic-prod.firebaseio.com",
-    projectId: "revendic-prod",
-    storageBucket: "revendic-prod.appspot.com",
-    messagingSenderId: "337124454697"
+    apiKey: "AIzaSyBPyoh5KFnqmyis0BzyOPiKF3LCTccXIkM",
+    authDomain: "revendic-530b8.firebaseapp.com",
+    databaseURL: "https://revendic-530b8.firebaseio.com",
+    projectId: "revendic-530b8",
+    storageBucket: "revendic-530b8.appspot.com",
+    messagingSenderId: "919384495197"
   },
   domain: 'https://revendique.com'
 };
