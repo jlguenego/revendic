@@ -52,8 +52,9 @@ export class UserService {
     this.afAuth.user.pipe(map(user => this.sync(user))).subscribe(this.subject);
   }
 
-  sync(user) {
+  sync(user: firebase.User) {
     if (user) {
+      this.manageJustVerifiedCase(user);
       this.isLogged = true;
       this.isVerified = user.emailVerified;
       this.displayName = user.displayName;
@@ -71,7 +72,7 @@ export class UserService {
       this.provider = "";
     }
     this.subject.next(true);
-    return user;
+    return !!user;
   }
 
   isConnected() {
@@ -280,6 +281,12 @@ export class UserService {
     return this.afAuth.auth.currentUser.providerData.reduce((acc, provider) => {
       return acc && provider.providerId !== 'password';
     }, true);
+  }
+
+  manageJustVerifiedCase(user: firebase.User) {
+    if (user.emailVerified === true && this.isVerified === false) {
+      user.getIdToken(true);
+    }
   }
 
 }
