@@ -7,6 +7,7 @@ import { FirebaseUtils } from './FirebaseUtils';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { UserRoutes } from './user-routes';
 import { map } from 'rxjs/operators';
+import { DialogService } from '../dialog/dialog.service';
 
 export interface UserData {
   displayName: string;
@@ -43,7 +44,11 @@ export class UserService {
 
   subject: BehaviorSubject<boolean> = new BehaviorSubject(null);
 
-  constructor(private afAuth: AngularFireAuth, private router: Router, private zone: NgZone) {
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private zone: NgZone,
+    private dialog: DialogService) {
     this.afAuth.user.pipe(map(user => this.sync(user))).subscribe(this.subject);
   }
 
@@ -84,6 +89,18 @@ export class UserService {
         resolved();
       } else if (this.isLogged === false) {
         rejected();
+      }
+    });
+  }
+
+  checkAccountVerified() {
+    return this.isConnected().catch(() => {
+      this.dialog.show('needAccount');
+      return Promise.reject();
+    }).then(() => {
+      if (!this.isVerified) {
+        this.dialog.show('needVerified');
+        return Promise.reject();
       }
     });
   }

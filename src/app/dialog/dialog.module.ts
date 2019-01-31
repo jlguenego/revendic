@@ -7,11 +7,13 @@ import { NeedAccountDialogPageComponent } from './pages/need-account-dialog-page
 import { WidgetModule } from '../widget/widget.module';
 import { RouterModule } from '@angular/router';
 import { ShareDialogPageComponent } from './pages/share-dialog-page/share-dialog-page.component';
+import { AccountNotVerifiedPageComponent } from './pages/account-not-verified-page/account-not-verified-page.component';
 
 @NgModule({
   declarations: [
     DialogComponent,
     NeedAccountDialogPageComponent,
+    AccountNotVerifiedPageComponent,
     ShareDialogPageComponent,
   ],
   imports: [
@@ -25,6 +27,7 @@ import { ShareDialogPageComponent } from './pages/share-dialog-page/share-dialog
   ],
   entryComponents: [
     NeedAccountDialogPageComponent,
+    AccountNotVerifiedPageComponent,
     ShareDialogPageComponent
   ]
 })

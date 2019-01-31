@@ -91,24 +91,18 @@ export class RevService {
   }
 
   like(r: RevendicationRecord) {
-    return this.user.isConnected().then(() => {
+    return this.user.checkAccountVerified().then(() => {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: 1
       }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
-
-    }).catch(() => {
-      this.dialog.show('needAccount');
     });
   }
 
   dislike(r: RevendicationRecord) {
-    return this.user.isConnected().then(() => {
+    return this.user.checkAccountVerified().then(() => {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: -1
       }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
-
-    }).catch(() => {
-      this.dialog.show('needAccount');
     });
   }
 
