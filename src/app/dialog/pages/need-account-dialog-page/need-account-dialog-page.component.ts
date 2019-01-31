@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RevService } from 'src/app/rev/rev.service';
 import { DialogService } from '../../dialog.service';
 import { UserRoutes } from 'src/app/user/user-routes';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-need-account-dialog-page',
@@ -13,12 +14,19 @@ export class NeedAccountDialogPageComponent implements OnInit {
   title = 'Et si vous obteniez un compte citoyen ?';
   data = {};
 
-  loginLink = UserRoutes.url.login;
   createAccountLink = UserRoutes.url.createAccount;
 
-  constructor(public dialog: DialogService) { }
+  constructor(
+    public dialog: DialogService, 
+    private router: Router, 
+    private user: UserService) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.user.url = this.router.url;
+    this.router.navigate([UserRoutes.url.login]);
   }
 
 }

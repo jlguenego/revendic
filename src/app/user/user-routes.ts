@@ -13,7 +13,6 @@ interface UserPath {
     accountNotActivated: string;
 }
 
-
 const path: UserPath = {
     login: 'connexion',
     createAccount: 'nouveau-compte',

@@ -2,6 +2,6 @@
   Pour participer aux mouvements de revendication citoyenne, il faut vous identifier sur le site.
 </p>
 <p class="actions">
-  <button [routerLink]="loginLink" (click)="dialog.close()">S'identifier</button>
+  <button (click)="login(); dialog.close()">S'identifier</button>
   <button [routerLink]="createAccountLink" (click)="dialog.close()" class="secondary">Créer un compte</button>
 </p>
