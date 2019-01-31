@@ -14,11 +14,9 @@ export class NeedAccountDialogPageComponent implements OnInit {
   title = 'Et si vous obteniez un compte citoyen ?';
   data = {};
 
-  createAccountLink = UserRoutes.url.createAccount;
-
   constructor(
-    public dialog: DialogService, 
-    private router: Router, 
+    public dialog: DialogService,
+    private router: Router,
     private user: UserService) { }
 
   ngOnInit() {
@@ -27,6 +25,11 @@ export class NeedAccountDialogPageComponent implements OnInit {
   login() {
     this.user.url = this.router.url;
     this.router.navigate([UserRoutes.url.login]);
+  }
+
+  createAccount() {
+    this.user.url = this.router.url;
+    this.router.navigate([UserRoutes.url.createAccount]);
   }
 
 }
