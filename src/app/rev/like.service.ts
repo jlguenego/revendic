@@ -23,7 +23,6 @@ export class LikeService {
   mapLikes = map<RevendicationRecord[], any>(revs => revs.map(this.mapLike));
 
   mapLike = (rev: RevendicationRecord): RevendicationRecord => {
-    dbg('rev to map', rev);
     if (rev) {
       rev.likes = this.getCount$(rev, "like");
       rev.dislikes = this.getCount$(rev, "dislike");

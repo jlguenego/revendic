@@ -49,10 +49,8 @@ export class RevendicationComponent implements OnInit {
     this.route.params.subscribe(params => {
 
       this.user.isConnected().then(() => {
-        dbg('revendication: user is connected.');
         this.db.doc<LikeRecord>(`/likes-revendications/${params.id}/users/${this.user.uid}`).valueChanges().subscribe(
           likeObj => {
-            dbg('revendication: check like value.');
             if (!likeObj) {
               this.didILiked = false;
               this.didIDisliked = false;
@@ -73,7 +71,6 @@ export class RevendicationComponent implements OnInit {
           map<RevendicationRecord, any>(this.like.mapLike.bind(this.like))
         )
         .subscribe(r => {
-          dbg('r', r);
           this.r = r;
           if (r === undefined) {
             return;

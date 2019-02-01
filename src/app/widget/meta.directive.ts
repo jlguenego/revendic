@@ -11,16 +11,13 @@ import { map, filter } from 'rxjs/operators';
 export class MetaDirective {
 
   constructor(private readonly meta: MetaService, private router: Router) {
-    dbg('appMeta working');
     this.router.events.pipe(
       filter(e => e instanceof NavigationStart),
       map(val => {
-        dbg('val', val);
         return (<NavigationStart>val).url;
       }),
     ).subscribe(url => {
       const path = url.replace(/^\/(.*)$/, '$1').replace(/^(.*)?\?.*$/, '$1');
-      dbg('path', path);
       const route = router.config.find(route => route.path === path);
       if (!route) {
         return;
@@ -43,7 +40,6 @@ export class MetaDirective {
       this.meta.setTag('og:type', 'article');
       this.meta.setTag('og:image', image);
       this.meta.setTag('og:url', environment.domain + url);
-      dbg('current url', url);
 
     })
 

@@ -21,7 +21,6 @@ export class ShareDialogPageComponent implements OnInit {
   constructor(private facebook: FacebookService, public dialog: DialogService, private rev: RevService) {  }
 
   share() {
-    dbg('this.href', this.href);
     this.facebook.share(this.href);
   }
 
