@@ -11,7 +11,7 @@ import { LikeService } from '../../like.service';
 import { map } from 'rxjs/operators';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, noop } from 'rxjs';
 import { LikeRecord } from '../../like.record';
 
 @Component({
@@ -63,7 +63,7 @@ export class RevendicationComponent implements OnInit {
             }
           }
         );
-      });
+      }).catch(noop);
 
 
       this.afu.doc<RevendicationRecord>('/revendications', params.id)
