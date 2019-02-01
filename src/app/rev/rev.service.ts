@@ -5,7 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user/user.service';
 import { firestore } from 'firebase/app';
 import 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { Observable, noop } from 'rxjs';
 import { LikeRecord } from './like.record';
 import { errorFn } from '../common/utils';
 import { DialogService } from '../dialog/dialog.service';
@@ -94,7 +94,7 @@ export class RevService {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: 1
       }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
-    });
+    }).catch(noop);
   }
 
   dislike(r: RevendicationRecord) {
@@ -102,7 +102,7 @@ export class RevService {
       this.db.collection<LikeRecord>(`likes-revendications/${r.id}/users`).doc(this.user.uid).set({
         like: -1
       }).then(docRef => dbg('docRef', docRef)).catch(errorFn);
-    });
+    }).catch(noop);
   }
 
   share(r: RevendicationRecord) {
