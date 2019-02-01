@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     if (this.user.url === '/') {
       this.user.url = previousUrl;
     }
+    dbg('this.user.url', this.user.url);
   }
 
 }

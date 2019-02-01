@@ -139,11 +139,6 @@ export class UserService {
     };
   }
 
-  navigateToAuth(url: string, nextUrl = '/') {
-    this.url = nextUrl;
-    this.router.navigate([url]);
-  }
-
   login(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(this.navigateToNextUrl())

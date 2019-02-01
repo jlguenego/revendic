@@ -13,7 +13,7 @@
     <a routerLink="presentation" routerLinkActive="active">Présentation</a>
   </nav>
   <nav class="utilities">
-    <a class="button secondary" (click)="user.navigateToAuth(user.routes.url.login)" *ngIf="!user.isLogged">Mon compte</a>
+    <a class="button secondary" [routerLink]="user.routes.url.login" *ngIf="!user.isLogged">Mon compte</a>
     <app-popup *ngIf="user.isLogged" [label]="user.email" (open)="refresh()">
       <div class="user">
         <img *ngIf="user.photoURL !== null" class="photo-id" [src]="user.photoURL">
@@ -46,7 +46,7 @@
   </div>
   <fa-icon (click)="toggleMenu(); refresh();" class="mobile" [icon]="faBars"></fa-icon>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
-    <a *ngIf="!user.isLogged" (click)="user.navigateToAuth(user.routes.url.login)">Mon compte</a>
+    <a *ngIf="!user.isLogged" [routerLink]="user.routes.url.login">Mon compte</a>
 
     <div class="center" *ngIf="user.isLogged">
       <div class="user">

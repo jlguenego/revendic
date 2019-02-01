@@ -33,7 +33,6 @@ export class RevService {
 
 
     this.user.onDeletionPromiseList.push(() => {
-      dbg('about to delete all the user revendications');
       return this._db.collection('/revendications').where("userid", "==", this.user.uid).get()
         .then(querySnapshot => {
           const promises = [];
