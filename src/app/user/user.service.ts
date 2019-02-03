@@ -66,7 +66,6 @@ export class UserService {
       this.photoURL = user.photoURL;
       this.uid = user.uid;
       this.provider = user.providerData[0].providerId;
-      this.manageJustConnectedWithOAuthRedirect();
     } else {
       this.isLogged = false;
       this.isVerified = false;
@@ -76,8 +75,9 @@ export class UserService {
       this.uid = "";
       this.provider = "";
     }
+    this.manageOauthRedirect();
     this.subject.next(true);
-    return !!user;
+    return this.isLogged;
   }
 
   isConnected() {
@@ -196,7 +196,7 @@ export class UserService {
       });
   }
 
-  manageJustConnectedWithOAuthRedirect() {
+  manageOauthRedirect() {
     if (!this.responsive.mobile) {
       return;
     }
@@ -206,6 +206,23 @@ export class UserService {
       return;
     }
     window.localStorage.removeItem(LOCALSTORAGE_NEXT_URL);
+
+    if (!this.isLogged) {
+      // facebook problem ?
+      this.afAuth.auth.getRedirectResult().catch(async error => {
+        console.log('error from signinwithredirect:', error);
+        if (error.code === 'auth/account-exists-with-different-credential') {
+          await this.afAuth.auth.fetchSignInMethodsForEmail(error.email);
+          return this.zone.run(() => {
+            const provider = new auth.GoogleAuthProvider();
+            provider.setCustomParameters({ login_hint: error.email });
+            window.localStorage.setItem(LOCALSTORAGE_NEXT_URL, url);
+            return this.afAuth.auth.signInWithRedirect(provider);
+          });
+        }
+      });
+      return;
+    }
     this.router.navigate([url]);
   }
 
