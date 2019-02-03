@@ -12,6 +12,7 @@ import { MetaDirective } from './meta.directive';
 import { MetaModule } from '@ngx-meta/core';
 import { Text2htmlPipe } from './text2html.pipe';
 import { ExcerptPipe } from './excerpt.pipe';
+import { IsLoadingComponent } from './is-loading/is-loading.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ExcerptPipe } from './excerpt.pipe';
     ClickStopPropagationDirective,
     MetaDirective,
     Text2htmlPipe,
-    ExcerptPipe
+    ExcerptPipe,
+    IsLoadingComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { ExcerptPipe } from './excerpt.pipe';
   ],
   exports: [
     DividerComponent,
+    IsLoadingComponent,
     PasswordComponent,
     SocialLoginComponent,
     PasswordCheckComponent,
@@ -41,7 +44,7 @@ import { ExcerptPipe } from './excerpt.pipe';
     ClickStopPropagationDirective,
     MetaDirective,
     Text2htmlPipe,
-    ExcerptPipe
+    ExcerptPipe,
   ]
 })
 export class WidgetModule { }

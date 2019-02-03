@@ -35,6 +35,8 @@ export class UserService {
 
   url = '/';
 
+  isLoading = true;
+
   isVerified = false;
   isLogged = undefined;
   displayName = "";
@@ -57,6 +59,7 @@ export class UserService {
   }
 
   sync(user: firebase.User) {
+    this.isLoading = false;
     if (user) {
       this.manageJustVerifiedCase(user);
       this.isLogged = true;
