@@ -8,6 +8,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { UserRoutes } from './user-routes';
 import { map } from 'rxjs/operators';
 import { DialogService } from '../dialog/dialog.service';
+import { ResponsiveService } from '../layout/responsive.service';
+
+const LOCALSTORAGE_NEXT_URL = 'nextUrl';
 
 export interface UserData {
   displayName: string;
@@ -48,6 +51,7 @@ export class UserService {
     private afAuth: AngularFireAuth,
     private router: Router,
     private zone: NgZone,
+    private responsive: ResponsiveService,
     private dialog: DialogService) {
     this.afAuth.user.pipe(map(user => this.sync(user))).subscribe(this.subject);
   }
@@ -62,6 +66,7 @@ export class UserService {
       this.photoURL = user.photoURL;
       this.uid = user.uid;
       this.provider = user.providerData[0].providerId;
+      this.manageJustConnectedWithOAuthRedirect();
     } else {
       this.isLogged = false;
       this.isVerified = false;
@@ -155,11 +160,21 @@ export class UserService {
   }
 
   loginWithGoogle() {
+    if (this.responsive.mobile) {
+      // use the local storage to store the redirect url
+      window.localStorage.setItem(LOCALSTORAGE_NEXT_URL, this.url);
+      return this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider());
+    }
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(this.navigateToNextUrl());
   }
 
   loginWithFacebook() {
+    if (this.responsive.mobile) {
+      // use the local storage to store the redirect url
+      window.localStorage.setItem(LOCALSTORAGE_NEXT_URL, this.url);
+      return this.afAuth.auth.signInWithRedirect(new auth.FacebookAuthProvider());
+    }
     return this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
       .then(this.navigateToNextUrl())
       .catch(error => {
@@ -179,6 +194,19 @@ export class UserService {
           return Promise.reject();
         });
       });
+  }
+
+  manageJustConnectedWithOAuthRedirect() {
+    if (!this.responsive.mobile) {
+      return;
+    }
+    // use the local storage to store the redirect url
+    const url = window.localStorage.getItem(LOCALSTORAGE_NEXT_URL);
+    if (!url) {
+      return;
+    }
+    window.localStorage.removeItem(LOCALSTORAGE_NEXT_URL);
+    this.router.navigate([url]);
   }
 
   logout() {
