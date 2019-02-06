@@ -37,7 +37,7 @@ export class RevendicationListComponent implements OnInit {
     if (this.orderByUpdatedAt === '') {
       this.revendications = this.listRev.lastUpdatedRevs$;
     } else if (this.mostLiked === '') {
-      this.revendications = this.listRev.allRevs$.pipe(
+      this.revendications = this.listRev.allRevsWithLike$.pipe(
         map(revs => revs.sort((reva, revb) => {
           const getLikes = rev => {
             if (!rev.voters) {
@@ -49,9 +49,25 @@ export class RevendicationListComponent implements OnInit {
         }).slice(0, 3))
       );
     } else if (this.random === '') {
-      this.revendications = this.listRev.getRandomRevs(2);
+      this.revendications = this.listRev.allRevs$.pipe(
+        map(revs => {
+          const times = 2;
+          let length = revs.length;
+          if (length < times) {
+            return revs;
+          }
+          const result = [];
+          for (let i = 0; i < times; i++) {
+            const index = Math.floor(Math.random() * length);
+            result.push(revs[index]);
+            length--;
+          }
+          return result;
+        })
+      );
     } else {
-      this.revendications = this.listRev.allRevs$;
+      console.log('all rev')
+      this.revendications = this.listRev.allRevsWithLike$;
     }
   }
 

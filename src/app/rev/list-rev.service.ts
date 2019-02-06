@@ -29,6 +29,7 @@ export class ListRevService {
   _db: firestore.Firestore;
 
   allRevs$: Observable<RevendicationRecord[]>;
+  allRevsWithLike$: Observable<RevendicationRecord[]>;
   revs$: Observable<RevendicationRecord[]>;
   lastUpdatedRevs$: Observable<RevendicationRecord[]>;
 
@@ -53,14 +54,14 @@ export class ListRevService {
 
   initAllRevs(max: number = -1) {
     const filter = ref => ref;
-    const allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    this.allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
-      '/revendications', pipeLimit(max, filter)))
-      .pipe(
-        this.like.mapLikes.bind(this.like)
-      )
-      .subscribe(allRevs$);
-    this.allRevs$ = allRevs$;
+      '/revendications', pipeLimit(max, filter))).subscribe(this.allRevs$ as BehaviorSubject<RevendicationRecord[]>);
+
+    this.allRevsWithLike$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    this.allRevs$.pipe(
+      this.like.mapLikes.bind(this.like)
+    ).subscribe(this.allRevsWithLike$ as BehaviorSubject<RevendicationRecord[]>);
   }
 
   initLastUpdatedRevs(max: number = 5) {
