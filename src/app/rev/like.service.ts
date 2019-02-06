@@ -43,7 +43,7 @@ export class LikeService {
     });
   }
 
-  mapLike = (o: Observable<RevendicationRecord>) => {
+  mapLike = (o: Observable<RevendicationRecord>): Observable<RevendicationRecord> => {
     return Observable.create(observer => {
       o.subscribe(rev => {
         if (rev) {

@@ -70,7 +70,7 @@ export class RevendicationComponent implements OnInit {
 
 
       this.afu.doc<RevendicationRecord>('/revendications', params.id)
-        .pipe(
+        .pipe<RevendicationRecord>(
           this.like.mapLike.bind(this.like)
         )
         .subscribe(r => {
