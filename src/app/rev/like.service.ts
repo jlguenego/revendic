@@ -15,23 +15,15 @@ export class LikeService {
     private afs: AngularFirestore,
     private afu: AngularFirestoreUtilsService) { }
 
-  getCount$(rev: RevendicationRecord, type = "like") {
-    const like = (type === "like") ? 1 : -1;
-    return this.afs.collection<LikeRecord>(`likes-revendications/${rev.id}/users/`)
-      .valueChanges().pipe(
-        map(docs => docs.filter(doc => doc.like === like).length)
-      );
-  }
-
-  getVoters$(rev: RevendicationRecord) {
-    return this.afu.query(this.afs.collection<LikeRecord>(`likes-revendications/${rev.id}/users/`));
+  getVoters$(revid: string) {
+    return this.afu.query(this.afs.collection<LikeRecord>(`likes-revendications/${revid}/users/`));
   }
 
   mapLikes = map<RevendicationRecord[], any>(revs => revs.map(this.mapLike));
 
   mapLike = (rev: RevendicationRecord): RevendicationRecord => {
     if (rev) {
-      rev.voters$ = this.getVoters$(rev);
+      rev.voters$ = this.getVoters$(rev.id);
     }
     return rev;
   };
