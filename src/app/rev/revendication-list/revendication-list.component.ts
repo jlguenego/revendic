@@ -22,7 +22,7 @@ export class RevendicationListComponent implements OnInit {
 
   @Input() max: string;
 
-  @Input() orderByUpdatedAt;
+  @Input() orderByCreatedAt;
   @Input() mostLiked;
   @Input() random;
 
@@ -34,8 +34,8 @@ export class RevendicationListComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.orderByUpdatedAt === '') {
-      this.revendications = this.listRev.lastUpdatedRevs$;
+    if (this.orderByCreatedAt === '') {
+      this.revendications = this.listRev.lastCreatedRevs$;
     } else if (this.mostLiked === '') {
       this.revendications = this.listRev.allRevsWithLike$.pipe(
         map(revs => revs.sort((reva, revb) => {

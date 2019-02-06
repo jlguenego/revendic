@@ -31,7 +31,7 @@ export class ListRevService {
   allRevs$: Observable<RevendicationRecord[]>;
   allRevsWithLike$: Observable<RevendicationRecord[]>;
   revs$: Observable<RevendicationRecord[]>;
-  lastUpdatedRevs$: Observable<RevendicationRecord[]>;
+  lastCreatedRevs$: Observable<RevendicationRecord[]>;
 
   constructor(
     private db: AngularFirestore,
@@ -42,7 +42,7 @@ export class ListRevService {
   ) {
     this._db = firestore();
     this.initAllRevs();
-    this.initLastUpdatedRevs();
+    this.initLastCreatedRevs();
   }
 
   getMyRevs() {
@@ -64,16 +64,16 @@ export class ListRevService {
     ).subscribe(this.allRevsWithLike$ as BehaviorSubject<RevendicationRecord[]>);
   }
 
-  initLastUpdatedRevs(max: number = 5) {
-    const filter = ref => ref.orderBy('updatedAt', 'desc');
-    const lastUpdatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+  initLastCreatedRevs(max: number = 5) {
+    const filter = ref => ref.orderBy('createdAt', 'desc');
+    const lastCreatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter)))
       .pipe(
         this.like.mapLikes.bind(this.like)
       )
-      .subscribe(lastUpdatedRevs$);
-    this.lastUpdatedRevs$ = lastUpdatedRevs$;
+      .subscribe(lastCreatedRevs$);
+    this.lastCreatedRevs$ = lastCreatedRevs$;
   }
 
   getRandomRevs(max: number = 5): Promise<RevendicationRecord[]> {
