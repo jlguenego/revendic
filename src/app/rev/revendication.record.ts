@@ -14,7 +14,5 @@ export interface RevendicationRecord {
 
     userid?: any;
     _random?: any;
-    likes$?: Observable<any>;
-    dislikes$?: Observable<any>;
     voters$?: Observable<any>;
 }

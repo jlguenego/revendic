@@ -34,6 +34,9 @@ export class RevendicationComponent implements OnInit {
   didILiked = false;
   didIDisliked = false;
 
+  likes = 0;
+  dislikes = 0;
+
   constructor(
     private user: UserService,
     private afu: AngularFirestoreUtilsService,
@@ -75,6 +78,10 @@ export class RevendicationComponent implements OnInit {
           if (r === undefined) {
             return;
           }
+          this.r.voters$.subscribe(voters => {
+            this.likes = voters.filter(voter => voter.like === 1).length;
+            this.dislikes = voters.filter(voter => voter.like === -1).length;
+          })
           this.isMyRevendication = this.user.uid === this.r.userid;
           this.editLink = `/mes-revendications/edition/${r.id}`;
           this.photo = this.r.photo || 'https://bit.ly/2VS4pYb';

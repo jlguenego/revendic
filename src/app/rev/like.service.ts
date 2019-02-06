@@ -31,8 +31,6 @@ export class LikeService {
 
   mapLike = (rev: RevendicationRecord): RevendicationRecord => {
     if (rev) {
-      rev.likes$ = this.getCount$(rev, "like");
-      rev.dislikes$ = this.getCount$(rev, "dislike");
       rev.voters$ = this.getVoters$(rev);
     }
     return rev;
