@@ -6,6 +6,7 @@ import { RevService } from '../rev.service';
 import { ListRevService } from '../list-rev.service';
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-revendication-list',
@@ -36,7 +37,17 @@ export class RevendicationListComponent implements OnInit {
     if (this.orderByUpdatedAt === '') {
       this.revendications = this.listRev.lastUpdatedRevs$;
     } else if (this.mostLiked === '') {
-      this.revendications = this.listRev.revs$;
+      this.revendications = this.listRev.allRevs$.pipe(
+        map(revs => revs.sort((reva, revb) => {
+          const getLikes = rev => {
+            if (!rev.voters) {
+              return 0;
+            }
+            return rev.voters.filter(voter => voter.like === 1).length;
+          };
+          return getLikes(reva) < getLikes(revb) ? 1 : -1;
+        }).slice(0, 3))
+      );
     } else if (this.random === '') {
       this.revendications = this.listRev.getRandomRevs(2);
     } else {
