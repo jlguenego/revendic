@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from './common/url.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,5 @@ import { UrlService } from './common/url.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private urlService: UrlService) { }
-
+  constructor(private db: AngularFirestore, private urlService: UrlService) { }
 }
