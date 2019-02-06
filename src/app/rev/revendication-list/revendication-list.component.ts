@@ -6,7 +6,7 @@ import { RevService } from '../rev.service';
 import { ListRevService } from '../list-rev.service';
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
-import { map } from 'rxjs/operators';
+import { map, take, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-revendication-list',
@@ -63,7 +63,9 @@ export class RevendicationListComponent implements OnInit {
             length--;
           }
           return result;
-        })
+        }),
+        filter(revs => revs.length === 2),
+        take(1)
       );
     } else {
       console.log('all rev')
