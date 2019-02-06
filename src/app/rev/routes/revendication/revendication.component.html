@@ -1,10 +1,10 @@
-<main>
-  <section *ngIf="r !== undefined">
+<main *ngIf="r !== undefined">
+  <section>
     <h1>Revendication: {{r.title}}</h1>
 
     <p class="buttons">
-      <span class="like">{{r.likes | async }} soutiens</span>
-      <span class="like">{{r.dislikes | async }} opposants</span>
+      <span class="like">{{r.likes$ | async }} soutiens</span>
+      <span class="like">{{r.dislikes$ | async }} opposants</span>
     </p>
     <p class="buttons">
       <button [disabled]="didILiked" (click)="rev.like(r)">

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface RevendicationRecord {
     id?: string;
     title?: string;
@@ -12,6 +14,7 @@ export interface RevendicationRecord {
 
     userid?: any;
     _random?: any;
-    likes?: any;
-    dislikes?: any;
+    likes$?: Observable<any>;
+    dislikes$?: Observable<any>;
+    voters$?: Observable<any>;
 }

@@ -117,10 +117,6 @@ export class ListRevService {
         });
         return revendications;
       });
-    }).then(revs => revs.map(rev => {
-      rev.likes = this.like.getCount$(rev, "like");
-      rev.dislikes = this.like.getCount$(rev, "dislike");
-      return rev;
-    }));
+    });
   }
 }
