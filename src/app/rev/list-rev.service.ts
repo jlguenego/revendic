@@ -28,9 +28,9 @@ export class ListRevService {
 
   _db: firestore.Firestore;
 
-  allRevs$: BehaviorSubject<RevendicationRecord[]>;
-  revs$: BehaviorSubject<RevendicationRecord[]>;
-  lastUpdatedRevs$: BehaviorSubject<RevendicationRecord[]>;
+  allRevs$: Observable<RevendicationRecord[]>;
+  revs$: Observable<RevendicationRecord[]>;
+  lastUpdatedRevs$: Observable<RevendicationRecord[]>;
 
   constructor(
     private db: AngularFirestore,
@@ -54,36 +54,38 @@ export class ListRevService {
 
   initAllRevs(max: number = -1) {
     const filter = ref => ref;
-    this.allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    const allRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter)))
       .pipe(
         this.like.mapLikes.bind(this.like)
       )
-      .subscribe(this.allRevs$);
+      .subscribe(allRevs$);
+    this.allRevs$ = allRevs$;
   }
 
   initRevs(max: number = 3) {
     const filter = ref => ref;
-    this.revs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    const revs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter)))
       .pipe(
         this.like.mapLikes.bind(this.like)
       )
-      .subscribe(this.revs$);
+      .subscribe(revs$);
+    this.revs$ = revs$;
   }
 
   initLastUpdatedRevs(max: number = 5) {
     const filter = ref => ref.orderBy('updatedAt', 'desc');
-    this.lastUpdatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
+    const lastUpdatedRevs$ = new BehaviorSubject<RevendicationRecord[]>([]);
     this.afu.query(this.db.collection<RevendicationRecord>(
       '/revendications', pipeLimit(max, filter)))
       .pipe(
         this.like.mapLikes.bind(this.like)
       )
-      .subscribe(this.lastUpdatedRevs$);
-
+      .subscribe(lastUpdatedRevs$);
+    this.lastUpdatedRevs$ = lastUpdatedRevs$;
   }
 
   getRandomRevs(max: number = 5): Promise<RevendicationRecord[]> {
