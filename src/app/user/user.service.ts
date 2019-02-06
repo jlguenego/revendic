@@ -210,7 +210,6 @@ export class UserService {
     if (!this.isLogged) {
       // facebook problem ?
       this.afAuth.auth.getRedirectResult().catch(async error => {
-        console.log('error from signinwithredirect:', error);
         if (error.code === 'auth/account-exists-with-different-credential') {
           await this.afAuth.auth.fetchSignInMethodsForEmail(error.email);
           return this.zone.run(() => {

@@ -68,7 +68,6 @@ export class RevendicationListComponent implements OnInit {
         take(1)
       );
     } else {
-      console.log('all rev')
       this.revendications = this.listRev.allRevsWithLike$;
     }
   }
