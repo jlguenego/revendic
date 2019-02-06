@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { LikeRecord } from './like.record';
 
 export interface RevendicationRecord {
     id?: string;
@@ -14,5 +15,5 @@ export interface RevendicationRecord {
 
     userid?: any;
     _random?: any;
-    voters$?: Observable<any>;
+    voters?: LikeRecord[];
 }

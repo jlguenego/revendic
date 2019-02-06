@@ -71,17 +71,17 @@ export class RevendicationComponent implements OnInit {
 
       this.afu.doc<RevendicationRecord>('/revendications', params.id)
         .pipe(
-          map<RevendicationRecord, any>(this.like.mapLike.bind(this.like))
+          this.like.mapLike.bind(this.like)
         )
         .subscribe(r => {
           this.r = r;
           if (r === undefined) {
             return;
           }
-          this.r.voters$.subscribe(voters => {
-            this.likes = voters.filter(voter => voter.like === 1).length;
-            this.dislikes = voters.filter(voter => voter.like === -1).length;
-          })
+
+          this.likes = this.r.voters.filter(voter => voter.like === 1).length;
+          this.dislikes = this.r.voters.filter(voter => voter.like === -1).length;
+
           this.isMyRevendication = this.user.uid === this.r.userid;
           this.editLink = `/mes-revendications/edition/${r.id}`;
           this.photo = this.r.photo || 'https://bit.ly/2VS4pYb';
