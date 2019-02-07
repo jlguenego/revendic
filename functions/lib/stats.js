@@ -1,11 +1,4 @@
-const admin = require("firebase-admin");
-
-const serviceAccount = require("../secret.json");
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://revendic-prod.firebaseio.com"
-});
+const admin = require('firebase-admin');
 
 function getTotalUser() {
     const array = [];

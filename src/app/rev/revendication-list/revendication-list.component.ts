@@ -49,7 +49,6 @@ export class RevendicationListComponent implements OnInit {
           const sorted = revs.sort((reva, revb) => {
             return getLikes(reva) < getLikes(revb) ? 1 : -1;
           });
-          console.log('sorted', sorted.map(rev => getLikes(rev)))
           return sorted.slice(0, 3);
         })
       );

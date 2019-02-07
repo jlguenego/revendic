@@ -1,36 +1,18 @@
-// const functions = require('firebase-functions');
-
-// // // Create and Deploy Your First Cloud Functions
-// // // https://firebase.google.com/docs/functions/write-firebase-functions
-// //
-
-
-require('zone.js/dist/zone-node');
-
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
+const app = require('./lib/ssr');
 const stats = require('./lib/stats');
-const express = require('express');
-const path = require('path');
-const { enableProdMode } = require('@angular/core');
-const { renderModuleFactory } = require('@angular/platform-server');
+const { likeTrigger } = require('./lib/triggers');
 
-const { AppServerModuleNgFactory } = require('./dist/server/main');
-
-enableProdMode();
-
-const index = require('fs')
-  .readFileSync(path.resolve(__dirname, './dist/browser/index.html'), 'utf8')
-  .toString();
-
-let app = express();
-
-app.get('**', function(req, res) {
-  renderModuleFactory(AppServerModuleNgFactory, {
-    url: req.path,
-    document: index
-  }).then(html => res.status(200).send(html));
+// admin initialize
+const serviceAccount = require('./secret.json');
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
 });
 
-exports.ssr = functions.https.onRequest(app);
 
+exports.ssr = functions.https.onRequest(app);
 exports.stats = functions.https.onRequest(stats);
+exports.likeTrigger = likeTrigger;

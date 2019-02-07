@@ -50,6 +50,7 @@ function adjustFile() {
         fs.emptyDirSync(ssrDir);
         fs.copySync(path.resolve(projectDir, './functions/dist/browser'), ssrDir);
         fs.renameSync(path.resolve(projectDir, './dist/ssr/index.html'), path.resolve(projectDir, './dist/ssr/not-found.html'));
+        fs.copyFileSync(path.resolve(projectDir, `./functions/secret.${env}.json`), path.resolve(projectDir, './functions/secret.json'));
         console.info('success!');
     } catch (err) {
         console.error(err);
