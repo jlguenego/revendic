@@ -27,22 +27,6 @@ export class LikeService {
     return this.cache.get(revid);
   }
 
-  mapLikes = (o: Observable<RevendicationRecord[]>) => {
-    return Observable.create(observer => {
-      o.subscribe(revs => {
-        revs.forEach(rev => {
-          if (rev) {
-            this.getVoters$(rev.id).subscribe(voters => {
-              rev.voters = voters;
-              observer.next(revs);
-            });
-          }
-        });
-        observer.next(revs);
-      });
-    });
-  }
-
   mapLike = (o: Observable<RevendicationRecord>): Observable<RevendicationRecord> => {
     return Observable.create(observer => {
       o.subscribe(rev => {

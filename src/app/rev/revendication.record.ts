@@ -1,3 +1,5 @@
+import { LikeRecord } from './like.record';
+
 export interface RevendicationRecord {
     id?: string;
     title?: string;
@@ -17,4 +19,5 @@ export interface RevendicationRecord {
     dislike?: number;
     likers?: string[];
     dislikers?: string[];
+    voters?: LikeRecord[];
 }
