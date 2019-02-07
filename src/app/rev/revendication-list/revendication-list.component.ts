@@ -8,6 +8,13 @@ import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { map, take, filter } from 'rxjs/operators';
 
+const getLikes = rev => {
+  if (!rev.voters) {
+    return 0;
+  }
+  return rev.voters.filter(voter => voter.like === 1).length;
+};
+
 @Component({
   selector: 'app-revendication-list',
   templateUrl: './revendication-list.component.html',
@@ -38,15 +45,13 @@ export class RevendicationListComponent implements OnInit {
       this.revendications = this.listRev.lastCreatedRevs$;
     } else if (this.mostLiked === '') {
       this.revendications = this.listRev.allRevsWithLike$.pipe(
-        map(revs => revs.sort((reva, revb) => {
-          const getLikes = rev => {
-            if (!rev.voters) {
-              return 0;
-            }
-            return rev.voters.filter(voter => voter.like === 1).length;
-          };
-          return getLikes(reva) < getLikes(revb) ? 1 : -1;
-        }).slice(0, 3))
+        map(revs => {
+          const sorted = revs.sort((reva, revb) => {
+            return getLikes(reva) < getLikes(revb) ? 1 : -1;
+          });
+          console.log('sorted', sorted.map(rev => getLikes(rev)))
+          return sorted.slice(0, 3);
+        })
       );
     } else if (this.random === '') {
       this.revendications = this.listRev.allRevs$.pipe(
