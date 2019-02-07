@@ -8,13 +8,6 @@ import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { map, take, filter } from 'rxjs/operators';
 
-const getLikes = rev => {
-  if (!rev.voters) {
-    return 0;
-  }
-  return rev.voters.filter(voter => voter.like === 1).length;
-};
-
 @Component({
   selector: 'app-revendication-list',
   templateUrl: './revendication-list.component.html',
@@ -27,7 +20,7 @@ export class RevendicationListComponent implements OnInit {
   faThumbsDown = faThumbsDown;
   faShareSquare = faShareSquare;
 
-  @Input() max: string;
+  @Input() max: number = 3;
 
   @Input() orderByCreatedAt;
   @Input() mostLiked;
@@ -42,15 +35,16 @@ export class RevendicationListComponent implements OnInit {
   ngOnInit() {
 
     if (this.orderByCreatedAt === '') {
-      this.revendications = this.listRev.lastCreatedRevs$;
+      this.revendications = this.listRev.allRevs$.pipe(
+        map(revs => revs
+          .sort((reva, revb) => reva.createdAt.toDate() < revb.createdAt.toDate() ? 1 : -1)
+          .slice(0, this.max))
+        );
     } else if (this.mostLiked === '') {
-      this.revendications = this.listRev.allRevsWithLike$.pipe(
-        map(revs => {
-          const sorted = revs.sort((reva, revb) => {
-            return getLikes(reva) < getLikes(revb) ? 1 : -1;
-          });
-          return sorted.slice(0, 3);
-        })
+      this.revendications = this.listRev.allRevs$.pipe(
+        map(revs => revs
+          .sort((reva, revb) => reva.like < revb.like ? 1 : -1)
+          .slice(0, this.max))
       );
     } else if (this.random === '') {
       this.revendications = this.listRev.allRevs$.pipe(
@@ -72,7 +66,7 @@ export class RevendicationListComponent implements OnInit {
         take(1)
       );
     } else {
-      this.revendications = this.listRev.allRevsWithLike$;
+      this.revendications = this.listRev.allRevs$;
     }
   }
 

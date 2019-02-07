@@ -3,7 +3,7 @@ const admin = require('firebase-admin');
 
 const app = require('./lib/ssr');
 const stats = require('./lib/stats');
-const { likeTrigger } = require('./lib/triggers');
+const { likeTrigger, likeMigration } = require('./lib/triggers');
 
 // admin initialize
 const serviceAccount = require('./secret.json');
@@ -16,3 +16,4 @@ admin.initializeApp({
 exports.ssr = functions.https.onRequest(app);
 exports.stats = functions.https.onRequest(stats);
 exports.likeTrigger = likeTrigger;
+exports.likeMigration = likeMigration;

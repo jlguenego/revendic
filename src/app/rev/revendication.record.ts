@@ -1,6 +1,3 @@
-import { Observable } from 'rxjs';
-import { LikeRecord } from './like.record';
-
 export interface RevendicationRecord {
     id?: string;
     title?: string;
@@ -8,12 +5,16 @@ export interface RevendicationRecord {
     constat?: string;
     content?: string;
     photo?: string;
-    category?: any;
+    category?: string;
 
     createdAt?: any;
     updatedAt?: any;
 
     userid?: any;
     _random?: any;
-    voters?: LikeRecord[];
+
+    like?: number;
+    dislike?: number;
+    likers?: string[];
+    dislikers?: string[];
 }
