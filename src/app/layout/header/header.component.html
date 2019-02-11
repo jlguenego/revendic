@@ -80,6 +80,10 @@
       <a routerLink="test">Test</a>
       <div class="separator"></div>
     </div>
+    <div *ngIf="user.isAdmin">
+      <a routerLink="admin">Admin</a>
+      <div class="separator"></div>
+    </div>
   </nav>
 </header>
 <app-is-loading></app-is-loading>

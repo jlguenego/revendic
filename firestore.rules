@@ -14,6 +14,10 @@ service cloud.firestore {
       allow write: if request.auth.token.email_verified == true &&
         request.auth.uid == myUserId;
     }
+
+    match /users/{document=**} {
+      allow read: if true;
+    }
     
     match /{document=**} {
       allow read, write: if false;

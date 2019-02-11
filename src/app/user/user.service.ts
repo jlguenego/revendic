@@ -9,6 +9,8 @@ import { UserRoutes } from './user-routes';
 import { map } from 'rxjs/operators';
 import { DialogService } from '../dialog/dialog.service';
 import { ResponsiveService } from '../layout/responsive.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserRecord } from './user.record';
 
 const LOCALSTORAGE_NEXT_URL = 'nextUrl';
 
@@ -37,11 +39,13 @@ export class UserService {
 
   isVerified = false;
   isLogged = undefined;
+  isAdmin = undefined;
   displayName = "";
   photoURL = null;
   email = "";
   uid = "";
   provider = "";
+
 
   onDeletionPromiseList: (() => Promise<void>)[] = [];
 
@@ -49,6 +53,7 @@ export class UserService {
 
   constructor(
     private afAuth: AngularFireAuth,
+    private afs: AngularFirestore,
     private router: Router,
     private zone: NgZone,
     private responsive: ResponsiveService,
@@ -59,6 +64,7 @@ export class UserService {
   sync(user: firebase.User) {
     if (user) {
       this.manageJustVerifiedCase(user);
+      this.isAdministrator();
       this.isLogged = true;
       this.isVerified = user.emailVerified;
       this.displayName = user.displayName;
@@ -67,6 +73,7 @@ export class UserService {
       this.uid = user.uid;
       this.provider = user.providerData[0].providerId;
     } else {
+      this.isAdmin = undefined;
       this.isLogged = false;
       this.isVerified = false;
       this.displayName = "";
@@ -326,6 +333,25 @@ export class UserService {
     if (user.emailVerified === true && this.isVerified === false) {
       user.getIdToken(true);
     }
+  }
+
+  isAdministrator() {
+    this.isAdmin = false;
+    if (!this.uid) {
+      return;
+    }
+    this.afs.collection('/users').doc<UserRecord>(this.uid).valueChanges()
+      .subscribe(user => {
+        if (user === undefined) {
+          return;
+        }
+        if (user.role !== 'admin') {
+          return;
+        }
+        this.isAdmin = true;
+        return;
+      });
+
   }
 
 }
