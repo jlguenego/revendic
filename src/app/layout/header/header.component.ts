@@ -24,18 +24,29 @@ export class HeaderComponent implements OnInit {
 
   openMenu() {
     this.isMenuOpen = true;
+    this.manageBody();
   }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    this.manageBody();
   }
 
   closeMenu() {
     this.isMenuOpen = false;
+    this.manageBody();
   }
 
   refresh() {
     this.user.refresh();
+  }
+
+  manageBody() {
+    if (this.isMenuOpen) {
+      window.document.body.style.position = 'fixed';
+    } else {
+      window.document.body.style.position = 'relative';
+    }
   }
 
 }
