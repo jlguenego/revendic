@@ -24,7 +24,8 @@ service cloud.firestore {
 service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
-      allow read, write: if false;
+      allow read: if true;
+      allow write: if false;
     }
   }
 }

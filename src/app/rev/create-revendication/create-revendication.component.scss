@@ -13,3 +13,25 @@
 .label {
     font-weight: bold;
 }
+
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        display: inline-flex;
+        margin: 0.2rem;
+        width: 8rem;
+        height: 6rem;
+        background-size: cover;
+        background-position: center;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+        span {
+            text-align: center;
+        }
+        &.selected {
+            filter: opacity(0.3);
+        }
+    }
+}
