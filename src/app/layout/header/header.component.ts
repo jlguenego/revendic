@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
   }
 
   manageBody() {
-    if (this.isMenuOpen) {
+    if (this.isMenuOpen && window) {
       window.document.body.style.position = 'fixed';
     } else {
       window.document.body.style.position = 'relative';
