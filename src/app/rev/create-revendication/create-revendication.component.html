@@ -29,6 +29,9 @@
       <label>
         <div class="label">Categorie*</div>
         <select formControlName="category">
+          <option value="europe">Europe</option>
+          <option value="environnement">Environnement</option>
+          <option value="institution">Institution</option>
           <option value="travail">Travail</option>
           <option value="politique">Politique</option>
           <option value="consommation">Consommation</option>
@@ -45,11 +48,10 @@
         </div>
         <div *ngIf="showCustomUrlInput" class="help">
           <br>
-          Entrer une URL d'image que vous prenez sur internet.
+          Entrer une URL d'image que vous prenez sur internet*.
         </div>
         <input *ngIf="showCustomUrlInput" type="text" name="photo" formControlName="photo"
-          placeholder="URL d'image sur internet">
-        
+          placeholder="URL d'image sur internet ex: https://rebeltoi.fr/truc/de/ouf.jpg">
         <div class="photo">
           <img [src]="f.value.photo">
         </div>
