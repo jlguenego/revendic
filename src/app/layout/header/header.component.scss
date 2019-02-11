@@ -127,11 +127,23 @@ header {
         color: $color;
         cursor: pointer;
     }
+    .overlay {
+        display: block;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: hsla(0, 0%, 50%, 0.5);
+    }
     .primary-mobile-menu {
         display: none;
         &.open {
             display: block;
-            position: absolute;
+            position: fixed;
             z-index: 1000;
             width: 100%;
             top: 3rem;

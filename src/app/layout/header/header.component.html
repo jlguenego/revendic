@@ -45,6 +45,7 @@
     </a>
   </div>
   <fa-icon (click)="toggleMenu(); refresh();" class="mobile" [icon]="faBars"></fa-icon>
+  <div *ngIf="isMenuOpen" (click)="closeMenu()" class="overlay"></div>
   <nav (click)="closeMenu()" [class.open]="isMenuOpen" class="primary-mobile-menu">
     <a *ngIf="!user.isLogged" [routerLink]="user.routes.url.login">Mon compte</a>
 
@@ -79,7 +80,6 @@
       <a routerLink="test">Test</a>
       <div class="separator"></div>
     </div>
-
   </nav>
 </header>
 <app-is-loading></app-is-loading>
