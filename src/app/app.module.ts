@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RevModule } from './rev/rev.module';
 import { RouterModule } from '@angular/router';
 import { StatModule } from './stat/stat.module';
+import { AdminModule } from './admin/admin.module';
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
@@ -44,7 +45,7 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    StatModule,
+    StatModule, AdminModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
