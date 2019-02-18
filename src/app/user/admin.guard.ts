@@ -6,25 +6,20 @@ import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardServiceGuard implements CanActivate {
-
+export class AdminGuard implements CanActivate {
   constructor(private user: UserService, private router: Router) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    return this.user.isConnected()
+    return this.user.checkIfAdmin()
       .then(() => {
-        if (!this.user.isVerified) {
-          this.router.navigate([this.user.routes.path.accountNotActivated]);
-          return false;
-        }
         return true;
       })
-      .catch(() => {
+      .catch((err) => {
         this.user.url = state.url;
-        this.router.navigate([this.user.routes.path.login]);
+        this.router.navigate(['not-found']);
         return false;
       });
   }

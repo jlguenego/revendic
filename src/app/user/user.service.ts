@@ -354,4 +354,24 @@ export class UserService {
 
   }
 
+  checkIfAdmin() {
+    return new Promise((resolve, reject) => {
+      this.isConnected().then(() => {
+        this.afs.collection('/users').doc<UserRecord>(this.uid).valueChanges()
+          .subscribe(user => {
+            if (user === undefined) {
+              reject('not in the admin list');
+              return;
+            }
+            if (user.role !== 'admin') {
+              reject('connected but not admin');
+              return;
+            }
+            resolve();
+            return;
+          });
+      }).catch(reject);
+    });
+  }
+
 }
