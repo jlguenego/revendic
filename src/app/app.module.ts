@@ -40,12 +40,13 @@ registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
     RouterModule,
     FontAwesomeModule,
     RevModule,
+    AdminModule,
     LayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    StatModule, AdminModule,
+    StatModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent],
