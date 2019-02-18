@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AngularFireAuth } from '@angular/fire/auth';
+
+const url = `https://us-central1-${environment.firebase.projectId}.cloudfunctions.net/adminExportAccounts`;
 
 @Component({
   selector: 'app-main',
@@ -8,11 +11,14 @@ import { environment } from 'src/environments/environment';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  exportAccountUrl: string;
+
+  constructor(private afa: AngularFireAuth) { }
 
   ngOnInit() {
+    this.afa.idToken.subscribe(x => {
+      this.exportAccountUrl = `${url}?tokenId=${x}`;
+    });
   }
-
-  exportAccountUrl = `https://us-central1-${environment.firebase.projectId}.cloudfunctions.net/adminExportAccounts`;
 
 }
