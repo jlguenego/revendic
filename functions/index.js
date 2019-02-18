@@ -10,6 +10,7 @@ admin.initializeApp({
 const app = require('./lib/ssr');
 const stats = require('./lib/stats');
 const { likeTrigger, likeMigration } = require('./lib/triggers');
+const { adminExportAccounts } = require('./lib/admin');
 
 
 
@@ -18,3 +19,4 @@ exports.ssr = functions.https.onRequest(app);
 exports.stats = functions.https.onRequest(stats);
 exports.likeTrigger = likeTrigger;
 exports.likeMigration = likeMigration;
+exports.adminExportAccounts = functions.https.onRequest(adminExportAccounts);
