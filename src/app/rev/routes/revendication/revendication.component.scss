@@ -4,9 +4,12 @@
     padding: 1rem 1rem;
     text-align: center;
     img {
-        width: 40%;
+        width: 100%;
+        max-width: 500px;
     }
 }
+
+
 
 .buttons {
     display: flex;
