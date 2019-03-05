@@ -59,6 +59,7 @@ main {
     flex-wrap: wrap;
     .item {
         display: block;
+        margin-bottom: 0.5rem;
         width: 100%;
         max-width: 18rem;
         background: $section-dark-bgcolor;
@@ -72,13 +73,16 @@ main {
                     background-image: url("https://rmc.bfmtv.com/static/nxt-rmc/evenement/radio-brunet/img/partage.jpg");
                 }
                 &.opinion {
-                    background-image: url("http://www.cbnews.fr/var/media/415/728x338/lopinion-414451.jpg");
+                    background-image: url("https://firebasestorage.googleapis.com/v0/b/revendic-prod.appspot.com/o/lopinion.jpg?alt=media&token=cc96016f-9a33-4448-bf42-d6d3119c6ba9");
                 }
                 &.strateges {
                     background-image: url("../../../assets/strateges.jpg");
                 }
                 &.contrepoints {
                     background-image: url("../../../assets/contrepoints.png");
+                }
+                &.causeur {
+                    background-image: url("https://firebasestorage.googleapis.com/v0/b/revendic-prod.appspot.com/o/causeur.png?alt=media&token=a530670b-62a7-46c7-b489-be71a8ccdbed");
                 }
             }
             div.comment {
