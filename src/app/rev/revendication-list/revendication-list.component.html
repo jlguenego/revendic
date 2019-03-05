@@ -13,7 +13,7 @@
           </span>
         </div>
         <div class="flex end">
-          <span>{{r.category}} - {{r.createdAt.toDate() | date : 'short'}}</span>
+          <span>{{r.category}} - {{getDate(r)}}</span>
         </div>
         <div class="flex">
           <i>{{r.content | excerpt : 200}}</i>

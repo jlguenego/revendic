@@ -7,6 +7,7 @@ import { ListRevService } from '../list-rev.service';
 import { faBullhorn } from '@fortawesome/free-solid-svg-icons';
 import { faShareSquare, faThumbsDown, faThumbsUp } from '@fortawesome/free-regular-svg-icons';
 import { map, take, filter } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-revendication-list',
@@ -37,7 +38,18 @@ export class RevendicationListComponent implements OnInit {
     if (this.orderByCreatedAt === '') {
       this.revendications = this.listRev.allRevs$.pipe(
         map(revs => revs
-          .sort((reva, revb) => reva.createdAt.toDate() < revb.createdAt.toDate() ? 1 : -1)
+          .sort((reva, revb) => {
+            if (reva.createdAt && revb.createdAt) {
+              return reva.createdAt.toDate() < revb.createdAt.toDate() ? 1 : -1;
+            }
+            if (!reva.createdAt) {
+              return 1;
+            }
+            if (!revb.createdAt) {
+              return -1;
+            }
+            return 1;
+          })
           .slice(0, this.max))
         );
     } else if (this.mostLiked === '') {
@@ -84,5 +96,13 @@ export class RevendicationListComponent implements OnInit {
 
   share(r: RevendicationRecord) {
     this.rev.share(r);
+  }
+
+  getDate(r: RevendicationRecord) {
+    if (!r.createdAt) {
+      return '';
+    }
+    const date = r.createdAt.toDate();
+    return moment(date).format('DD MMM YYYY');
   }
 }

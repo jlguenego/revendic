@@ -22,6 +22,9 @@ import { RevModule } from './rev/rev.module';
 import { RouterModule } from '@angular/router';
 import { StatModule } from './stat/stat.module';
 import { AdminModule } from './admin/admin.module';
+import * as moment from 'moment';
+
+moment.locale('fr');
 
 registerLocaleData(localeFr, 'fr-FR', localeFrExtra);
 
