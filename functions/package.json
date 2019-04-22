@@ -37,5 +37,8 @@
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "8"
+  }
 }
